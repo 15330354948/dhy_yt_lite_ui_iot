@@ -1,0 +1,230 @@
+@mixin popupRenderer() {
+  .pgEarth-popup-renderer__media,
+  .pgEarth-popup-renderer__attachments,
+  .pgEarth-popup-renderer__media-container {
+    display: flex;
+  }
+  .pgEarth-popup-renderer__loading-container {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    padding: $cap_spacing 0;
+  }
+
+  .pgEarth-icon-loading-indicator {
+    display: inline-block;
+  }
+
+  .pgEarth-popup-renderer {
+    width: 100%;
+  }
+  // GENERAL
+  .pgEarth-popup-renderer h1 {
+    font-size: $h1_text_size;
+    font-weight: $text_weight_header;
+  }
+  .pgEarth-popup-renderer h2 {
+    font-size: $h2_text_size;
+    font-weight: $text_weight_header;
+  }
+  .pgEarth-popup-renderer img {
+    max-width: 100%;
+  }
+  .pgEarth-popup-renderer figcaption {
+    font-size: $caption_text_size;
+    font-style: italic;
+    padding: 0;
+    margin: .2em 0 0;
+    display: block;
+  }
+  .pgEarth-popup-renderer ul {
+    margin-bottom: 1rem;
+    padding: 0 0 0 1rem;
+  }
+  .pgEarth-popup-renderer li {
+    font-size: $body_text_size;
+    margin: .3em 0;
+  }
+  .pgEarth-popup-renderer__content-element {
+    padding: 0 floor($side_spacing/2) $cap_spacing*2;
+  }
+  .pgEarth-popup-renderer__content-element:last-child {
+    padding-bottom: 0;
+  }
+  .pgEarth-popup-renderer__field-data--date {
+    text-transform: capitalize;
+  }
+  // ATTACHMENTS
+  .pgEarth-popup-renderer__attachments-title {
+    margin: 0 auto 0 0;
+    font-weight: $text_weight_header;
+  }
+  .pgEarth-popup-renderer__attachments {
+    flex-flow: column wrap;
+    align-items: flex-start;
+  }
+  ul.pgEarth-popup-renderer__attachments-items {
+    padding: 0 0 0 0;
+    margin: floor($cap_spacing/2) 0;
+  }
+  li.pgEarth-popup-renderer__attachments-item {
+    list-style-type: none;
+    line-height: 1.2em;
+    display: table;
+  }
+  a.pgEarth-popup-renderer__attachments-item-link {
+    text-decoration: none;
+    font-size: $body_text_size;
+    color: $button_text_color;
+    max-width: 100%;
+    word-break: break-all;
+    display: table-row;
+  }
+  a.pgEarth-popup-renderer__attachments-item-link:hover {
+    color: $button_text_hover_color;
+  }
+  .pgEarth-popup-renderer__attachments-item-icon,
+  .pgEarth-popup-renderer__attachments-item-title {
+    display: table-cell;
+    padding-top: floor($cap_spacing/4);
+    padding-bottom: floor($cap_spacing/4);
+    vertical-align: middle;
+  }
+  .pgEarth-popup-renderer__attachments-item-icon {
+    padding-left: floor($side_spacing/2);
+    padding-right: floor($side_spacing/2);
+  }
+  // MEDIA
+  .pgEarth-popup-renderer__media {
+    flex-flow: row wrap;
+    align-items: center;
+  }
+  .pgEarth-popup-renderer__media-summary {
+    flex-flow: row nowrap;
+    align-items: center;
+    display: none;
+    margin: 0 floor($side_spacing/2) 0 auto;
+    padding: 0;
+  }
+  .pgEarth-popup-renderer__media-count {
+    padding: 0 .2rem;
+  }
+  .pgEarth-popup-renderer__media-image-summary {
+    list-style-type: none;
+    display: inline-block;
+    vertical-align: text-bottom;
+    padding: 0 0 0 .7rem;
+  }
+  .pgEarth-popup-renderer__media-item-title {
+    font-size: $h2_text_size;
+    padding: 0.3rem 0 0;
+  }
+  .pgEarth-popup-renderer__media-item-caption {
+    font-size: $body_text_size;
+    padding: 0.1rem 0 0;
+  }
+  .pgEarth-popup-renderer__media-container {
+    flex-flow: row nowrap;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    min-height: 150px;
+    margin-top: floor($cap_spacing/2);
+  }
+  .pgEarth-popup-renderer__media-container .pgEarth-popup-renderer__button {
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 15%;
+    font-size: 20px;
+    color: $button_text_color;
+    display: none;
+  }
+  .pgEarth-popup-renderer__media-container .pgEarth-popup-renderer__button:hover {
+    cursor: pointer;
+    color: $button_text_hover_color;
+  }
+  .pgEarth-popup-renderer__media-item {
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .pgEarth-popup-renderer__media-chart {
+    //  Dimensions on containing div are required
+    //  for Chart library to know how big to make the chart.
+    width: 250px;
+    height: 250px;
+  }
+  .pgEarth-popup-renderer__media-previous-icon--rtl,
+  .pgEarth-popup-renderer__media-next-icon--rtl {
+    display: none;
+  }
+  // MULTIPLE MEDIA
+  .pgEarth-popup-renderer--media-pagination-visible .pgEarth-popup-renderer__media-container .pgEarth-popup-renderer__button {
+      display: flex;
+  }
+  .pgEarth-popup-renderer--media-pagination-visible .pgEarth-popup-renderer__media-item-container {
+    flex: 0 0 70%;
+  }
+  .pgEarth-popup-renderer--media-pagination-visible .pgEarth-popup-renderer__media-summary {
+    display: flex;
+  }
+  .pgEarth-popup-renderer--media-pagination-visible .pgEarth-popup-renderer__media-chart {
+    //  Accounts for media items being smaller
+    //  when there are pagination buttons.
+    width: 225px;
+    height: 225px;
+  }
+  //  SCREEN SIZES
+  .pgEarth-view-width-xlarge {
+    @include mediaImgMaxWidth(380);
+  }
+
+  .pgEarth-view-width-large {
+    @include mediaImgMaxWidth(280);
+  }
+
+  .pgEarth-view-width-medium {
+    @include mediaImgMaxWidth(240);
+  }
+
+  .pgEarth-view-width-small {
+    @include mediaImgMaxWidth(225);
+  }
+
+  .pgEarth-view-width-xsmall {
+    @include mediaImgMaxWidth(180);
+  }
+
+  .pgEarth-view-width-xsmall .pgEarth-docked {
+    @include mediaImgMaxWidth(300);
+  }
+  //  RTL
+  html[dir="rtl"] {
+    .pgEarth-popup-renderer__attachments-title {
+      margin: 0 0 0 auto;
+    }
+    .pgEarth-popup-renderer__attachments-item-icon {
+      padding: 0 0 0 .5em;
+    }
+    .pgEarth-popup-renderer__media-summary {
+      margin: 0 auto 0 0;
+    }
+    .pgEarth-popup-renderer__media-image-summary {
+      margin: 0 .5em 0 0;
+    }
+    .pgEarth-popup-renderer__media-previous-icon--rtl,
+    .pgEarth-popup-renderer__media-next-icon--rtl {
+      display: inline-block;
+    }
+    .pgEarth-popup-renderer__media-previous-icon,
+    .pgEarth-popup-renderer__media-next-icon {
+      display: none;
+    }
+  }
+}
+
+@if $include_PopupRenderer == true {
+  @include popupRenderer();
+}

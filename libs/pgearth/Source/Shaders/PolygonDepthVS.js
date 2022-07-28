@@ -1,0 +1,1 @@
+define(function(){"use strict";return"attribute vec3 position;\nvarying vec2 depth;\nvoid main()\n{\n    vec4 pos = vec4(position.xyz,1.0);\n    depth = pos.zw;\n    pos.z = 0.0;\n    gl_Position = czm_projection*pos;\n}"});

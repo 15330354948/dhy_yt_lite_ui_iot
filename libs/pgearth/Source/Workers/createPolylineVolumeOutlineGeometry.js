@@ -1,0 +1,1 @@
+define(["../Core/defined","../Core/Ellipsoid","../Core/PolylineVolumeOutlineGeometry"],function(e,i,o){"use strict";return function(n,l){return e(l)&&(n=o.unpack(n,l)),n._ellipsoid=i.clone(n._ellipsoid),o.createGeometry(n)}});

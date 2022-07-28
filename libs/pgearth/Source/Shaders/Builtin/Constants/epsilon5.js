@@ -1,0 +1,1 @@
+define(function(){"use strict";return"/**\n * 0.00001\n *\n * @name czm_epsilon5\n * @glslConstant\n */\nconst float czm_epsilon5 = 0.00001;\n"});

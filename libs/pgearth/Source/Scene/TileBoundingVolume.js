@@ -1,0 +1,1 @@
+define(["../Core/DeveloperError"],function(o){"use strict";function t(){}return t.prototype.boundingVolume=void 0,t.prototype.boundingSphere=void 0,t.prototype.distanceToCamera=function(t){o.throwInstantiationError()},t.prototype.intersectPlane=function(t){o.throwInstantiationError()},t.prototype.createDebugVolume=function(t){o.throwInstantiationError()},t});

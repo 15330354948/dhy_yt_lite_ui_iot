@@ -1,0 +1,1 @@
+define(["./Check"],function(e){"use strict";return function(n,r,i){e.defined("array",n),e.defined("itemToFind",r),e.defined("comparator",i);for(var t,f,d=0,o=n.length-1;d<=o;)if((f=i(n[t=~~((d+o)/2)],r))<0)d=t+1;else{if(!(f>0))return t;o=t-1}return~(o+1)}});

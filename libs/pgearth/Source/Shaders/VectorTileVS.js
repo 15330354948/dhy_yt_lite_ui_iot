@@ -1,0 +1,1 @@
+define(function(){"use strict";return"attribute vec3 position;\nattribute float a_batchId;\n\nuniform mat4 u_modifiedModelViewProjection;\n\nvoid main()\n{\n    gl_Position = czm_depthClampFarPlane(u_modifiedModelViewProjection * vec4(position, 1.0));\n}\n"});

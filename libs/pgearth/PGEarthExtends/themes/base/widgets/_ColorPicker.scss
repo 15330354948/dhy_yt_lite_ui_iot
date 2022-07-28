@@ -1,0 +1,306 @@
+@mixin colorPicker() {
+  .pgEarth-color-picker {
+    font-size: $text_size_small;
+    color: $button_text_color;
+    text-shadow: none;
+    width: 226px;
+  }
+
+  .pgEarth-color-picker .pgEarth-section {
+    margin: 10px 0 8px;
+  }
+
+  .pgEarth-color-picker .pgEarth-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .pgEarth-color-picker.pgEarth-container {
+    display: inline-block;
+    padding: $cap_spacing $side_spacing;
+    background-color: $background_color;
+  }
+
+  .pgEarth-color-picker .pgEarth-hex-input {
+    display: inline-block;
+    color: $button_text_color;
+    width: 5.6em;
+    border: 1px solid $border_color;
+    direction: ltr;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  .pgEarth-color-picker .pgEarth-input-label {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .pgEarth-color-picker .pgEarth-swatch {
+    vertical-align: middle;
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    cursor: pointer;
+    margin: 0;
+    border-radius: 0;
+    border-color: transparent;
+    transition: background-color .25s ease-in-out, transform 0.25s ease-in-out;
+  }
+
+  .pgEarth-color-picker .pgEarth-swatch-empty:before {
+    display: inline-block;
+    background-color: #f00;
+    position: absolute;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    transform: rotate(-45deg);
+    transform-origin: top left;
+    content: "";
+    z-index: 1;
+  }
+
+  .pgEarth-color-picker .pgEarth-swatch-empty {
+    position: relative;
+    overflow: hidden;
+    border: solid 1px $border_color;
+    background-color: $background_color;
+    transition: border-color 0.25s ease-in-out;
+  }
+
+  .pgEarth-color-picker .pgEarth-palette-options {
+    padding: 6px 0 0;
+    position: relative;
+  }
+
+  .pgEarth-color-picker .pgEarth-palette-options .pgEarth-swatch-empty {
+    margin: 0 10px 0;
+  }
+
+  .pgEarth-color-picker .pgEarth-palette-options .pgEarth-palette-toggle {
+    position: absolute;
+    right: 0;
+    color: $button_text_color;
+    vertical-align: middle;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    background: none;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .dijitRtl .pgEarth-color-picker .pgEarth-palette-options .pgEarth-palette-toggle {
+    left: 0;
+    right: auto;
+  }
+
+  .pgEarth-color-picker .pgEarth-label {
+    margin: 0 0 4px;
+  }
+
+  .pgEarth-color-pickerLabel.pgEarth-disabled {
+    opacity: 0.6;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+  }
+
+  .pgEarth-color-picker .pgEarth-swatch-preview {
+    margin: 0;
+    vertical-align: middle;
+    display: inline-block;
+    height: 25px;
+    width: 100%;
+  }
+
+  .pgEarth-color-picker .pgEarth-swatch-preview.pgEarth-container {
+    position: relative;
+    left: 0;
+    right: 0;
+    display: block;
+    text-align: center;
+  }
+
+  .pgEarth-color-picker .pgEarth-swatch-preview .pgEarth-swatch {
+    position: absolute;
+    cursor: auto;
+    margin: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 25px;
+    width: 100%;
+  }
+
+  .pgEarth-color-picker .pgEarth-swatch-preview .pgEarth-swatch.pgEarth-swatch-empty {
+    display: none;
+  }
+
+  .pgEarth-color-picker .pgEarth-swatch-row {
+    font-size: 0;
+    white-space: nowrap;
+    line-height: 0;
+  }
+
+  .pgEarth-color-picker .pgEarth-palette.pgEarth-recent:empty {
+      background-color: $background_hover_color;
+      box-shadow: 0 0 0 1px $border_color;
+      width: 15px;
+      height: 15px;
+  }
+
+  .pgEarth-color-picker .pgEarth-swatch.pgEarth-swatch-transparency-background {
+    background-image: url("../base/images/transparent-bg.png");
+  }
+
+  .pgEarth-color-picker .pgEarth-palette .pgEarth-swatch.pgEarth-selected {
+    border: 1px solid;
+  }
+
+  .pgEarth-color-picker .pgEarth-swatch.pgEarth-selected {
+    animation: pgEarth-color-picker-highlight-selection 0.2s ease;
+  }
+
+  .pgEarth-color-picker .pgEarth-transparency-slider::-ms-tooltip {
+    display: none;
+  }
+
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range] {
+    -webkit-appearance: none;
+    margin: 0;
+    width: 100%;
+  }
+
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    box-shadow: none;
+    background-color: $border_color;
+    border-radius: 0px;
+    border: none;
+    transition: background-color 250ms ease-in-out;
+  }
+
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-webkit-slider-thumb {
+    box-shadow: none;
+    border: none;
+    height: floor($button_height/2);
+    width: 10px;
+    border-radius: 2px;
+    background-color: $button_text_color;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: floor($button_height/5) * -1;
+    transition: background-color 250ms ease-in-out;
+  }
+
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range][disabled]::-webkit-slider-runnable-track {
+    background-color: rgba($disabled_color, $disabled_opacity);
+  }
+
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range][disabled]::-webkit-slider-thumb {
+    background-color: $disabled_color;
+  }
+
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range][disabled],
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range][disabled]::-webkit-slider-runnable-track,
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range][disabled]::-webkit-slider-thumb {
+    cursor: default;
+  }
+
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range][disabled]+.pgEarth-color-picker-ticks {
+    color: $disabled_color;
+  }
+
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range]:focus::-webkit-slider-runnable-track {
+    background-color: $border_color;
+  }
+
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-moz-range-track,
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-ms-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    box-shadow: none;
+    background-color: $border_color;
+    border: none;
+    border-radius: 0px;
+    border: none;
+    color: transparent;
+  }
+
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-moz-range-thumb,
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-ms-thumb {
+    box-shadow: none;
+    border: none;
+    height: floor($button_height/2);
+    width: 10px;
+    border-radius: 2px;
+    background: $button_text_color;
+    cursor: pointer;
+  }
+
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-ms-fill-lower,
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-ms-fill-upper {
+    background: $border_color;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+  }
+
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range]:focus::-ms-fill-lower,
+  .pgEarth-color-picker .pgEarth-transparency-slider[type=range]:focus::-ms-fill-upper {
+    background: $border_color;
+  }
+
+  .pgEarth-color-picker .pgEarth-palette.pgEarth-container.pgEarth-alt .pgEarth-palette {
+    left: -100%;
+  }
+
+  .pgEarth-color-picker .pgEarth-palette.pgEarth-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .pgEarth-color-picker .pgEarth-palette {
+    left: 0;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    transition: left 0.15s, visibility 0.1s;
+  }
+
+  .pgEarth-color-picker .pgEarth-container .pgEarth-palette {
+    margin: floor($cap_spacing/2) 0;
+  }
+
+  .dijitRtl .pgEarth-color-picker .pgEarth-palette {
+    left: auto;
+    right: 0;
+    transition-property: right;
+  }
+
+  .dijitRtl .pgEarth-color-picker .pgEarth-palette.pgEarth-container.pgEarth-alt .pgEarth-palette {
+    right: -100%;
+    left: 0;
+  }
+
+  .pgEarth-color-picker .pgEarth-color-picker-ticks {
+    margin-top: floor($cap_spacing*0.75);
+    display: flex;
+    justify-content: space-between;
+    transition: color 250ms ease-in-out;
+  }
+
+}
+
+@if $include_ColorPicker == true {
+  @include colorPicker();
+}

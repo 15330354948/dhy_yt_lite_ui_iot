@@ -1,0 +1,1 @@
+define(function(){"use strict";return"/**\n * A built-in GLSL floating-point constant for <code>2pi</code>.\n *\n * @alias czm_twoPi\n * @glslConstant\n *\n * @see PGEarthMath.TWO_PI\n *\n * @example\n * // GLSL declaration\n * const float czm_twoPi = ...;\n *\n * // Example\n * float pi = czm_twoPi / 2.0;\n */\nconst float czm_twoPi = 6.283185307179586;\n"});

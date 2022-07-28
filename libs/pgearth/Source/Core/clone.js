@@ -1,0 +1,1 @@
+define(["./defaultValue"],function(r){"use strict";return function n(t,e){if(null===t||"object"!=typeof t)return t;e=r(e,!1);var u=new t.constructor;for(var f in t)if(t.hasOwnProperty(f)){var o=t[f];e&&(o=n(o,e)),u[f]=o}return u}});

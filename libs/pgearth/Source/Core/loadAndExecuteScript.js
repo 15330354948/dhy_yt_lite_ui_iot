@@ -1,0 +1,1 @@
+define(["../ThirdParty/when"],function(e){"use strict";return function(n){var r=e.defer(),t=document.createElement("script");t.async=!0,t.src=n;var o=document.getElementsByTagName("head")[0];return t.onload=function(){t.onload=void 0,o.removeChild(t),r.resolve()},t.onerror=function(e){r.reject(e)},o.appendChild(t),r.promise}});

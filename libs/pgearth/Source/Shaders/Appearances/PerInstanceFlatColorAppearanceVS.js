@@ -1,0 +1,1 @@
+define(function(){"use strict";return"attribute vec3 position3DHigh;\nattribute vec3 position3DLow;\nattribute vec4 color;\nattribute float batchId;\n\nvarying vec4 v_color;\n\nvoid main()\n{\n    vec4 p = czm_computePosition();\n\n    v_color = color;\n\n    gl_Position = czm_modelViewProjectionRelativeToEye * p;\n}\n"});

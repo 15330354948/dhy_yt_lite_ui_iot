@@ -1,0 +1,1 @@
+define(["./removeExtensionsRequired","../../Core/defined"],function(e,n){"use strict";return function(i,s){var t=i.extensionsUsed;if(n(t)){var d=t.indexOf(s);d>=0&&t.splice(d,1),e(i,s),0===t.length&&delete i.extensionsUsed}}});

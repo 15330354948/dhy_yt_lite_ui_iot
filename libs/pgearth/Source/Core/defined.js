@@ -1,0 +1,1 @@
+define(function(){"use strict";return function(n){return void 0!==n&&null!==n}});

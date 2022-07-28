@@ -1,0 +1,1 @@
+define(["../../Oblique/PGPageLOD/PGPageLOD","../../Core/defined","../../Core/DeveloperError","../../Core/createGuid"],function(e,r,i,n){return function(o){if(!r(o.url))throw new i("url is required");var u=new e(o);return u.id=o.id||n(),u.destroy=function(){},u}});

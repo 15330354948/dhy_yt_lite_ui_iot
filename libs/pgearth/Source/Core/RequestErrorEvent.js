@@ -1,0 +1,1 @@
+define(["./defined","./parseResponseHeaders"],function(e,s){"use strict";function t(e,t,r){this.statusCode=e,this.response=t,this.responseHeaders=r,"string"==typeof this.responseHeaders&&(this.responseHeaders=s(this.responseHeaders))}return t.prototype.toString=function(){var s="Request has failed.";return e(this.statusCode)&&(s+=" Status Code: "+this.statusCode),s},t});

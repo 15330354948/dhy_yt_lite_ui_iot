@@ -1,0 +1,1 @@
+define(["../../Core/defined"],function(e){"use strict";return function(n,i){var t=n.extensionsRequired;if(e(t)){var r=t.indexOf(i);r>=0&&t.splice(r,1),0===t.length&&delete n.extensionsRequired}}});

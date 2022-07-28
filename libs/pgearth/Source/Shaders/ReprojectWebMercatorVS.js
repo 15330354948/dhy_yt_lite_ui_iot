@@ -1,0 +1,1 @@
+define(function(){"use strict";return"attribute vec4 position;\nattribute float webMercatorT;\n\nuniform vec2 u_textureDimensions;\n\nvarying vec2 v_textureCoordinates;\n\nvoid main()\n{\n    v_textureCoordinates = vec2(position.x, webMercatorT);\n    gl_Position = czm_viewportOrthographic * (position * vec4(u_textureDimensions, 1.0, 1.0));\n}\n"});

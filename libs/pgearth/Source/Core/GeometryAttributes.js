@@ -1,0 +1,1 @@
+define(["./defaultValue"],function(t){"use strict";return function(n){n=t(n,t.EMPTY_OBJECT),this.position=n.position,this.normal=n.normal,this.st=n.st,this.bitangent=n.bitangent,this.tangent=n.tangent,this.color=n.color}});

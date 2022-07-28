@@ -1,0 +1,1 @@
+define(["../Core/DeveloperError"],function(r){"use strict";function t(t){r.throwInstantiationError()}return t.prototype.isReady=r.throwInstantiationError,t.prototype.shouldDiscardImage=r.throwInstantiationError,t});

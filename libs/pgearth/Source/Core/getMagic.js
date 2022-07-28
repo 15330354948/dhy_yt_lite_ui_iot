@@ -1,0 +1,1 @@
+define(["./defaultValue","./getStringFromTypedArray"],function(t,e){"use strict";return function(n,r){return r=t(r,0),e(n,r,Math.min(4,n.length))}});

@@ -1,0 +1,1 @@
+define(["./defaultValue","./defined"],function(n,e){"use strict";function i(e,i,t){this.heading=n(e,0),this.pitch=n(i,0),this.range=n(t,0)}return i.clone=function(n,t){if(e(n))return e(t)||(t=new i),t.heading=n.heading,t.pitch=n.pitch,t.range=n.range,t},i});

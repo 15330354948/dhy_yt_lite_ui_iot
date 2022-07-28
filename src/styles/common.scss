@@ -1,0 +1,155 @@
+// 全局变量
+@import './variables.scss';
+// ele样式覆盖
+@import './element-ui.scss';
+// 顶部右侧显示
+@import './top.scss';
+// 导航标签
+@import './tags.scss';
+// 工具类函数
+@import './mixin.scss';
+// 侧面导航栏
+@import './sidebar.scss';
+// 动画
+@import './animate/vue-transition.scss';
+//主题
+@import './theme/index.scss';
+//适配
+@import './media.scss';
+//通用配置
+@import './normalize.scss';
+
+a {
+  text-decoration: none;
+  color          : #333;
+}
+
+* {
+  outline: none;
+}
+
+// 关于 图标 CSS 的设置
+[class^="icon-"] {
+  font-family            : "iconfont" !important;
+  /* 以下内容参照第三方图标库本身的规则 */
+  font-size              : 14px !important;
+  font-style             : normal;
+  -webkit-font-smoothing : antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align         : middle;
+}
+
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.avue-input-icon__item i,
+.avue-crud__icon--small {
+  font-family            : "iconfont" !important;
+  /* 以下内容参照第三方图标库本身的规则 */
+  font-size              : 24px !important;
+  font-style             : normal;
+  -webkit-font-smoothing : antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.el-menu-item [class^=icon-] {
+  margin-right  : 5px;
+  width         : 24px;
+  text-align    : center;
+  font-size     : 18px;
+  vertical-align: middle;
+}
+
+.el-submenu [class^=icon-] {
+  vertical-align: middle;
+  margin-right  : 5px;
+  width         : 24px;
+  text-align    : center;
+  font-size     : 18px;
+}
+
+//AVUE 自定义样式
+.avue-crud {
+  .avue-crud__menu {
+    padding-left : 5px;
+    border-radius: 5px 5px 0px 0px;
+    border       : 1px solid #EBEEF5;
+    border-bottom: 0px;
+    margin-bottom: 0px;
+
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-align : center;
+
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+    -moz-box-align : center;
+
+    display: -o-box;
+    -o-box-orient: horizontal;
+    -o-box-align : center;
+
+    display: -ms-box;
+    -ms-box-orient: horizontal;
+    -ms-box-align : center;
+  }
+
+  .avue-crud__tip {
+    border-radius: 0px;
+    border       : 1px solid #EBEEF5;
+    border-bottom: 0px;
+    margin-top   : 0px;
+    margin-bottom: 0px;
+  }
+
+  .avue-crud__menu {
+    .avue-crud__left {
+      .el-button {
+        margin-bottom: 0px;
+      }
+    }
+
+    .avue-crud__right {
+      .el-button {
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
+
+.pull-right {
+	float: right!important;;
+}
+
+.pull-left {
+	float: left!important;
+}
+.pull-center {
+	text-align: center;
+}
+.pull-flex{
+	display: flex;
+}
+
+.pull-overflow{
+	overflow: hidden;
+}
+.pull-auto{
+	height: auto;
+	overflow: hidden;
+}
+.pull-height{
+	height: 100%;
+}
+.pull-chheight{
+	height: calc( 100% - 60px );
+}
+.pull-fixed{
+  position: fixed;
+  left: 0;
+  top: 0;
+}

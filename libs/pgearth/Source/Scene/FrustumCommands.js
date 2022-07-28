@@ -1,0 +1,1 @@
+define(["../Core/defaultValue","../Renderer/Pass"],function(e,r){"use strict";return function(n,i){this.near=e(n,0),this.far=e(i,0);for(var s=r.NUMBER_OF_PASSES,t=new Array(s),a=new Array(s),f=0;f<s;++f)t[f]=[],a[f]=0;this.commands=t,this.indices=a}});

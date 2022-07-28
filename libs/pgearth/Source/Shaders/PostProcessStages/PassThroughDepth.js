@@ -1,0 +1,1 @@
+define(function(){"use strict";return"uniform sampler2D u_depthTexture;\n\nvarying vec2 v_textureCoordinates;\n\nvoid main()\n{\n    gl_FragColor = czm_packDepth(texture2D(u_depthTexture, v_textureCoordinates).r);\n}\n"});

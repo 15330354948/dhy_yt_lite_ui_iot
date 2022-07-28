@@ -1,0 +1,229 @@
+@mixin expand() {
+  .pgEarth-expand {
+    overflow: visible;
+  }
+
+  .pgEarth-expand__container {
+    position: relative;
+    transition: 300ms;
+  }
+
+  .pgEarth-expand__content {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    z-index: 1;
+    margin: 0 floor($side_spacing * 0.25);
+    @include defaultBoxShadow();
+    transition: opacity 250ms ease-in-out, margin 250ms ease-in-out;
+    overflow: hidden;
+  }
+
+  .pgEarth-ui-top-left .pgEarth-expand__content,
+  .pgEarth-ui-bottom-left .pgEarth-expand__content {
+    left: 100%;
+  }
+
+  .pgEarth-ui-top-right .pgEarth-expand__content,
+  .pgEarth-ui-bottom-right .pgEarth-expand__content {
+    right: 100%;
+  }
+
+  .pgEarth-ui-top-left .pgEarth-expand__content,
+  .pgEarth-ui-top-right .pgEarth-expand__content {
+    top: 0;
+  }
+
+  .pgEarth-ui-bottom-left .pgEarth-expand__content,
+  .pgEarth-ui-bottom-right .pgEarth-expand__content {
+    bottom: 0;
+  }
+
+  .pgEarth-ui-top-left .pgEarth-icon-expand,
+  .pgEarth-ui-bottom-left .pgEarth-icon-expand,
+  .pgEarth-ui-top-left .pgEarth-icon-collapse,
+  .pgEarth-ui-bottom-left .pgEarth-icon-collapse {
+    transform: rotate(180deg);
+  }
+
+  .pgEarth-expand__content--expanded {
+    opacity: 1;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    margin-left: floor($side_spacing * 0.7);
+    margin-right: floor($side_spacing * 0.7);
+  }
+
+  .pgEarth-expand__content .pgEarth-widget {
+    box-shadow: none;
+  }
+
+  .pgEarth-expand__icon-number {
+    position: absolute;
+    top: floor($button_height/6) * -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $text_size_small;
+    line-height: 1em;
+    padding: 0.125em 0.333em;
+    height: floor($button_height/2);
+    border-radius: floor($button_height/2);
+    background-color: $button_text_color;
+    color: $background_color;
+    transform-origin: 50%;
+    animation: expand-number-intro-ani 1000ms ease-in-out;
+  }
+
+  .pgEarth-ui-top-left .pgEarth-expand__icon-number,
+  .pgEarth-ui-bottom-left .pgEarth-expand__icon-number {
+    right: floor($button_width/5) * -1;
+  }
+
+  .pgEarth-ui-top-right .pgEarth-expand__icon-number,
+  .pgEarth-ui-bottom-right .pgEarth-expand__icon-number {
+    left: floor($button_width/5) * -1;
+  }
+
+  .pgEarth-ui-bottom-right .pgEarth-expand__icon-number--expanded,
+  .pgEarth-ui-top-right .pgEarth-expand__icon-number--expanded,
+  .pgEarth-ui-bottom-left .pgEarth-expand__icon-number--expanded,
+  .pgEarth-ui-top-left .pgEarth-expand__icon-number--expanded {
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+  }
+
+  .pgEarth-expand__icon-number--expanded {
+    display: none;
+  }
+
+  .pgEarth-view-width-xsmall {
+
+    .pgEarth-expand .pgEarth-widget {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .pgEarth-expand__container--expanded {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      margin: 0;
+      height: 100%;
+      background: #fff;
+      z-index: 1;
+      overflow: auto;
+
+      .pgEarth-expand__panel {
+        display: flex;
+        justify-content: space-between;
+        padding: 1.023rem;
+        align-items: center;
+
+        .pgEarth-expand__icon-number--expanded {
+          display: block;
+        }
+      }
+    }
+
+    .pgEarth-ui-top-right,
+    .pgEarth-ui-bottom-right {
+
+      .pgEarth-expand__panel {
+        flex-flow: row nowrap;
+      }
+
+      .pgEarth-expand__container--expanded {
+        width: 75%;
+        animation: expand-slide-rtl-ani 300ms forwards;
+      }
+    }
+
+    .pgEarth-ui-top-left,
+    .pgEarth-ui-bottom-left {
+
+      .pgEarth-expand__panel {
+        flex-flow: row-reverse nowrap;
+      }
+
+      .pgEarth-expand__container--expanded {
+        width: 75%;
+        animation: expand-slide-ltr-ani 300ms forwards;
+      }
+    }
+
+
+
+
+
+    .pgEarth-expand__mask--expanded {
+      background-color: #000;
+      position: fixed;
+      right: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      opacity: 0.8;
+      z-index: 1;
+    }
+  }
+
+  .pgEarth-view-width-greater-than-xsmall {
+
+    .pgEarth-expand__content {
+      position: absolute;
+    }
+
+    .pgEarth-expand__mask,
+    .pgEarth-expand__content-panel {
+      display: none;
+    }
+  }
+
+  @keyframes expand-slide-rtl-ani {
+    from {
+      right: -600px;
+      left: 100%;
+    }
+    to {
+      right: 0;
+      left: 25%;
+    }
+  }
+
+  @keyframes expand-slide-ltr-ani {
+    from {
+      left: -600px;
+      right: 100%;
+    }
+    to {
+      left: 0;
+      right: 25%;
+    }
+  }
+
+  @keyframes expand-number-intro-ani {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1);
+    }
+    75% {
+      transform: scale(1.25);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+@if $include_Expand == true {
+  @include expand();
+}
+

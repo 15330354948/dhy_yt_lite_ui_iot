@@ -1,0 +1,1 @@
+define(["../Core/defined","../Core/Ellipsoid","../Core/WallGeometry"],function(e,i,o){"use strict";return function(r,n){return e(n)&&(r=o.unpack(r,n)),r._ellipsoid=i.clone(r._ellipsoid),o.createGeometry(r)}});

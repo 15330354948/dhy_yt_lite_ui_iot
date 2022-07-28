@@ -1,0 +1,130 @@
+.pgEarth-pgEarthInspector {
+    border-radius: 5px;
+    transition: width ease-in-out 0.25s;
+    background: rgba(48, 51, 54, 0.8);
+    border: 1px solid #444;
+    color: #edffff;
+    display: inline-block;
+    position: relative;
+    padding: 4px 12px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: hidden;
+}
+
+.pgEarth-pgEarthInspector-button {
+    text-align: center;
+    font-size: 11pt;
+}
+
+.pgEarth-pgEarthInspector-visible .pgEarth-pgEarthInspector-button {
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 3px;
+}
+
+.pgEarth-pgEarthInspector input:enabled, .pgEarth-pgEarthInspector-button {
+    cursor: pointer;
+}
+
+.pgEarth-pgEarthInspector-visible {
+    width: 185px;
+    height: auto;
+}
+
+.pgEarth-pgEarthInspector-hidden {
+    width: 122px;
+    height: 17px;
+}
+
+.pgEarth-pgEarthInspector-sectionContent {
+    max-height: 500px;
+}
+
+.pgEarth-pgEarthInspector-section-collapsed .pgEarth-pgEarthInspector-sectionContent {
+    max-height: 0;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.pgEarth-pgEarthInspector-dropDown {
+    margin: 5px 0;
+    font-family: sans-serif;
+    font-size: 10pt;
+    width: 185px;
+}
+
+.pgEarth-pgEarthInspector-frustumStatistics {
+    padding-left: 10px;
+    padding: 5px;
+    background-color: rgba(80, 80, 80, 0.75);
+}
+
+.pgEarth-pgEarthInspector-pickButton {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid #444;
+    color: #edffff;
+    border-radius: 5px;
+    padding: 3px 7px;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 0 auto;
+}
+
+.pgEarth-pgEarthInspector-pickButton:focus {
+    outline: none;
+}
+
+.pgEarth-pgEarthInspector-pickButton:active, .pgEarth-pgEarthInspector-pickButtonHighlight {
+    color: #000; /* For text buttons */
+    background: #adf;
+    border-color: #fff;
+    box-shadow: 0 0 8px #fff;
+}
+
+.pgEarth-pgEarthInspector-center {
+    text-align: center;
+}
+
+.pgEarth-pgEarthInspector-sectionHeader {
+    font-weight: bold;
+    font-size: 10pt;
+    margin: 0;
+    cursor: pointer;
+}
+
+.pgEarth-pgEarthInspector-pickSection {
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 3px;
+    margin-bottom: 5px;
+}
+
+.pgEarth-pgEarthInspector-sectionContent {
+    margin-bottom: 10px;
+    transition: max-height 0.25s;
+}
+
+.pgEarth-pgEarthInspector-tileText {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #aaa;
+}
+
+.pgEarth-pgEarthInspector-relativeText {
+    padding-top: 10px;
+}
+
+.pgEarth-pgEarthInspector-sectionHeader::before {
+    margin-right: 5px;
+    content: '-';
+    width: 1ch;
+    display: inline-block;
+}
+
+.pgEarth-pgEarthInspector-section-collapsed .pgEarth-pgEarthInspector-sectionHeader::before {
+    content: '+';
+}

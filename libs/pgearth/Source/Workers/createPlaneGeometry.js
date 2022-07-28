@@ -1,0 +1,1 @@
+define(["../Core/defined","../Core/PlaneGeometry"],function(e,n){"use strict";return function(r,t){return e(t)&&(r=n.unpack(r,t)),n.createGeometry(r)}});

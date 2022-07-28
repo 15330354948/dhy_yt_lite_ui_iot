@@ -1,0 +1,23 @@
+$compass_size: 20px !default;
+
+@mixin compass() {
+  .pgEarth-compass {
+    border-radius: 50%;
+  }
+
+  .pgEarth-compass--active {
+    background-color: $selected_background_color;
+  }
+
+  .pgEarth-compass__icon {
+    font-size: $compass_size;
+    line-height: $compass_size;
+    text-align: center;
+    width: $compass_size;
+    height: $compass_size;
+  }
+}
+
+@if $include_Compass == true {
+  @include compass();
+}

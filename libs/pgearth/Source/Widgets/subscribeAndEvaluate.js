@@ -1,0 +1,1 @@
+define(["../ThirdParty/knockout"],function(e){"use strict";return function(r,t,n,u,c){return n.call(u,r[t]),e.getObservable(r,t).subscribe(n,u,c)}});

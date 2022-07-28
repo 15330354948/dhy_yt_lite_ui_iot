@@ -1,0 +1,1 @@
+define(function(){"use strict";return"/**\n * The automatic GLSL constant for {@link Pass#PGEARTH_3D_TILE}\n *\n * @name czm_passPGEarth3DTile\n * @glslConstant\n *\n * @see czm_pass\n */\nconst float czm_passPGEarth3DTile = 4.0;\n"});

@@ -1,0 +1,1 @@
+define(["./Check","./defined","./FeatureDetection"],function(e,n,r){"use strict";return function(t,i,f){if(e.defined("array",t),n(i)&&e.typeOf.number("begin",i),n(f)&&e.typeOf.number("end",f),"function"==typeof t.slice)return t.slice(i,f);for(var c=Array.prototype.slice.call(t,i,f),u=r.typedArrayTypes,a=u.length,o=0;o<a;++o)if(t instanceof u[o]){c=new u[o](c);break}return c}});

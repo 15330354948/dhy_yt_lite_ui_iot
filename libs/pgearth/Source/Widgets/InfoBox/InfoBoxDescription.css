@@ -1,0 +1,116 @@
+@import url(../shared.css);
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.pgEarth-infoBox-description {
+    font-family: sans-serif;
+    font-size: 12px;
+    padding: 4px 10px;
+    margin-right: 4px;
+    color: #edffff;
+    max-height: 440px;
+    overflow-y: auto
+}
+
+.pgEarth-infoBox-description a:link,
+.pgEarth-infoBox-description a:visited,
+.pgEarth-infoBox-description a:hover,
+.pgEarth-infoBox-description a:active {
+    color: #edffff;
+}
+
+.pgEarth-infoBox-description table {
+    color: #edffff;
+}
+
+.pgEarth-infoBox-defaultTable {
+    width: 100%;
+    color: #edffff;
+}
+
+.pgEarth-infoBox-defaultTable tr td:first-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.pgEarth-infoBox-defaultTable tr td {
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.pgEarth-infoBox-defaultTable tr:nth-child(even){
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.pgEarth-infoBox-defaultTable tr:hover{
+    background-color: rgba(4, 16, 38, .3);
+}
+.pgEarth-infoBox-defaultTable tr:nth-child(odd) {
+    /*background-color: rgba(0, 0, 0, 0.2);*/
+}
+
+.pgEarth-infoBox-defaultTable th {
+    font-weight: normal;
+    padding: 3px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.pgEarth-infoBox-defaultTable td {
+    padding: 3px;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.pgEarth-infoBox-description-lighter {
+    color: #000000;
+}
+
+.pgEarth-infoBox-description-lighter a:link,
+.pgEarth-infoBox-description-lighter a:visited,
+.pgEarth-infoBox-description-lighter a:hover,
+.pgEarth-infoBox-description-lighter a:active {
+    color: #000000;
+}
+
+.pgEarth-infoBox-description-lighter table {
+    color: #000000;
+}
+
+.pgEarth-infoBox-defaultTable-lighter {
+    width: 100%;
+    color: #000000;
+}
+
+.pgEarth-infoBox-defaultTable-lighter tr:nth-child(odd) {
+    background-color: rgba(179, 179, 179, 0.8);
+}
+
+.pgEarth-infoBox-defaultTable-lighter tr:nth-child(even) {
+    background-color: rgba(179, 179, 179, 0.25);
+}
+
+.pgEarth-infoBox-loadingContainer {
+    margin: 5px;
+    text-align: center;
+}
+
+.pgEarth-infoBox-loading {
+    display: inline-block;
+    background-image: url(../Images/info-loading.gif);
+    width: 16px;
+    height: 11px;
+}
+::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 6px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 6px;
+}
+::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: #6d6d6d;
+}
+::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    background: transparent;
+}

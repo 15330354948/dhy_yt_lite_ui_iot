@@ -1,0 +1,1 @@
+define(["./UserInterfaceControl"],function(t){"use strict";var e=function(e){t.apply(this,arguments)};return e.prototype=Object.create(t.prototype),e});

@@ -1,0 +1,27 @@
+.pgEarth-lighter .pgEarth-baseLayerPicker-itemIcon {
+    border-color: #759dc0;
+}
+
+.pgEarth-lighter .pgEarth-baseLayerPicker-dropDown {
+    background-color: rgba(240, 240, 240, 0.75);
+}
+
+.pgEarth-lighter .pgEarth-baseLayerPicker-sectionTitle {
+    color: black;
+}
+
+.pgEarth-lighter .pgEarth-baseLayerPicker-itemLabel {
+    color: black;
+}
+
+.pgEarth-lighter .pgEarth-baseLayerPicker-item:hover .pgEarth-baseLayerPicker-itemIcon {
+    border-color: #000;
+}
+
+.pgEarth-lighter .pgEarth-baseLayerPicker-selectedItem .pgEarth-baseLayerPicker-itemLabel {
+    color: rgb(0, 61, 168);
+}
+
+.pgEarth-lighter .pgEarth-baseLayerPicker-selectedItem .pgEarth-baseLayerPicker-itemIcon {
+    border: double 4px rgb(0, 61, 168);
+}

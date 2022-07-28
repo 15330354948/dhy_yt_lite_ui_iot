@@ -1,0 +1,1 @@
+define(["./defaultValue"],function(t){"use strict";return function(e,i){this.start=t(e,0),this.stop=t(i,0)}});

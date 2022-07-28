@@ -1,0 +1,1 @@
+define(["./defined"],function(e){"use strict";var t={defaultKey:void 0,getKey:function(n){return e(n)?n:t.defaultKey}};return t});

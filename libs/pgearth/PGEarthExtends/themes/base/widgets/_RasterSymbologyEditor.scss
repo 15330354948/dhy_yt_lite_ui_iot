@@ -1,0 +1,114 @@
+@mixin rasterSymbologyEditor() {
+
+  $thumbnail-height: 32px;
+  $thumbnail-width: 32px;
+
+  .pgEarth-raster-symbology {
+    display: flex;
+    flex-flow: column nowrap;
+    // @import "../../../dgrid/css/dgrid.css";
+  }
+  .pgEarth-raster-symbology-editor--hidden {
+    display: none;
+  }
+  .pgEarth-raster-symbology-editor--block {
+    display: block;
+  }
+  .pgEarth-raster-symbology-editor__percent-clip-row{
+    display: table-row;
+  }
+  .pgEarth-raster-symbology-editor__std-deviation-row{
+    display: table-row;
+  }
+  .pgEarth-raster-symbology-editor__stretch-dra-row{
+    display: table-row;
+  }
+  .pgEarth-raster-symbology-editor__stretch-color-ramp-row{
+    display: table-row;
+  }
+  .pgEarth-raster-symbology-editor__table{
+    width: 100%;
+  }
+  .pgEarth-raster-symbology-editor__filtering-select{
+    width: 100%!important;
+  }
+  .field-pgEarthRasterSymbologyEditorUniqueValueSymbol{
+    width: 20%;
+  }
+  .field-pgEarthRasterSymbologyEditorUniqueValueValue{
+    width: 80%;
+  }
+  .pgEarth-raster-symbology-editor__thumbnail-image{
+    width: $thumbnail-width;
+    height: $thumbnail-height;
+  }
+  .pgEarth-raster-symbology-editor__stretch-type-icon--min-max{
+    background-image: url(../base/images/raster-symbology-editor-stretch-type-min-max.png);
+  }
+  .pgEarth-raster-symbology-editor__stretch-type-icon--none{
+    background-image: url(../base/images/raster-symbology-editor-stretch-type-none.png);
+  }
+  .pgEarth-raster-symbology-editor__stretch-type-icon--standard-deviation{
+    background-image: url(../base/images/raster-symbology-editor-stretch-type-standard-deviation.png);
+  }
+  .pgEarth-raster-symbology-editor__stretch-type-icon--percent-clip{
+    background-image: url(../base/images/raster-symbology-editor-stretch-type-percent-clip.png);
+  }
+  .pgEarth-raster-symbology-editor__band-combination-icon--natural-color{
+    background-image: url(../base/images/raster-symbology-editor-band-combination-natural-color.png);
+  }
+  .pgEarth-raster-symbology-editor__band-combination-icon--land-water{
+    background-image: url(../base/images/raster-symbology-editor-band-combination-land-water.png);
+  }
+  .pgEarth-raster-symbology-editor__band-combination-icon--landuse{
+    background-image: url(../base/images/raster-symbology-editor-band-combination-landuse.png);
+  }
+  .pgEarth-raster-symbology-editor__band-combination-icon--bathymetric{
+    background-image: url(../base/images/raster-symbology-editor-band-combination-bathymetric.png);
+  }
+  .pgEarth-raster-symbology-editor__band-combination-icon--vegetation{
+    background-image: url(../base/images/raster-symbology-editor-band-combination-vegetation.png);
+  }
+  .pgEarth-raster-symbology-editor__band-combination-icon--color-infrared{
+    background-image: url(../base/images/raster-symbology-editor-band-combination-color-infrared.png);
+  }
+  .pgEarth-raster-symbology-editor__symbology-type-icon--rgb{
+    background-image: url(../base/images/raster-symbology-editor-symbology-type-rgb.png);
+    @extend .pgEarth-raster-symbology-editor__thumbnail-image;
+  }
+  .pgEarth-raster-symbology-editor__symbology-type-icon--stretch{
+    background-image: url(../base/images/raster-symbology-editor-symbology-type-stretch.png);
+    @extend .pgEarth-raster-symbology-editor__thumbnail-image;
+  }
+  .pgEarth-raster-symbology-editor__symbology-type-icon--unique-value{
+    background-image: url(../base/images/raster-symbology-editor-symbology-type-unique-value.png);
+    @extend .pgEarth-raster-symbology-editor__thumbnail-image;
+  }
+  .pgEarth-raster-symbology-editor__symbology-type-icon--discrete{
+    background-image: url(../base/images/raster-symbology-editor-symbology-type-discrete.png);
+    @extend .pgEarth-raster-symbology-editor__thumbnail-image;
+  }
+  .pgEarth-raster-symbology-editor__menu-item-td {
+    border: none!important;
+    background: none!important;
+  }
+  .pgEarth-raster-symbology-editor__dgrid-symbol-cell{
+    width: 15px;
+    height: 15px;
+    border: 1px solid #000;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .pgEarth-raster-symbology-editor__menu-item-text{
+    white-space: pre-wrap;
+    width: 40ex;
+  }
+  .pgEarth-raster-symbology-editor__checkbox{
+    display: inline-block;
+  }
+}
+
+
+@if $include_RasterSymbologyEditor == true {
+  @include rasterSymbologyEditor();
+}

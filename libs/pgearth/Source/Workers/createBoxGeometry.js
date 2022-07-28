@@ -1,0 +1,1 @@
+define(["../Core/BoxGeometry","../Core/defined"],function(e,r){"use strict";return function(n,t){return r(t)&&(n=e.unpack(n,t)),e.createGeometry(n)}});

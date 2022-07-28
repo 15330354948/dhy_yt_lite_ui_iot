@@ -1,0 +1,7 @@
+"use strict";
+
+define(function () {
+  "use strict";
+
+  return "varying vec3 v_forwardDirectionEC;\nvarying vec3 v_texcoordNormalizationAndHalfWidth;\nvarying float v_batchId;\n#ifdef PER_INSTANCE_COLOR\nvarying vec4 v_color;\n#else\nvarying vec2 v_alignedPlaneDistances;\nvarying float v_texcoordT;\n#endif\nfloat rayPlaneDistanceUnsafe(vec3 origin, vec3 direction, vec3 planeNormal, float planeDistance) {\nreturn (-planeDistance - dot(planeNormal, origin)) / dot(planeNormal, direction);\n}\nvoid main(void)\n{\nvec4 eyeCoordinate = gl_FragCoord;\neyeCoordinate /= eyeCoordinate.w;\n#ifdef PER_INSTANCE_COLOR\ngl_FragColor = v_color;\n#else // PER_INSTANCE_COLOR\nfloat distanceFromStart = rayPlaneDistanceUnsafe(eyeCoordinate.xyz, -v_forwardDirectionEC, v_forwardDirectionEC.xyz, v_alignedPlaneDistances.x);\nfloat distanceFromEnd = rayPlaneDistanceUnsafe(eyeCoordinate.xyz, v_forwardDirectionEC, -v_forwardDirectionEC.xyz, v_alignedPlaneDistances.y);\ndistanceFromStart = max(0.0, distanceFromStart);\ndistanceFromEnd = max(0.0, distanceFromEnd);\nfloat s = distanceFromStart / (distanceFromStart + distanceFromEnd);\ns = (s * v_texcoordNormalizationAndHalfWidth.x) + v_texcoordNormalizationAndHalfWidth.y;\nczm_materialInput materialInput;\nmaterialInput.s = s;\nmaterialInput.st = vec2(s, v_texcoordT);\nmaterialInput.str = vec3(s, v_texcoordT, 0.0);\nczm_material material = czm_getMaterial(materialInput);\ngl_FragColor = vec4(material.diffuse + material.emission, material.alpha);\n#endif // PER_INSTANCE_COLOR\n}\n";
+});

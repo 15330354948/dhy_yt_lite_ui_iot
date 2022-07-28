@@ -1,0 +1,1 @@
+define(["./defined"],function(e){"use strict";var t={};return function(a,n,i){e(n)||(n=a.width),e(i)||(i=a.height);var r=t[n];e(r)||(r={},t[n]=r);var d=r[i];if(!e(d)){var o=document.createElement("canvas");o.width=n,o.height=i,(d=o.getContext("2d")).globalCompositeOperation="copy",r[i]=d}return d.drawImage(a,0,0,n,i),d.getImageData(0,0,n,i).data}});

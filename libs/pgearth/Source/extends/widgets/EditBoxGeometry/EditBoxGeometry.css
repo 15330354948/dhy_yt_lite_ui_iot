@@ -1,0 +1,69 @@
+.PowerGis-viewer-EditBoxGeometryContainer {
+    display: block;
+    position: absolute;
+    top: 100px;
+    left: 10px;
+    max-height: 100%;
+    padding-bottom: 70px;
+    box-sizing: border-box;
+    overflow: auto
+}
+
+.PowerGis-EditBoxGeometry-twipsy {
+    display: block;
+    position: absolute;
+    visibility: visible;
+    max-width: 200px;
+    min-width: 100px;
+    padding: 5px;
+    font-size: 11px;
+    z-index: 1000;
+    opacity: .8;
+    -khtml-opacity: .8;
+    -moz-opacity: .8;
+    filter: alpha(opacity=80)
+}
+
+.PowerGis-EditBoxGeometry-twipsy-inner, .PowerGis-EditBoxGeometry-twipsy-latLonHei {
+    padding: 3px 8px;
+    background-color: #000;
+    color: #fff;
+    max-width: 200px;
+    text-decoration: none
+}
+
+.PowerGis-EditBoxGeometry-twipsy .PowerGis-EditBoxGeometry-left .PowerGis-EditBoxGeometry-twipsy-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -5px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #000
+}
+
+.PowerGis-EditBoxGeometry-twipsy.PowerGis-EditBoxGeometry-right .PowerGis-EditBoxGeometry-twipsy-arrow {
+    top: 50%;
+    left: 0;
+    margin-top: -5px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid #000
+}
+
+.PowerGis-EditBoxGeometry-twipsy-inner {
+    text-align: center;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px
+}
+
+.PowerGis-EditBoxGeometry-twipsy-arrow {
+    position: absolute;
+    width: 0;
+    height: 0
+}
+
+.PowerGis-EditBoxGeometry-twipsy-latLonHei {
+    text-align: left;
+    -moz-border-radius: 4px
+}

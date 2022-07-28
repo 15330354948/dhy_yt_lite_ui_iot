@@ -1,0 +1,1 @@
+define(["../Core/freezeObject","../Core/Math"],function(e,r){"use strict";var t={HIGHLIGHT:0,REPLACE:1,MIX:2,getColorBlend:function(e,n){return e===t.HIGHLIGHT?0:e===t.REPLACE?1:e===t.MIX?r.clamp(n,r.EPSILON4,1):void 0}};return e(t)});

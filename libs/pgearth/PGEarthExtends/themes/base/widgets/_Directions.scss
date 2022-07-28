@@ -1,0 +1,433 @@
+@mixin directions() {
+  $border_size: 2px;
+
+  .pgEarth-directions {
+    width: $panel_width;
+    max-height: $panel_max_height;
+    color: $text_color;
+  }
+
+  .pgEarth-directions__panel-content {
+    padding: $cap_spacing 0;
+  }
+
+  .pgEarth-directions__section {
+    margin-top: $cap_spacing;
+    margin-bottom: $cap_spacing;
+  }
+
+  .pgEarth-directions__section-splitter {
+    width: 100%;
+    margin: floor($cap_spacing * 1.5) 0;
+    border-top: 1px solid $border_color;
+  }
+
+  .pgEarth-directions__travel-modes-select,
+  .pgEarth-directions__departure-time {
+    margin: 0 $side_spacing floor($cap_spacing * .5);
+    width: calc(100% - #{$side_spacing * 2})
+  }
+
+  .pgEarth-directions__panel-content--loading,
+  .pgEarth-directions__panel-content--error {
+    min-height: $panel_max_height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pgEarth-directions__panel-content--loading {
+    background: url(../base/images/loading-throb.gif) no-repeat center;
+  }
+
+  .pgEarth-directions__departure-time-controls {
+    display: flex;
+  }
+
+  .pgEarth-directions__departure-time-controls .pgEarth-date-picker,
+  .pgEarth-directions__departure-time-controls .pgEarth-time-picker {
+    flex: 1 50%;
+    border-top: 0;
+  }
+
+  .pgEarth-directions__departure-time-controls .pgEarth-widget:first-child {
+    border-right: 0;
+  }
+
+  .pgEarth-directions__departure-time-controls .pgEarth-time-picker {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pgEarth-directions__departure-time-controls .pgEarth-time-picker .pgEarth-time-picker__input {
+    width: 100%;
+    padding: 0 floor($side_spacing * .5);
+  }
+
+  .pgEarth-directions__departure-time-controls .pgEarth-date-picker__calendar-toggle {
+    padding: 0;
+  }
+
+  .pgEarth-directions__directions-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: $panel_min_height * 4;
+  }
+
+  .pgEarth-directions__message {
+    color: $button_text_color;
+  }
+
+  .pgEarth-directions__summary {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .pgEarth-directions__summary-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .pgEarth-directions__stops {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pgEarth-directions__stop-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-top: dashed $border_size transparent;
+  }
+
+  .pgEarth-directions__stop-row--dragged {
+    opacity: 0.25;
+  }
+
+  .pgEarth-directions__stop-row--target {
+    border-top-color: $text_color;
+  }
+
+  .pgEarth-directions__stop-row-ghost {
+    font-family: $font_family;
+    background-color: $background_color;
+    width: $panel_width - (8px * 2);
+    padding: 8px;
+    position: absolute;
+
+    // fake drop-shadow now since setDragImage doesn't show box-shadow :'(
+    border: solid $border_size rgba(0, 0, 0, 0.15);
+    border-top-width: 1px;
+    border-left-width: 1px;
+  }
+
+  .pgEarth-directions__stop-underline {
+    border-top: 1px solid $border_color;
+  }
+
+  .pgEarth-directions__stop-handle {
+    padding-left: floor($side_spacing * .5);
+  }
+
+  .pgEarth-directions__stop-input:hover .pgEarth-directions__stop-underline {
+    border-color: $text_color;
+  }
+
+  .pgEarth-directions .pgEarth-search__input:focus + .pgEarth-directions__stop-underline {
+    border-color: $selected_border_color;
+  }
+
+  .pgEarth-directions__stop-underline--drag-in-process {
+    border-color: transparent;
+  }
+
+  .pgEarth-directions__stop-input {
+    padding: 0 4px;
+    flex-grow: 0.8;
+  }
+
+  .pgEarth-directions__stop-input .pgEarth-search .pgEarth-search__input {
+    margin-bottom: $border_size;
+    padding: 0;
+    outline-offset: 4px;
+  }
+
+  .pgEarth-directions__add-stop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: $cap_spacing;
+    cursor: pointer;
+  }
+
+  .pgEarth-directions__add-stop .pgEarth-directions__stop-icon {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 0.08;
+  }
+
+  .pgEarth-directions__add-stop .pgEarth-directions__add-stop-text {
+    width: auto;
+    flex-grow: 0.9;
+    padding: 0 4px;
+  }
+
+  .pgEarth-directions__remove-stop-icon,
+  .pgEarth-directions__stop-row:hover .pgEarth-directions__remove-stop-icon[hidden] {
+    visibility: hidden;
+  }
+
+  .pgEarth-directions__remove-stop:focus .pgEarth-directions__remove-stop-icon,
+  .pgEarth-directions__stop-row:hover .pgEarth-directions__remove-stop-icon {
+    visibility: visible;
+  }
+
+  .pgEarth-directions__reverse-stops[hidden] {
+    display: inherit;
+    visibility: hidden;
+  }
+
+  .pgEarth-directions__stop-options {
+    display: flex;
+    flex-grow: 0.1;
+    justify-content: space-between;
+    padding-right: floor($side_spacing * 0.5);
+  }
+
+  .pgEarth-directions__stop-row:first-child {
+    margin-top: 0;
+  }
+
+  .pgEarth-directions__stop-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .pgEarth-directions__stop-icon[hidden] {
+    display: inline-block;
+    visibility: hidden;
+  }
+
+  .pgEarth-directions__stop-icon--interactive {
+    cursor: pointer;
+  }
+
+  .pgEarth-directions__stop-icon-container {
+    display: inline-block;
+    position: relative;
+  }
+
+  .pgEarth-directions__stop-icon-container::after {
+    content: "";
+    display: block;
+    border-left: 1px dashed $border-color;
+    position: absolute;
+    height: 28px;
+    top: 14px;
+    left: 6px;
+  }
+
+  .pgEarth-directions__stop-icon-container--last::after {
+    border: none;
+  }
+
+  .pgEarth-directions__stop-handle-icon {
+    visibility: hidden;
+  }
+
+  .pgEarth-directions__costs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    cursor: pointer;
+    padding: $cap_spacing $side_spacing;
+  }
+
+  .pgEarth-directions__costs-details {
+    display: flex;
+    justify-content: space-around;
+    white-space: nowrap;
+    width: 80%;
+    margin-bottom: 6px;
+  }
+
+  .pgEarth-directions__costs-units {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .pgEarth-directions__costs-value,
+  .pgEarth-directions__other-costs-total,
+  .pgEarth-directions__vertical-splitter {
+    color: $button_text_color;
+    font-size: 1.5em;
+    line-height: 1.5;
+  }
+
+  .pgEarth-directions__vertical-splitter {
+    border: 1px solid transparentize($text_color, 0.8);
+  }
+
+  .pgEarth-directions__horizontal-splitter {
+    border-top: 1px solid $border_color;
+    flex-grow: 0.95;
+  }
+
+  .pgEarth-directions__maneuvers {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 0 0 0;
+    margin: 0;
+  }
+
+  .pgEarth-directions__maneuver {
+    display: flex;
+    padding: floor($cap_spacing * .75) $side_spacing floor($cap_spacing * .75) floor($side_spacing * 1.25);
+    border: none;
+    border-left: $border_size_active solid transparent;
+    cursor: pointer;
+  }
+
+  .pgEarth-directions__maneuver:hover,
+  .pgEarth-directions__maneuver:focus {
+    background-color: $background_offset_color;
+  }
+
+  .pgEarth-directions__maneuver--active {
+    border-color: $selected_border_color;
+    background-color: $background_offset_color;
+  }
+
+  .pgEarth-directions__maneuver-list {
+    padding: 0;
+    margin: 0;
+  }
+
+  .pgEarth-directions__maneuver-section-header {
+    display: flex;
+    padding: 0 $side_spacing;
+  }
+
+  .pgEarth-directions__maneuver-section-header [class*="pgEarth-icon"] {
+    padding-top: floor($cap_spacing * .2);
+  }
+
+  .pgEarth-directions__maneuver-section-header-toggle-button {
+    display: flex;
+  }
+
+  .pgEarth-directions__maneuver-section-title {
+    font-size: $h1_text_size;
+    color: $header_color;
+    padding: 0 floor($side_spacing * 0.5) $cap_spacing;
+  }
+
+  .pgEarth-directions__maneuver-section-toggle {
+    cursor: pointer;
+  }
+
+  .pgEarth-directions__maneuver-icon {
+    fill: $text_color;
+    margin-right: 4px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .pgEarth-directions__maneuver-costs {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .pgEarth-directions__cost--intermediate,
+  .pgEarth-directions__cost--cumulative {
+    font-size: $text_size_small;
+  }
+
+  .pgEarth-directions__maneuver-costs-container {
+    width: 100%;
+  }
+
+  .pgEarth-directions__scroller {
+    overflow-y: auto;
+  }
+
+  .pgEarth-directions__stop-row--valid {
+
+    .pgEarth-directions__stop-handle:hover {
+      cursor: pointer;
+
+      .pgEarth-directions__stop-handle-icon {
+        visibility: visible;
+      }
+    }
+
+  }
+
+  .pgEarth-directions__button {
+    height: $button_height;
+    width: 50%;
+    margin: floor($cap_spacing * .5) 0;
+    cursor: pointer;
+    border-radius: 0;
+    background-color: transparent;
+    border: 1px solid $pgEarth_blue_button_bg;
+    color: $pgEarth_blue_button_bg;
+  }
+
+  .pgEarth-directions__button:hover {
+    background-color: $pgEarth_blue_button_bg;
+    color: $text_inverse_color;
+  }
+
+  .pgEarth-directions__disclaimer {
+    font-size: $text_size_small;
+    color: $header_color;
+    padding: 0 $side_spacing;
+  }
+
+  .pgEarth-directions__disclaimer a {
+    color: $pgEarth_blue_button_bg;
+  }
+
+  // search overrides
+  .pgEarth-directions .pgEarth-search {
+    box-shadow: none;
+    width: auto;
+
+    .pgEarth-widget-button {
+      display: none;
+    }
+  }
+
+  .pgEarth-directions .pgEarth-search .pgEarth-search__container:before {
+    display: none;
+  }
+
+  .pgEarth-directions .pgEarth-search .pgEarth-search__container:after {
+    top: auto;
+    bottom: -2px;
+  }
+
+}
+
+@if $include_Directions == true {
+  @include directions();
+}

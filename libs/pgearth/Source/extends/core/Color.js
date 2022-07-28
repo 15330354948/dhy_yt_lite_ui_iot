@@ -1,0 +1,1 @@
+define(["../../Core/Color","../../Core/defaultValue","../../Core/defined"],function(e,r,o){return function(n){return"string"==typeof n?new e.fromCssColorString(n):n instanceof Array?new e(r(n[0],1),r(n[1],1),r(n[2],1),r(n[3],1)):n instanceof Object?o(n.a)?e.fromAlpha(e.fromBytes(r(n.r,1),r(n.g,1),r(n.b,1)),n.a):e.fromBytes(r(n.r,1),r(n.g,1),r(n.b,1)):void 0}});

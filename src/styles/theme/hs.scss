@@ -1,0 +1,263 @@
+.theme-hs {
+  .el-menu--popup {
+    .el-menu-item {
+      background-color: #fff;
+
+      i,
+      span {
+        color: #666;
+      }
+
+      &:hover {
+
+        i,
+        span {
+          color: #333;
+        }
+      }
+
+      &.is-active {
+        background-color: #377DFF;
+
+        &:before {
+          content: '';
+          top: 0;
+          left: 0;
+          bottom: 0;
+          width: 4px;
+          background: #377DFF;
+          position: absolute;
+        }
+
+        i,
+        span {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .avue-header,
+  .avue-logo,
+  .tags-container {
+    background-color: #377DFF;
+  }
+
+  .avue-sidebar--tip {
+    background-color: transparent;
+    color: #333;
+  }
+
+  .el-dropdown {
+    color: #fff;
+  }
+
+  .avue-logo_title {
+    font-weight: 400;
+    color: #fff;
+  }
+
+  .logo_title,
+  .avue-breadcrumb {
+    color: #fff;
+
+    i {
+      color: #fff;
+    }
+  }
+
+  .avue-top {
+    .el-menu-item {
+
+      i,
+      span {
+        color: #fff;
+        font-size: 18px;
+      }
+
+      &:hover {
+
+        i,
+        span {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .avue-sidebar {
+    box-shadow: 2px 0 6px rgba(0, 21, 41, 0.15);
+    background-color: #fff;
+    padding-top: 2px;
+    // padding-top: 70px;
+
+    .el-menu-item,
+    .el-submenu__title {
+
+      i,
+      span {
+        color: #666
+      }
+
+      &:hover {
+        background: transparent;
+
+        i,
+        span {
+          color: #333;
+        }
+      }
+
+      &.is-active {
+        background-color: #377DFF;
+
+        i,
+        span {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .top-search {
+    .el-input__inner {
+      // color: #333;
+      width: 206px;
+      height: 32px;
+      background-color: #fff;
+      border: 1px solid #0753e0;
+      border-radius: 16px;
+      font-size: 14px;
+      color: #999898;
+    }
+    
+    input::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder {
+      /* WebKit browsers */
+      // color: #fff;
+      color: #999898;
+      font-size: 14px;
+    }
+
+    input:-moz-placeholder,
+    textarea:-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      // color: #fff;
+      color: #999898;
+      font-size: 14px;
+    }
+
+    input::-moz-placeholder,
+    textarea::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      // color: #fff;
+      color: #999898;
+      font-size: 14px;
+    }
+
+    input:-ms-input-placeholder,
+    textarea:-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      // color: #fff;
+      color: #999898;
+      font-size: 14px;
+    }
+   
+  }
+
+  .top-bar__item {
+    i {
+      color: #fff;
+    }
+  }
+
+  .avue-contail {
+    .avue-tags {
+
+      .el-tabs--card {
+        >.el-tabs__header {
+          .el-tabs__item {
+            margin: 3px 1px;
+            height: 34px;
+            line-height: 34px;
+            border-radius: 4px;
+            border-bottom: none;
+            background-color: #377DFF;
+            color: #fff;
+
+            >span.el-icon-close {
+              top: -2px;
+              right: -3px;
+              font-size: 14px;
+            }
+
+            >span.el-icon-close:before {
+              content: "\E78D";
+            }
+
+            >span.el-icon-close:hover {
+              background-color: unset;
+              color: unset;
+            }
+          }
+
+          .el-tabs__item.is-active {
+            background-color: #fff;
+            color: #898989;
+            border-right: 2px solid #ccc;
+            border-radius: 0;
+            margin-right: 7px;
+            height: 22px;
+            line-height: 22px;
+
+          }
+
+          .el-tabs__item:only-child.is-active {
+            height: 34px;
+            line-height: 34px;
+            border-right: none;
+
+          }
+        }
+      }
+    }
+
+    .avue-header {
+      padding: 0;
+
+      .avue-top {
+        .top-menu {
+          height: 100%;
+
+          ul {
+            li:hover {
+              background: #699EFF !important;
+            }
+          }
+
+          // .el-menu.el-menu--horizontal{
+          //     > .el-menu-item:not(.is-disabled):hover{
+          //         background-color: initial;
+          //     }
+          // }
+          .el-menu {
+            height: 100%;
+
+            .el-menu-item {
+              height: 100%;
+            }
+
+            .el-menu-item.is-active {
+              background: #699EFF !important;
+            }
+
+          }
+
+
+        }
+      }
+    }
+
+  }
+
+}

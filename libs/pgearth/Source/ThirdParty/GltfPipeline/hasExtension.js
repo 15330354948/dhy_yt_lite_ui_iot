@@ -1,0 +1,1 @@
+define(["../../Core/defined"],function(e){"use strict";return function(n,i){return e(n.extensionsUsed)&&n.extensionsUsed.indexOf(i)>=0}});

@@ -1,0 +1,1 @@
+define(["../Core/freezeObject"],function(e){"use strict";return function t(n){if("object"!=typeof n||null===n)return n;for(var r,o=Object.keys(n),u=0;u<o.length;u++)r=o[u],n.hasOwnProperty(r)&&"_applyFunctions"!==r&&(n[r]=t(n[r]));return e(n)}});

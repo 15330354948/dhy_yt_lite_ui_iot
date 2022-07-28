@@ -1,0 +1,7 @@
+"use strict";
+
+define(function () {
+  "use strict";
+
+  return "#ifdef COLOR_CORRECT\nuniform vec3 u_hsbShift;\n#endif\nuniform vec4 u_cameraAndRadiiAndDynamicAtmosphereColor;\nconst float g = -0.95;\nconst float g2 = g * g;\nvarying vec3 v_rayleighColor;\nvarying vec3 v_mieColor;\nvarying vec3 v_toCamera;\nvarying vec3 v_positionEC;\nvoid main (void)\n{\nfloat cosAngle = dot(czm_sunDirectionWC, normalize(v_toCamera)) / length(v_toCamera);\nfloat rayleighPhase = 0.75 * (1.0 + cosAngle * cosAngle);\nfloat miePhase = 1.5 * ((1.0 - g2) / (2.0 + g2)) * (1.0 + cosAngle * cosAngle) / pow(1.0 + g2 - 2.0 * g * cosAngle, 1.5);\nvec3 rgb = rayleighPhase * v_rayleighColor + miePhase * v_mieColor;\n#ifndef HDR\nconst float exposure = 1.1;\nrgb = vec3(1.0) - exp(-exposure * rgb);\n#endif\n#ifdef COLOR_CORRECT\nvec3 hsb = czm_RGBToHSB(rgb);\nhsb.x += u_hsbShift.x;\nhsb.y = clamp(hsb.y + u_hsbShift.y, 0.0, 1.0);\nhsb.z = hsb.z > czm_epsilon7 ? hsb.z + u_hsbShift.z : 0.0;\nrgb = czm_HSBToRGB(hsb);\n#endif\nfloat atmosphereAlpha = clamp((u_cameraAndRadiiAndDynamicAtmosphereColor.y - u_cameraAndRadiiAndDynamicAtmosphereColor.x) / (u_cameraAndRadiiAndDynamicAtmosphereColor.y - u_cameraAndRadiiAndDynamicAtmosphereColor.z), 0.0, 1.0);\nfloat nightAlpha = (u_cameraAndRadiiAndDynamicAtmosphereColor.w > 0.0) ? clamp(dot(normalize(czm_viewerPositionWC), normalize(czm_sunPositionWC)), 0.0, 1.0) : 1.0;\natmosphereAlpha *= pow(nightAlpha, 0.5);\ngl_FragColor = vec4(rgb, mix(rgb.b, 1.0, atmosphereAlpha) * smoothstep(0.0, 1.0, czm_morphTime));\n}\n";
+});

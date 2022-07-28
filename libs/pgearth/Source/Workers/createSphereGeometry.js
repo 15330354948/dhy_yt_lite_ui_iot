@@ -1,0 +1,1 @@
+define(["../Core/defined","../Core/SphereGeometry"],function(e,r){"use strict";return function(n,t){return e(t)&&(n=r.unpack(n,t)),r.createGeometry(n)}});

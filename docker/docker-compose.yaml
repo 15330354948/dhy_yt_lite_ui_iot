@@ -1,0 +1,19 @@
+version: '3'
+services:
+  dh_luohu-ui:
+    build:
+      context: .
+    restart: always
+    container_name: luohu-ui
+    image: luohu-ui
+    networks:
+      - luohu_default
+    external_links:
+      - luohu-gateway
+    ports:
+      - 80:80
+
+# 加入到后端网络， 默认为 luohu_default  | docker network ls   查看
+networks:
+  luohu_default:
+    external: true

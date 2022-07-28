@@ -1,0 +1,128 @@
+.pgEarth-ui {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  box-sizing: border-box;
+  pointer-events: none;
+  /* attribution's position is a special case */
+}
+.pgEarth-ui .pgEarth-component {
+  pointer-events: auto;
+}
+.pgEarth-ui .pgEarth-attribution {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.pgEarth-ui-corner {
+  position: absolute;
+  display: flex;
+}
+
+.pgEarth-ui-inner-container {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  bottom: 15px;
+  right: 15px;
+}
+
+.pgEarth-ui-manual-container > .pgEarth-component {
+  position: absolute;
+}
+
+.pgEarth-ui-top-left,
+.pgEarth-ui-top-right {
+  flex-flow: column;
+}
+
+.pgEarth-ui-top-left {
+  align-items: flex-start;
+}
+
+.pgEarth-ui-top-right {
+  align-items: flex-end;
+}
+
+.pgEarth-ui-bottom-left,
+.pgEarth-ui-bottom-right {
+  flex-flow: row;
+  align-items: flex-end;
+}
+
+.pgEarth-ui-bottom-right {
+  flex-flow: row-reverse;
+}
+
+.pgEarth-ui-top-left {
+  top: 0;
+  left: 0;
+}
+
+.pgEarth-ui-top-right {
+  top: 0;
+  right: 0;
+}
+
+.pgEarth-ui-top-right .pgEarth-component,
+.pgEarth-ui-top-left .pgEarth-component {
+  margin-bottom: 10px;
+}
+
+.pgEarth-ui-bottom-left {
+  bottom: 0;
+  left: 0;
+}
+.pgEarth-ui-bottom-left .pgEarth-component {
+  margin-right: 10px;
+}
+
+.pgEarth-ui-bottom-right {
+  bottom: 0;
+  right: 0;
+}
+.pgEarth-ui-bottom-right .pgEarth-component {
+  margin-left: 10px;
+}
+
+html[dir=rtl] .pgEarth-ui-top-left {
+  align-items: flex-end;
+}
+html[dir=rtl] .pgEarth-ui-top-right {
+  align-items: flex-start;
+}
+html[dir=rtl] .pgEarth-ui-bottom-left,
+html[dir=rtl] .pgEarth-ui-bottom-right {
+  flex-direction: row-reverse;
+}
+
+/* ZoomBox */
+.pgEarth-zoom-box__container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.pgEarth-zoom-box__overlay {
+  cursor: crosshair;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pgEarth-zoom-box__overlay-background {
+  fill: rgba(0, 0, 0, 0.1);
+}
+
+.pgEarth-zoom-box__outline {
+  fill: transparent;
+  stroke: dodgerblue;
+  stroke-dasharray: 1, 1;
+  stroke-width: 2px;
+}

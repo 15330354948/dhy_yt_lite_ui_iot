@@ -1,0 +1,1 @@
+define(function(){"use strict";return"attribute vec4 position;\nattribute vec2 textureCoordinates;\n\nvarying vec2 v_textureCoordinates;\n\nvoid main() \n{\n    gl_Position = position;\n    v_textureCoordinates = textureCoordinates;\n}\n"});

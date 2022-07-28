@@ -1,0 +1,1 @@
+define(["./defined","./DeveloperError","./isArray"],function(e,r,n){"use strict";return function(o){if(!e(o))throw new r("obj is required.");var i="";for(var t in o)if(o.hasOwnProperty(t)){var f=o[t],c=encodeURIComponent(t)+"=";if(n(f))for(var d=0,s=f.length;d<s;++d)i+=c+encodeURIComponent(f[d])+"&";else i+=c+encodeURIComponent(f)+"&"}return i=i.slice(0,-1)}});

@@ -1,0 +1,1 @@
+define(["../Core/DeveloperError"],function(t){"use strict";function e(e){throw new t("This type should not be instantiated directly.  Instead, use BoxEmitter, CircleEmitter, ConeEmitter or SphereEmitter.")}return e.prototype.emit=function(e){t.throwInstantiationError()},e});

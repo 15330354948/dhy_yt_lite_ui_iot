@@ -1,0 +1,1 @@
+define(["../Core/defined","../Core/Ellipsoid","../Core/Rectangle","../Core/RectangleGeometry"],function(e,n,r,o){"use strict";return function(t,l){return e(l)&&(t=o.unpack(t,l)),t._ellipsoid=n.clone(t._ellipsoid),t._rectangle=r.clone(t._rectangle),o.createGeometry(t)}});

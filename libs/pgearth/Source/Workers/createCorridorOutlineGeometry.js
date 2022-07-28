@@ -1,0 +1,1 @@
+define(["../Core/CorridorOutlineGeometry","../Core/defined","../Core/Ellipsoid"],function(e,r,i){"use strict";return function(o,n){return r(n)&&(o=e.unpack(o,n)),o._ellipsoid=i.clone(o._ellipsoid),e.createGeometry(o)}});

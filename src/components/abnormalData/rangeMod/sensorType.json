@@ -1,0 +1,30 @@
+{
+  {"value": "l1_qj", "label": "倾斜仪"}
+  {"value": "l1_zd", "label": "振动器",}
+  {"value": "l1_wy", "label": "表面位移",}
+  {"value": "l1_sw", "label": "深部水平位移",}
+  {"value": "l1_lf", "label": "裂缝计",}
+  {"value": "l3_yl", "label": "雨量计",}
+  {"value": "l1_js", "label": "加速度",}
+  {"value": "l1_gp", "label": "地表位移",}
+  {"value": "l3_hs", "label": "含水率",}
+  {"value": "l2_ty", "label": "土压力",}
+  {"value": "l4_nw", "label": "泥水位",}
+  {"value": "l3_dd", "label": "电导率",}
+  {"value": "l3_zd", "label": "浊度",}
+  {"value": "l3_ry", "label": "溶氧率",}
+  {"value": "bjq_1", "label": "喇叭",}
+  {"value": "l3_qw", "label": "温度",}
+  {"value": "l3_sd", "label": "湿度",}
+  {"value": "l3_qy", "label": "气压",}
+  {"value": "l3_fs", "label": "风速",}
+  {"value": "l3_fx", "label": "风向",}
+  {"value": "l3_db", "label": "地表水位",}
+  {"value": "l3_ph", "label": "PH值",}
+  {"value": "l3_co", "label": "COD",}
+  {"value": "l5_zd", "label": "微感振动",}
+  {"value": "l5_wy", "label": "表面位移(xyz)",}
+  {"value": "l3_dx", "label": "地下水",}
+  {"value": "l2_cs", "label": "次声"}
+}
+

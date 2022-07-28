@@ -1,0 +1,1 @@
+define(["./defined"],function(t){"use strict";function r(t){var r;this.name="RuntimeError",this.message=t;try{throw new Error}catch(t){r=t.stack}this.stack=r}return t(Object.create)&&(r.prototype=Object.create(Error.prototype),r.prototype.constructor=r),r.prototype.toString=function(){var r=this.name+": "+this.message;return t(this.stack)&&(r+="\n"+this.stack.toString()),r},r});

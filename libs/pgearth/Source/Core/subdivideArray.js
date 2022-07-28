@@ -1,0 +1,1 @@
+define(["./defined","./DeveloperError"],function(r,e){"use strict";return function(n,t){if(!r(n))throw new e("array is required.");if(!r(t)||t<1)throw new e("numberOfArrays must be greater than 0.");for(var i=[],u=n.length,a=0;a<u;){var f=Math.ceil((u-a)/t--);i.push(n.slice(a,a+f)),a+=f}return i}});

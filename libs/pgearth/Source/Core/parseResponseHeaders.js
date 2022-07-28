@@ -1,0 +1,1 @@
+define([],function(){"use strict";return function(r){var n={};if(!r)return n;for(var t=r.split("\r\n"),i=0;i<t.length;++i){var e=t[i],u=e.indexOf(": ");if(u>0){var f=e.substring(0,u),s=e.substring(u+2);n[f]=s}}return n}});

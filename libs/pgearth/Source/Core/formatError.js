@@ -1,0 +1,1 @@
+define(["./defined"],function(n){"use strict";return function(e){var t,r=e.name,i=e.message;t=n(r)&&n(i)?r+": "+i:e.toString();var a=e.stack;return n(a)&&(t+="\n"+a),t}});

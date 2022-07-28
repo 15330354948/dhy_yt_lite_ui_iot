@@ -1,0 +1,1 @@
+define(["../ThirdParty/Uri","./defined","./DeveloperError"],function(r,e,n){"use strict";return function(i,t){if(!e(i))throw new n("uri is required.");var u="",f=i.lastIndexOf("/");return-1!==f&&(u=i.substring(0,f+1)),t?(i=new r(i),e(i.query)&&(u+="?"+i.query),e(i.fragment)&&(u+="#"+i.fragment),u):u}});

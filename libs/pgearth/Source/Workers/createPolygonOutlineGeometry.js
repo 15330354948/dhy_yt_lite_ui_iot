@@ -1,0 +1,1 @@
+define(["../Core/defined","../Core/Ellipsoid","../Core/PolygonOutlineGeometry"],function(e,o,i){"use strict";return function(n,r){return e(r)&&(n=i.unpack(n,r)),n._ellipsoid=o.clone(n._ellipsoid),i.createGeometry(n)}});

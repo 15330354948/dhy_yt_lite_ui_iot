@@ -1,0 +1,1 @@
+define(["../Core/Cartesian3","../Core/CircleGeometry","../Core/defined","../Core/Ellipsoid"],function(e,r,i,l){"use strict";return function(o,t){return i(t)&&(o=r.unpack(o,t)),o._ellipseGeometry._center=e.clone(o._ellipseGeometry._center),o._ellipseGeometry._ellipsoid=l.clone(o._ellipseGeometry._ellipsoid),r.createGeometry(o)}});

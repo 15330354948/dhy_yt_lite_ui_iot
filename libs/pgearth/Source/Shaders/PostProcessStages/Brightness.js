@@ -1,0 +1,1 @@
+define(function(){"use strict";return"uniform sampler2D colorTexture;\nuniform float brightness;\n\nvarying vec2 v_textureCoordinates;\n\nvoid main(void)\n{\n    vec3 rgb = texture2D(colorTexture, v_textureCoordinates).rgb;\n    vec3 target = vec3(0.0);\n    gl_FragColor = vec4(mix(target, rgb, brightness), 1.0);\n}\n"});

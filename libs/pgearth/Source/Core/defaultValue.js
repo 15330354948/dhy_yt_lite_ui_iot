@@ -1,0 +1,1 @@
+define(["./freezeObject"],function(e){"use strict";function n(e,n){return void 0!==e&&null!==e?e:n}return n.EMPTY_OBJECT=e({}),n});

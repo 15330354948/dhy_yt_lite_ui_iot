@@ -1,0 +1,1 @@
+define(function(){"use strict";return"attribute vec4 position;\n\nvarying vec4 positionEC;\n\nvoid main()\n{\n    positionEC = czm_modelView * position;\n    gl_Position = czm_projection * positionEC;\n\n    czm_vertexLogDepth();\n}\n"});

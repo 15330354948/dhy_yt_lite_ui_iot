@@ -1,0 +1,1 @@
+define(["../../../../Widgets/getElement","../../../../ThirdParty/knockout","./createFragmentFromTemplate"],function(e,n,t){"use strict";return function(r,d,i){d=e(d);var o,a=t(r),l=[];for(o=0;o<a.childNodes.length;++o)l.push(a.childNodes[o]);for(d.appendChild(a),o=0;o<l.length;++o){var p=l[o];1!==p.nodeType&&8!==p.nodeType||n.applyBindings(i,p)}return l}});

@@ -1,0 +1,7 @@
+"use strict";
+
+define(function () {
+  "use strict";
+
+  return "uniform float u_radiusTS;\nvarying vec2 v_textureCoordinates;\nvec2 rotate(vec2 p, vec2 direction)\n{\nreturn vec2(p.x * direction.x - p.y * direction.y, p.x * direction.y + p.y * direction.x);\n}\nvec4 addBurst(vec2 position, vec2 direction, float lengthScalar)\n{\nvec2 rotatedPosition = rotate(position, direction) * vec2(25.0, 0.75);\nfloat radius = length(rotatedPosition) * lengthScalar;\nfloat burst = 1.0 - smoothstep(0.0, 0.55, radius);\nreturn vec4(burst);\n}\nvoid main()\n{\nfloat lengthScalar = 2.0 / sqrt(2.0);\nvec2 position = v_textureCoordinates - vec2(0.5);\nfloat radius = length(position) * lengthScalar;\nfloat surface = step(radius, u_radiusTS);\nvec4 color = vec4(vec2(1.0), surface + 0.2, surface);\nfloat glow = 1.0 - smoothstep(0.0, 0.55, radius);\ncolor.ba += mix(vec2(0.0), vec2(1.0), glow) * 0.75;\nvec4 burst = vec4(0.0);\nburst += 0.4 * addBurst(position, vec2(0.38942,  0.92106), lengthScalar);\nburst += 0.4 * addBurst(position, vec2(0.99235,  0.12348), lengthScalar);\nburst += 0.4 * addBurst(position, vec2(0.60327, -0.79754), lengthScalar);\nburst += 0.3 * addBurst(position, vec2(0.31457,  0.94924), lengthScalar);\nburst += 0.3 * addBurst(position, vec2(0.97931,  0.20239), lengthScalar);\nburst += 0.3 * addBurst(position, vec2(0.66507, -0.74678), lengthScalar);\ncolor += clamp(burst, vec4(0.0), vec4(1.0)) * 0.15;\ngl_FragColor = clamp(color, vec4(0.0), vec4(1.0));\n}\n";
+});

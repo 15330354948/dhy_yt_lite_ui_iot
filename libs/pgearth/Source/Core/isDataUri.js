@@ -1,0 +1,1 @@
+define(["./Check"],function(t){"use strict";var e=/^data:/i;return function(n){return t.typeOf.string("uri",n),e.test(n)}});

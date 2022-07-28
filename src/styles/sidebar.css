@@ -1,0 +1,116 @@
+.avue-sidebar {
+  user-select: none;
+  position: relative;
+  padding-top: 74px;
+  height: 100%;
+  position: relative;
+  background-color: #20222a;
+  transition: width .2s;
+  box-sizing: border-box;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+}
+
+.avue-sidebar--tip {
+  width: 90%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  position: absolute;
+  top: 5px;
+  left: 5%;
+  color: #ccc;
+  z-index: 2;
+  text-align: center;
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.avue-sidebar .el-menu-item,
+.avue-sidebar .el-submenu__title {
+  font-size: 14px;
+  height: 60px;
+  line-height: 56px;
+}
+
+.avue-sidebar .el-menu-item span, .avue-sidebar .el-menu-item i {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.avue-sidebar .el-menu-item:hover {
+  background-color: transparent;
+  color: #fff;
+}
+
+.avue-sidebar .el-menu-item:hover span,
+.avue-sidebar .el-menu-item:hover i {
+  color: #fff;
+}
+
+.avue-sidebar .el-menu-item.is-active {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.avue-sidebar .el-menu-item.is-active span,
+.avue-sidebar .el-menu-item.is-active i {
+  color: #fff;
+}
+
+.avue-sidebar .el-menu-item.is-active:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.avue-sidebar .el-menu-item.is-active::before {
+  content: " ";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background: #409eff;
+  position: absolute;
+}
+
+.avue-sidebar .el-submenu__title span, .avue-sidebar .el-submenu__title i {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.avue-sidebar .el-submenu__title:hover {
+  background-color: transparent;
+}
+
+.avue-sidebar .el-submenu__title:hover i,
+.avue-sidebar .el-submenu__title:hover span {
+  color: #fff;
+}
+
+.avue-sidebar .el-submenu .el-menu-item {
+  height: 50px;
+  line-height: 50px;
+}
+
+.avue-sidebar .el-submenu .el-menu-item span, .avue-sidebar .el-submenu .el-menu-item i {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.avue-sidebar .el-submenu .el-menu-item.is-active {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.avue-sidebar .el-submenu .el-menu-item.is-active span,
+.avue-sidebar .el-submenu .el-menu-item.is-active i {
+  color: #fff;
+}
+
+.avue-sidebar .el-submenu .el-menu-item.is-active:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.avue-sidebar .el-submenu .el-menu-item:hover {
+  background-color: transparent;
+}
+
+.avue-sidebar .el-submenu .el-menu-item:hover span,
+.avue-sidebar .el-submenu .el-menu-item:hover i {
+  color: #fff;
+}

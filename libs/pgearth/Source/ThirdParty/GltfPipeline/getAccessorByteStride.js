@@ -1,0 +1,1 @@
+define(["./numberOfComponentsForType","../../Core/ComponentDatatype","../../Core/defined"],function(e,t,r){"use strict";return function(n,i){var f=i.bufferView;if(r(f)){var o=n.bufferViews[f];if(r(o.byteStride)&&o.byteStride>0)return o.byteStride}return t.getSizeInBytes(i.componentType)*e(i.type)}});

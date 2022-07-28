@@ -1,0 +1,1 @@
+define(function(){"use strict";return"uniform sampler2D u_texture;\n\nvarying vec2 v_textureCoordinates;\n\nvoid main()\n{\n    vec4 color = texture2D(u_texture, v_textureCoordinates);\n    gl_FragColor = czm_gammaCorrect(color);\n}\n"});

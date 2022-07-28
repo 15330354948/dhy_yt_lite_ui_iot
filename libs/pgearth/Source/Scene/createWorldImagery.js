@@ -1,0 +1,1 @@
+define(["./IonImageryProvider","./IonWorldImageryStyle","../Core/defaultValue"],function(e,r,n){"use strict";return function(t){t=n(t,n.EMPTY_OBJECT);var o=n(t.style,r.AERIAL);return new e({assetId:o})}});

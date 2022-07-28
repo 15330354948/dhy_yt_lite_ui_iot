@@ -1,0 +1,1 @@
+define(["./createPropertyDescriptor"],function(r){"use strict";function t(r){return r}return function(e,n){return r(e,n,t)}});

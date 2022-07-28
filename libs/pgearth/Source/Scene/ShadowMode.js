@@ -1,0 +1,1 @@
+define(["../Core/freezeObject"],function(E){"use strict";var e={DISABLED:0,ENABLED:1,CAST_ONLY:2,RECEIVE_ONLY:3,NUMBER_OF_SHADOW_MODES:4,castShadows:function(E){return E===e.ENABLED||E===e.CAST_ONLY},receiveShadows:function(E){return E===e.ENABLED||E===e.RECEIVE_ONLY},fromCastReceive:function(E,r){return E&&r?e.ENABLED:E?e.CAST_ONLY:r?e.RECEIVE_ONLY:e.DISABLED}};return E(e)});

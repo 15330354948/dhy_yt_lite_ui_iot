@@ -1,0 +1,1 @@
+define(["./defined"],function(r){"use strict";var e={type:"Lagrange",getRequiredDataPoints:function(r){return Math.max(r+1,2)},interpolateOrderZero:function(e,n,t,a,f){var i,o;r(f)||(f=new Array(a));var u=n.length;for(i=0;i<a;i++)f[i]=0;for(i=0;i<u;i++){var d=1;for(o=0;o<u;o++)if(o!==i){var v=n[i]-n[o];d*=(e-n[o])/v}for(o=0;o<a;o++)f[o]+=d*t[i*a+o]}return f}};return e});

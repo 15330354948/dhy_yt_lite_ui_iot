@@ -1,0 +1,1 @@
+define(["./PGEarthTerrainProvider","./defaultValue","./IonResource"],function(e,r,t){"use strict";return function(s){return s=r(s,r.EMPTY_OBJECT),new e({url:t.fromAssetId(1),requestVertexNormals:r(s.requestVertexNormals,!1),requestWaterMask:r(s.requestWaterMask,!1)})}});

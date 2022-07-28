@@ -1,0 +1,1 @@
+define(["./ForEach","../../Core/defined"],function(e,n){"use strict";function i(e){e.extras=n(e.extras)?e.extras:{},e.extras._pipeline=n(e.extras._pipeline)?e.extras._pipeline:{}}return function(n){return e.shader(n,function(e){i(e)}),e.buffer(n,function(e){i(e)}),e.image(n,function(n){i(n),e.compressedImage(n,function(e){i(e)})}),i(n),n}});

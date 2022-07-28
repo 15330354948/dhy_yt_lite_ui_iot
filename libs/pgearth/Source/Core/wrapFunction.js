@@ -1,0 +1,1 @@
+define(["./DeveloperError"],function(n){"use strict";return function(o,t,e){if("function"!=typeof t)throw new n("oldFunction is required to be a function.");if("function"!=typeof e)throw new n("oldFunction is required to be a function.");return function(){e.apply(o,arguments),t.apply(o,arguments)}}});

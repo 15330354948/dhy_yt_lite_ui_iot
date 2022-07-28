@@ -1,0 +1,1 @@
+define(["../Core/DeveloperError"],function(e){"use strict";return function(t){if("string"==typeof t){var n=document.getElementById(t);if(null===n)throw new e('Element with id "'+t+'" does not exist in the document.');t=n}return t}});

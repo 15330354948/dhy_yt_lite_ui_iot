@@ -1,0 +1,1 @@
+define(["../Core/Check"],function(s){"use strict";return function(t){s.typeOf.object("options",t),s.typeOf.number("options.pass",t.pass),this.pass=t.pass,this.commandList=t.commandList,this.camera=t.camera,this.cullingVolume=t.cullingVolume,this.ready=!1}});

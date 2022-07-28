@@ -1,0 +1,1 @@
+define(["./barycentricCoordinates","./Cartesian3"],function(n,r){"use strict";var e=new r;return function(r,t,i,a){return n(r,t,i,a,e),e.x>0&&e.y>0&&e.z>0}});

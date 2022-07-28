@@ -1,0 +1,1 @@
+define(function(){"use strict";return"/**\n * A built-in GLSL floating-point constant for one solar radius.\n *\n * @alias czm_solarRadius\n * @glslConstant\n *\n * @see PGEarthMath.SOLAR_RADIUS\n *\n * @example\n * // GLSL declaration\n * const float czm_solarRadius = ...;\n */\nconst float czm_solarRadius = 695500000.0;\n"});

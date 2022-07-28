@@ -1,0 +1,1 @@
+define(["../Core/DeveloperError"],function(t){"use strict";function o(){}return o.prototype.evaluate=function(o,r){t.throwInstantiationError()},o.prototype.evaluateColor=function(o,r){t.throwInstantiationError()},o.prototype.getShaderFunction=function(o,r,n,e){t.throwInstantiationError()},o});

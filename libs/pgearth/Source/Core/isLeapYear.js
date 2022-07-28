@@ -1,0 +1,1 @@
+define(["./DeveloperError"],function(e){"use strict";return function(r){if(null===r||isNaN(r))throw new e("year is required and must be a number.");return r%4==0&&r%100!=0||r%400==0}});

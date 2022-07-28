@@ -1,0 +1,1 @@
+define([],function(){"use strict";var E={NONE:0,CULLED:1,RENDERED:2,REFINED:3,RENDERED_AND_KICKED:6,REFINED_AND_KICKED:7,CULLED_BUT_NEEDED:9,wasKicked:function(D){return D>=E.RENDERED_AND_KICKED},originalResult:function(E){return 3&E},kick:function(E){return 4|E}};return E});

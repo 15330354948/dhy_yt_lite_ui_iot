@@ -1,0 +1,1 @@
+define(["./defaultValue","./defined"],function(e,r){"use strict";return function t(n,o,f){f=e(f,!1);var i,a,u,p={},s=r(n),y=r(o);if(s)for(i in n)n.hasOwnProperty(i)&&(a=n[i],y&&f&&"object"==typeof a&&o.hasOwnProperty(i)?(u=o[i],p[i]="object"==typeof u?t(a,u,f):a):p[i]=a);if(y)for(i in o)o.hasOwnProperty(i)&&!p.hasOwnProperty(i)&&(u=o[i],p[i]=u);return p}});

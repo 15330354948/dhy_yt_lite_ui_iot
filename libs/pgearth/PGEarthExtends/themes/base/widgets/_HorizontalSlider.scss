@@ -1,0 +1,49 @@
+@mixin horizontalSlider() {
+  .pgEarth-horizontal-slider.dijitSlider.dijitDisabled {
+    opacity: 0.50;
+  }
+
+  .pgEarth-horizontal-slider.dijitSlider .dijitSliderBumper {
+    background: #999 none;
+  }
+
+  .pgEarth-horizontal-slider.dijitSlider .dijitSliderBar {
+    border-color: #999;
+  }
+
+  .pgEarth-horizontal-slider.dijitSlider .dijitSliderProgressBar {
+    background: #ddd none;
+  }
+
+  .pgEarth-horizontal-slider.dijitSlider .dijitSliderImageHandle,
+  .pgEarth-horizontal-slider.dijitSlider .dijitSliderImageHandle.dijitSliderThumbHover {
+    background: url("../base/images/slider-handle.png");
+    border: none;
+    width: 10px;
+    height: 14px;
+  }
+
+  .dijitRtl .pgEarth-horizontal-slider.dijitSlider .dijitSliderImageHandle {
+    left: auto;
+    right: 50%;
+  }
+
+  .dijitRtl .pgEarth-horizontal-slider .dijitSliderMoveableH {
+    right: auto;
+    left: 0;
+  }
+
+  .pgEarth-horizontal-slider .dijitRuleContainer {
+    padding: 6px 0 20px;
+    color: #4d4d4d;
+  }
+
+  .pgEarth-horizontal-slider .dijitRuleLabel {
+    z-index: 2;
+    font-size: 12px;
+  }
+}
+
+@if $include_HorizontalSlider == true {
+  @include horizontalSlider();
+}

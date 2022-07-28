@@ -1,0 +1,293 @@
+@mixin layerList() {
+  .pgEarth-layer-list {
+    color: $text_color;
+    background-color: $background_hover_color;
+    padding: floor($cap_spacing/2) floor($side_spacing/2);
+    overflow-y: auto;
+  }
+  .pgEarth-layer-list__list {
+    list-style: none;
+    margin: 0 0 0 $side_spacing;
+    padding: 0;
+  }
+  .pgEarth-layer-list__item--has-children .pgEarth-layer-list__list:not([hidden]) {
+    animation: pgEarth-layer-list-reveal 375ms ease-in-out;
+  }
+  .pgEarth-layer-list__list[hidden] {
+    display: none;
+  }
+  .pgEarth-layer-list__list--root {
+    margin: 0;
+  }
+  .pgEarth-layer-list__item {
+    position: relative;
+    overflow: hidden;
+    color: $button_text_color;
+    list-style: none;
+    margin: floor($cap_spacing/4) 0;
+    padding: 0;
+  }
+  .pgEarth-layer-list__item-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: floor($cap_spacing*0.75) $side_spacing floor($cap_spacing*0.75) ($side_spacing + 5);
+    background-color: $background_color;
+    border-bottom: 1px solid $border_color;
+    transition: padding 250ms ease-in-out;
+  }
+  .pgEarth-layer-list__item--invisible-at-scale > .pgEarth-layer-list__item-container {
+    padding-top: floor($cap_spacing * 0.5);
+    padding-bottom: floor($cap_spacing * 0.5);
+    border-bottom: 1px solid rgba($text_color, 0.1);
+  }
+  .pgEarth-layer-list__item--invisible-at-scale .pgEarth-layer-list__item-title {
+    color: $disabled_color;
+  }
+  .pgEarth-layer-list__item--has-children > .pgEarth-layer-list__item-container {
+    padding-left: 5px;
+  }
+  .pgEarth-layer-list__item--has-children > .pgEarth-layer-list__list {
+    font-size: $text_size_small;
+  }
+  .pgEarth-layer-list__child-toggle {
+    color: $button_text_color;
+    width: $side_spacing; // Matches side padding on items that don't have this toggle.
+    cursor: pointer;
+  }
+  .pgEarth-layer-list__child-toggle [class*="pgEarth-icon"] {
+    line-height: 1.2em;
+  }
+  .pgEarth-layer-list__child-toggle .pgEarth-layer-list__child-toggle-icon--opened,
+  .pgEarth-layer-list__child-toggle .pgEarth-layer-list__child-toggle-icon--closed-rtl,
+  .pgEarth-layer-list__child-toggle--open .pgEarth-layer-list__child-toggle-icon--closed {
+    display: none;
+  }
+  .pgEarth-layer-list__child-toggle--open .pgEarth-layer-list__child-toggle-icon--opened {
+    display: block;
+  }
+  .pgEarth-layer-list__item-label {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex: 1;
+  }
+  .pgEarth-layer-list__item-label[role="checkbox"]:hover,
+  .pgEarth-layer-list__item-label[role="radio"]:hover {
+    cursor: pointer;
+  }
+  .pgEarth-layer-list__item-title {
+    flex: 1;
+    padding-left: floor($side_spacing/3);
+    padding-right: floor($side_spacing/3);
+    line-height: $line_height;
+    word-break: break-all;
+  }
+  .pgEarth-layer-list__item-error-message {
+    display: flex;
+    align-items: center;
+    visibility: hidden;
+    height: 0;
+    margin-top: -1px;
+    padding: 0 $side_spacing;
+    overflow: hidden;
+    background-color: $background_color;
+    color: $Calcite_Red_a200;
+    font-size: $text_size_small;
+    transition: transform 250ms ease-in-out;
+    transform: scale(1, 0);
+    transform-origin: center top;
+  }
+  .pgEarth-layer-list__item-error-message [class^="pgEarth-icon-"],
+  .pgEarth-layer-list__item-error-message [class*="pgEarth-icon-"] {
+    margin-right: 0.3rem;
+  }
+  .pgEarth-layer-list__item--error .pgEarth-layer-list__item-error-message {
+    visibility: visible;
+    height: auto;
+    padding-bottom: $cap_spacing;
+    border-bottom: 1px solid $border_color;
+    transform: scale(1, 1);
+  }
+  .pgEarth-layer-list__item-toggle {
+    width: $side_spacing;
+    height: $side_spacing;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: inline-block;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
+  }
+  .pgEarth-layer-list__item-toggle-icon {
+    display: inline-block;
+    font-size: $text_size_small;
+    text-align: center;
+    line-height: 0;
+  }
+  .pgEarth-layer-list__item-label[aria-checked="false"] .pgEarth-layer-list__item-toggle-icon {
+    opacity: 0.6;
+  }
+  .pgEarth-layer-list__item:before,
+  .pgEarth-layer-list__item:after {
+    content: "";
+    opacity: 0;
+    position: absolute;
+    height: 2px;
+    top: 0;
+    transition: opacity 500ms ease-in-out;
+  }
+  .pgEarth-layer-list__item:before {
+    background-color: $border_color;
+    width: 100%;
+    z-index: 1;
+  }
+  .pgEarth-layer-list__item:after {
+    background-color: $button_text_color;
+    width: $looping_progress_bar_width;
+    z-index: 2;
+    animation: looping-progresss-bar-ani $looping_progress_bar_params;
+  }
+  .pgEarth-layer-list__item--updating:before,
+  .pgEarth-layer-list__item--updating:after {
+    opacity: 1;
+  }
+  .pgEarth-layer-list__item-actions-menu {
+    display: flex;
+  }
+  .pgEarth-layer-list__item-actions-menu-item {
+    display: flex;
+    flex: 1 0 22px;
+    justify-content: center;
+    align-content: center;
+    color: $button_text_color;
+    height: $side_spacing;
+    font-size: $text_size;
+    cursor: pointer;
+    padding-left: 0.125em;
+    padding-right: 0.125em;
+  }
+  .pgEarth-layer-list__item-actions {
+    padding: 0 $side_spacing;
+    position: relative;
+    background-color: $background_color;
+    margin-top: -1px;
+    height: auto;
+    border-bottom: 1px solid $border_color;
+  }
+  .pgEarth-layer-list__item--has-children .pgEarth-layer-list__item-actions {
+    border-bottom: 1px solid rgba($text_color, 0.1);
+  }
+  .pgEarth-layer-list__item-actions-section {
+    animation: pgEarth-layer-list-reveal 375ms ease-in-out;
+  }
+  .pgEarth-layer-list__item-actions[hidden] {
+    display: none;
+  }
+  .pgEarth-layer-list__item-actions-close {
+    color: $button_text_color;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1;
+  }
+  .pgEarth-layer-list__item-actions-list {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: $cap_spacing $side_spacing;
+    list-style: none;
+    border-top: 1px solid $border_color;
+  }
+  .pgEarth-layer-list__item-actions-list:first-child {
+    border-top: 0;
+    padding-top: floor($cap_spacing/2);
+  }
+  .pgEarth-layer-list__item-action {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    cursor: pointer;
+    font-size: $text_size_small;
+    width: 100%;
+    padding: floor($cap_spacing/4) 0;
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 125ms;
+  }
+  .pgEarth-layer-list__item-actions[hidden] .pgEarth-layer-list__item-action {
+    opacity: 0;
+  }
+  .pgEarth-layer-list__item-action-icon {
+    flex: 0 0 $side_spacing;
+    font-size: $text_size;
+    margin-top: 0.2em;
+  }
+  .pgEarth-layer-list__item-action-image {
+    flex: 0 0 $side_spacing;
+    width: $side_spacing;
+    height: $side_spacing;
+    font-size: $text_size;
+    text-align: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+  .pgEarth-layer-list__item-action-title {
+    margin-left: 5px;
+  }
+
+  html[dir="rtl"] .pgEarth-layer-list {
+    .pgEarth-layer-list__item--has-children > .pgEarth-layer-list__item-container {
+      padding-left: $side_spacing + 5;
+      padding-right: 5px;
+    }
+    .pgEarth-layer-list__list {
+      margin: 0 $side_spacing 0 0;
+    }
+    .pgEarth-layer-list__list--root {
+      margin: 0;
+    }
+    .pgEarth-layer-list__child-toggle .pgEarth-layer-list__child-toggle-icon--closed {
+      display: none;
+    }
+    .pgEarth-layer-list__child-toggle .pgEarth-layer-list__child-toggle-icon--closed-rtl {
+      display: block;
+    }
+    .pgEarth-layer-list__item-action-title {
+      margin-left: 0;
+      margin-right: 5px;
+    }
+    .pgEarth-layer-list__item:after {
+      animation: looping-progresss-bar-ani $looping_progress_bar_params reverse;
+    }
+    .pgEarth-layer-list__item-error-message [class^="pgEarth-icon-"],
+    .pgEarth-layer-list__item-error-message [class*="pgEarth-icon-"] {
+      margin-right: 0;
+      margin-left: 0.3rem;
+    }
+  }
+
+  //////////////////////////////
+  // ANIMATION
+  @keyframes pgEarth-layer-list-reveal {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+@if $include_LayerList==true {
+  @include layerList();
+}

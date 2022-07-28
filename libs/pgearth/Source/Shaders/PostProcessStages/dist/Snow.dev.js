@@ -1,0 +1,5 @@
+"use strict";
+
+define(function () {
+  return "uniform sampler2D colorTexture;\nvarying vec2 v_textureCoordinates;\nfloat snow(vec2 uv,float scale)\n{\nfloat time = czm_frameNumber / 60.0;\nfloat w=smoothstep(1.,0.,-uv.y*(scale/10.));if(w<.1)return 0.;\nuv+=time/scale;uv.y+=time*2./scale;uv.x+=sin(uv.y+time*.5)/scale;\nuv*=scale;vec2 s=floor(uv),f=fract(uv),p;float k=3.,d;\np=.5+.35*sin(11.*fract(sin((s+p+scale)*mat2(7,3,6,5))*5.))-f;d=length(p);k=min(d,k);\nk=smoothstep(0.,k,sin(f.x+f.y)*0.01);\nreturn k*w;\n}\nvoid main(void){\nvec2 resolution = czm_viewport.zw;\nvec2 uv=(gl_FragCoord.xy*2.-resolution.xy)/min(resolution.x,resolution.y);\nvec3 finalColor=vec3(0);\nfloat c = 0.0;\nc+=snow(uv,30.)*.0;\nc+=snow(uv,20.)*.0;\nc+=snow(uv,15.)*.0;\nc+=snow(uv,10.);\nc+=snow(uv,8.);\nc+=snow(uv,6.);\nc+=snow(uv,5.);\nfinalColor=(vec3(c));\ngl_FragColor = mix(texture2D(colorTexture, v_textureCoordinates), vec4(finalColor,1), 0.5);\n}\n";
+});

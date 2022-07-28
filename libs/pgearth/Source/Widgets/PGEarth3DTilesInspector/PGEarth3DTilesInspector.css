@@ -1,0 +1,114 @@
+
+ul.pgEarth-pgEarthInspector-statistics {
+    margin: 0;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+ul.pgEarth-pgEarthInspector-statistics + ul.pgEarth-pgEarthInspector-statistics {
+    border-top: 1px solid #aaa;
+}
+
+.pgEarth-pgEarthInspector-slider {
+    margin-top: 5px;
+}
+
+.pgEarth-pgEarthInspector-slider input[type=number] {
+    text-align: left;
+    background-color: #222;
+    outline: none;
+    border: 1px solid #444;
+    color: #edffff;
+    width: 100px;
+    border-radius: 3px;
+    padding: 1px;
+    margin-left: 10px;
+    cursor: auto;
+}
+
+.pgEarth-pgEarthInspector-slider input[type=number]::-webkit-outer-spin-button,
+.pgEarth-pgEarthInspector-slider input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.pgEarth-pgEarthInspector-slider input[type=range] {
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.pgEarth-pgEarthInspector-hide .pgEarth-pgEarthInspector-styleEditor {
+    display: none;
+}
+
+.pgEarth-pgEarthInspector-styleEditor {
+    padding: 10px;
+    border-radius: 5px;
+    background: rgba(48, 51, 54, 0.8);
+    border: 1px solid #444;
+}
+
+.pgEarth-pgEarthInspector-styleEditor textarea {
+    width: 100%;
+    height: 300px;
+    background: transparent;
+    color: #edffff;
+    border: none;
+    padding: 0;
+    white-space: pre;
+    overflow-wrap: normal;
+    overflow-x: auto;
+}
+
+.pgEarth-3DTilesInspector {
+    width: 300px;
+    pointer-events: all;
+}
+
+.pgEarth-3DTilesInspector-statistics {
+    font-size: 11px;
+}
+
+.pgEarth-3DTilesInspector div, .pgEarth-3DTilesInspector input[type=range] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.pgEarth-pgEarthInspector-error {
+    color: #ff9e9e;
+    overflow: auto;
+}
+
+.pgEarth-3DTilesInspector .pgEarth-pgEarthInspector-section {
+    margin-top: 3px;
+}
+
+.pgEarth-3DTilesInspector .pgEarth-pgEarthInspector-sectionHeader + .pgEarth-pgEarthInspector-show {
+    border-top: 1px solid white;
+}
+
+input.pgEarth-pgEarthInspector-url {
+    overflow: hidden;
+    white-space: nowrap;
+    overflow-x: scroll;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    border: none;
+    height: 1em;
+    width: 100%;
+}
+
+.pgEarth-pgEarthInspector .field-group {
+    display: table;
+}
+
+.pgEarth-pgEarthInspector .field-group > label {
+    display: table-cell;
+    font-weight: bold;
+}
+
+.pgEarth-pgEarthInspector .field-group > .field {
+    display: table-cell;
+    width: 100%;
+}

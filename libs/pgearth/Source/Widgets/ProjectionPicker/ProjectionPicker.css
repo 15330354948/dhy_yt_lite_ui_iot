@@ -1,0 +1,45 @@
+span.pgEarth-projectionPicker-wrapper {
+    display: inline-block;
+    position: relative;
+    margin: 0 3px;
+}
+
+.pgEarth-projectionPicker-visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.25s linear;
+}
+
+.pgEarth-projectionPicker-hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.25s, opacity 0.25s linear;
+}
+
+.pgEarth-projectionPicker-wrapper .pgEarth-projectionPicker-none {
+    display: none;
+}
+
+.pgEarth-projectionPicker-wrapper .pgEarth-projectionPicker-dropDown-icon {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 3px 0;
+}
+
+.pgEarth-projectionPicker-wrapper .pgEarth-projectionPicker-buttonPerspective,
+.pgEarth-projectionPicker-wrapper .pgEarth-projectionPicker-buttonOrthographic {
+    margin: 0 0 3px 0;
+}
+
+.pgEarth-projectionPicker-wrapper .pgEarth-projectionPicker-buttonPerspective .pgEarth-projectionPicker-iconOrthographic {
+    left: 100%;
+}
+
+.pgEarth-projectionPicker-wrapper .pgEarth-projectionPicker-buttonOrthographic .pgEarth-projectionPicker-iconPerspective {
+    left: -100%;
+}
+
+.pgEarth-projectionPicker-wrapper .pgEarth-projectionPicker-selected {
+    border-color: #2e2;
+    box-shadow: 0 0 8px #fff, 0 0 8px #fff;
+}

@@ -1,0 +1,1 @@
+define(["../Core/defaultValue","../Core/defineProperties"],function(e,t){"use strict";function i(t){t=e(t,e.EMPTY_OBJECT),this.time=e(t.time,0),this.minimum=e(t.minimum,0),this.maximum=e(t.maximum,50),this._complete=!1}return t(i.prototype,{complete:{get:function(){return this._complete}}}),i});

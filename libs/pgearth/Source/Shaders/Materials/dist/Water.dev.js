@@ -1,0 +1,7 @@
+"use strict";
+
+define(function () {
+  "use strict";
+
+  return "uniform sampler2D specularMap;\nuniform sampler2D normalMap;\nuniform vec4 baseWaterColor;\nuniform vec4 blendColor;\nuniform float frequency;\nuniform float animationSpeed;\nuniform float amplitude;\nuniform float specularIntensity;\nuniform float fadeFactor;\nczm_material czm_getMaterial(czm_materialInput materialInput)\n{\nczm_material material = czm_getDefaultMaterial(materialInput);\nfloat time = czm_frameNumber * animationSpeed;\nfloat fade = max(1.0, (length(materialInput.positionToEyeEC) / 10000000000.0) * frequency * fadeFactor);\nfloat specularMapValue = texture2D(specularMap, materialInput.st).r;\nvec4 noise = czm_getWaterNoise(normalMap, materialInput.st * frequency, time, 0.0);\nvec3 normalTangentSpace = noise.xyz * vec3(1.0, 1.0, (1.0 / amplitude));\nnormalTangentSpace.xy /= fade;\nnormalTangentSpace = mix(vec3(0.0, 0.0, 50.0), normalTangentSpace, specularMapValue);\nnormalTangentSpace = normalize(normalTangentSpace);\nfloat tsPerturbationRatio = clamp(dot(normalTangentSpace, vec3(0.0, 0.0, 1.0)), 0.0, 1.0);\nmaterial.alpha = specularMapValue;\nmaterial.diffuse = mix(blendColor.rgb, baseWaterColor.rgb, specularMapValue);\nmaterial.diffuse += (0.1 * tsPerturbationRatio);\nmaterial.diffuse = material.diffuse;\nmaterial.normal = normalize(materialInput.tangentToEyeMatrix * normalTangentSpace);\nmaterial.specular = specularIntensity;\nmaterial.shininess = 10.0;\nreturn material;\n}\n";
+});

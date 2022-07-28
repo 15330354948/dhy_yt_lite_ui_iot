@@ -1,0 +1,1 @@
+define(["./defined"],function(i){"use strict";return function(n,t){this.positions=i(n)?n:[],this.holes=i(t)?t:[]}});

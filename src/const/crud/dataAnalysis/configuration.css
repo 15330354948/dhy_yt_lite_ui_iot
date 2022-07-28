@@ -1,0 +1,106 @@
+.el-table {
+  background: none;
+  border-radius: 2px;
+}
+
+.el-table td,
+.el-table tr,
+.el-table th {
+  color: #fff;
+  text-align: center;
+  font-weight: 100;
+  background: none;
+  background: rgba(65, 101, 75, 0.3);
+  border: none;
+  padding: 0px;
+  font-size: 14px;
+}
+
+.el-table td .cell,
+.el-table tr .cell,
+.el-table th .cell {
+  line-height: 36px;
+}
+
+.el-table tr:hover > td {
+  background: none;
+}
+
+.el-table .el-table__row--striped > td {
+  background: rgba(29, 64, 38, 0.3) !important;
+}
+
+.el-table .el-table__row > td {
+  background: rgba(29, 64, 38, 0.3) !important;
+}
+
+.el-table thead tr {
+  background: rgba(90, 175, 115, 0.3);
+}
+
+.el-table thead tr th {
+  background: none;
+  font-size: 16px;
+  padding: 0;
+  line-height: 32px;
+}
+
+.el-table::before {
+  height: 0;
+}
+
+.el-scrollbar {
+  height: 180px;
+}
+
+.btn-prev,
+.btn-next {
+  width: 22px;
+  padding: 0;
+}
+
+.btn-prev:disabled,
+.btn-next:disabled {
+  background: none;
+}
+
+.el-pagination--small .el-pager li,
+.btn-prev,
+.btn-next,
+.el-pagination__editor.el-input {
+  background: none;
+  color: #fff;
+  border: 1px solid #f9f9f9;
+  margin: 0 2px 0 2px;
+}
+
+.el-pagination--small .el-pager li.active,
+.btn-prev.active,
+.btn-next.active,
+.el-pagination__editor.el-input.active {
+  background-color: #0096ff;
+}
+
+.block {
+  margin-top: 5px;
+}
+
+.block span {
+  color: #fff;
+}
+
+.block .el-pagination__editor.el-input {
+  width: 26px;
+  background: none;
+}
+
+.block input {
+  background: none;
+  color: #fff;
+  line-height: 22px;
+  height: 22px;
+}
+
+.block .el-input__icon {
+  line-height: 22px;
+}

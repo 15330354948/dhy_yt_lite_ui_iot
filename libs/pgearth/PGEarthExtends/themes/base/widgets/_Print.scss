@@ -1,0 +1,212 @@
+@mixin print() {
+  .pgEarth-print {
+    position: relative;
+    padding: $cap_spacing $side_spacing;
+    overflow-y: auto;
+    a {
+      text-decoration: none;
+    }
+    section[aria-hidden='true'] {
+      display: none;
+    }
+    button,
+    [role="button"] {
+      height: $button_height;
+      cursor: pointer;
+      border: none;
+    }
+  }
+  .pgEarth-print__form-section-container {
+    margin: 0 0 $cap_spacing 0;
+  }
+  .pgEarth-print__header-title {
+    font-size: $title_text_size;
+    font-weight: $text_weight_title;
+    padding: 0 0 $cap_spacing;
+    margin: 0 auto 0 0;
+  }
+  .pgEarth-print__layout-section,
+  .pgEarth-print__map-only-section {
+    padding: $cap_spacing 0 0;
+    border-top: 1px solid $border_color;
+  }
+  .pgEarth-print__layout-tab-list {
+    position: relative;
+    bottom: -1px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .pgEarth-print__layout-tab {
+    display: inline-block;
+    text-align: center;
+    margin: 0;
+    padding: 5px 5px;
+    width: 100%;
+    cursor: pointer;
+    color: $button_text_color;
+    border: 1px solid rgba(0, 0, 0, 0);
+  }
+  .pgEarth-print__layout-tab:hover,
+  .pgEarth-print__layout-tab:focus {
+    color: $text_color;
+    background-color: $background_active_color;
+    border-bottom: 1px solid $border_color;
+  }
+  .pgEarth-print__layout-tab[aria-selected='true'],
+  .pgEarth-print__layout-tab[aria-selected='true']:hover {
+    background-color: $background_color;
+    color: $text_color;
+    border-color: $border_color;
+    border-bottom-color: $background_color;
+  }
+  .pgEarth-print__panel--error {
+    color: $error_text_color;
+  }
+  .pgEarth-print__panel-container {
+    flex: 1 0;
+  }
+  .pgEarth-print__input-text {
+    border: 1px solid $border_color;
+    font-size: $text_size;
+    width: 100%;
+    margin: 0;
+    padding: 0 0.5em;
+    height: $button_height;
+  }
+  .pgEarth-print__scale-input-container {
+    display: flex;
+    align-items: center;
+  }
+  .pgEarth-print__advanced-options-section {
+    background-color: $background_offset_color;
+  }
+  .pgEarth-print__advanced-options-button-container {
+    color: $text_color;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: transparent;
+    width: 100%;
+    overflow: visible;
+  }
+  .pgEarth-print__advanced-options-button {
+    width: 100%;
+    background-color: transparent;
+  }
+  .pgEarth-print__advanced-options-button[aria-expanded="true"] .pgEarth-print__advanced-options-button-icon--closed,
+  .pgEarth-print__advanced-options-button[aria-expanded="false"] .pgEarth-print__advanced-options-button-icon--opened,
+  .pgEarth-print__advanced-options-button .pgEarth-print__advanced-options-button-icon--closed-rtl {
+    display: none;
+  }
+  .pgEarth-print__advanced-options-button[aria-expanded="false"] .pgEarth-print__advanced-options-button-icon--closed,
+  .pgEarth-print__advanced-options-button[aria-expanded="true"] .pgEarth-print__advanced-options-button-icon--opened {
+    display: block;
+  }
+  .pgEarth-print__advanced-options-button-title {
+    font-size: $text_size_small;
+    margin: 0 0.2em;
+  }
+  .pgEarth-print__advanced-options-container {
+    font-size: $text_size_small;
+    padding: floor($cap_spacing/2) floor($side_spacing/2);
+    .pgEarth-print__input-text {
+      height: $button_height;
+    }
+    .pgEarth-print__form-section-container {
+      margin-bottom: floor($cap_spacing/2);
+    }
+  }
+  .pgEarth-print__author-info-container .pgEarth-print__input-text {
+    margin-bottom: 0.2em;
+  }
+  .pgEarth-print__size-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .pgEarth-print__advanced-options-section [class*="pgEarth-icon"],
+  .pgEarth-print__size-container [class*="pgEarth-icon"] {
+    background: transparent;
+    font-size: $button_text_size;
+  }
+  .pgEarth-print__size-container [class*="pgEarth-icon"] {
+    align-self: flex-end;
+  }
+  .pgEarth-print__size-container button {
+    color: $button_text_color;
+  }
+  .pgEarth-print__width-container,
+  .pgEarth-print__height-container {
+    flex: 0 0 43%;
+  }
+  .pgEarth-print__swap-button {
+    flex: 0 0 5%;
+  }
+  .pgEarth-print__export-title {
+    font-weight: $text_weight_normal;
+    font-size: $h2_text_size;
+  }
+  .pgEarth-print__export-button {
+    width: 100%;
+    background-color: $pgEarth_blue_button_bg;
+    color: $text_inverse_color;
+    border: none;
+    margin: 20px 0;
+  }
+  .pgEarth-print__export-button:hover {
+    background-color: $pgEarth_blue_button_bg_hover;
+    color: $text_inverse_color;
+  }
+  .pgEarth-print__export-button.pgEarth-disabled {
+    pointer-events: none;
+  }
+  .pgEarth-print__export-panel-container {
+    font-size: $text_size_small;
+    border-top: 1px solid #ddd;
+    padding: $cap_spacing 0;
+  }
+  .pgEarth-print__export-panel-container [class*="pgEarth-icon"] {
+    margin-right: 0.5em;
+    margin-top: 0.15em;
+  }
+  .pgEarth-print__exported-file-link-title {
+    word-break: break-all;
+  }
+  .pgEarth-print__exported-file-link-title.pgEarth-disabled {
+    color: $disabled_color;
+  }
+  .pgEarth-print__exported-file-link {
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.3em;
+    margin-bottom: floor($cap_spacing/2);
+  }
+  .pgEarth-print__exported-file--error {
+    color: $error_text_color;
+    cursor:pointer;
+  }
+  .pgEarth-print .pgEarth-print__exported-file--error:hover {
+    color: $error_text_color;
+  }
+  .pgEarth-print__exported-file .pgEarth-disabled {
+    pointer-events: none;
+  }
+  html[dir="rtl"] {
+    .pgEarth-print__export-panel-container [class*="pgEarth-icon"] {
+      margin-right: 0;
+      margin-left: 0.5em;
+    }
+    .pgEarth-print__advanced-options-button[aria-expanded="false"] .pgEarth-print__advanced-options-button-icon--closed {
+      display: none;
+    }
+    .pgEarth-print__advanced-options-button[aria-expanded="false"] .pgEarth-print__advanced-options-button-icon--closed-rtl {
+      display: block;
+    }
+  }
+}
+
+@if $include_Print == true {
+  @include print();
+}

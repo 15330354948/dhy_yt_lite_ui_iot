@@ -1,0 +1,7932 @@
+@charset "UTF-8";
+@import "base/icons/style.css";
+.pgEarth-ui {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  box-sizing: border-box;
+  pointer-events: none;
+  /* attribution's position is a special case */
+}
+.pgEarth-ui .pgEarth-component {
+  pointer-events: auto;
+}
+.pgEarth-ui .pgEarth-attribution {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.pgEarth-ui-corner {
+  position: absolute;
+  display: flex;
+}
+
+.pgEarth-ui-inner-container {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  bottom: 15px;
+  right: 15px;
+}
+
+.pgEarth-ui-manual-container > .pgEarth-component {
+  position: absolute;
+}
+
+.pgEarth-ui-top-left,
+.pgEarth-ui-top-right {
+  flex-flow: column;
+}
+
+.pgEarth-ui-top-left {
+  align-items: flex-start;
+}
+
+.pgEarth-ui-top-right {
+  align-items: flex-end;
+}
+
+.pgEarth-ui-bottom-left,
+.pgEarth-ui-bottom-right {
+  flex-flow: row;
+  align-items: flex-end;
+}
+
+.pgEarth-ui-bottom-right {
+  flex-flow: row-reverse;
+}
+
+.pgEarth-ui-top-left {
+  top: 0;
+  left: 0;
+}
+
+.pgEarth-ui-top-right {
+  top: 0;
+  right: 0;
+}
+
+.pgEarth-ui-top-right .pgEarth-component,
+.pgEarth-ui-top-left .pgEarth-component {
+  margin-bottom: 10px;
+}
+
+.pgEarth-ui-bottom-left {
+  bottom: 0;
+  left: 0;
+}
+.pgEarth-ui-bottom-left .pgEarth-component {
+  margin-right: 10px;
+}
+
+.pgEarth-ui-bottom-right {
+  bottom: 0;
+  right: 0;
+}
+.pgEarth-ui-bottom-right .pgEarth-component {
+  margin-left: 10px;
+}
+
+html[dir=rtl] .pgEarth-ui-top-left {
+  align-items: flex-end;
+}
+html[dir=rtl] .pgEarth-ui-top-right {
+  align-items: flex-start;
+}
+html[dir=rtl] .pgEarth-ui-bottom-left,
+html[dir=rtl] .pgEarth-ui-bottom-right {
+  flex-direction: row-reverse;
+}
+
+/* ZoomBox */
+.pgEarth-zoom-box__container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.pgEarth-zoom-box__overlay {
+  cursor: crosshair;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pgEarth-zoom-box__overlay-background {
+  fill: rgba(0, 0, 0, 0.1);
+}
+
+.pgEarth-zoom-box__outline {
+  fill: transparent;
+  stroke: dodgerblue;
+  stroke-dasharray: 1, 1;
+  stroke-width: 2px;
+}
+
+/*
+  Core Settings and Imports
+*/
+/*!
+This CSS resource incorporates links to font software which is the valuable copyrighted
+property of Monotype Imaging and/or its suppliers. You may not attempt to copy, install,
+redistribute, convert, modify or reverse engineer this font software. Please contact Monotype
+Imaging with any questions regarding Web Fonts:  http://www.fonts.com
+*/
+@font-face {
+  font-family: "Avenir Next W00";
+  src: url("../base/fonts/avenir-next/Avenir_Next_W00_400.eot?#iefix");
+  src: url("../base/fonts/avenir-next/Avenir_Next_W00_400.eot?#iefix") format("eot"), url("../base/fonts/avenir-next/Avenir_Next_W00_400.woff2") format("woff2"), url("../base/fonts/avenir-next/Avenir_Next_W00_400.woff") format("woff"), url("../base/fonts/avenir-next/Avenir_Next_W00_400.ttf") format("truetype"), url("../base/fonts/avenir-next/Avenir_Next_W00_400.svg") format("svg");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir Next W00";
+  src: url("../base/fonts/avenir-next/Avenir_Next_W00_Italic_400.eot?#iefix");
+  src: url("../base/fonts/avenir-next/Avenir_Next_W00_Italic_400.eot?#iefix") format("eot"), url("../base/fonts/avenir-next/Avenir_Next_W00_Italic_400.woff2") format("woff2"), url("../base/fonts/avenir-next/Avenir_Next_W00_Italic_400.woff") format("woff"), url("../base/fonts/avenir-next/Avenir_Next_W00_Italic_400.ttf") format("truetype"), url("../base/fonts/avenir-next/Avenir_Next_W00_Italic_400.svg") format("svg");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Avenir Next W00";
+  src: url("../base/fonts/avenir-next/Avenir_Next_W00_600.eot?#iefix");
+  src: url("../base/fonts/avenir-next/Avenir_Next_W00_600.eot?#iefix") format("eot"), url("../base/fonts/avenir-next/Avenir_Next_W00_600.woff2") format("woff2"), url("../base/fonts/avenir-next/Avenir_Next_W00_600.woff") format("woff"), url("../base/fonts/avenir-next/Avenir_Next_W00_600.ttf") format("truetype"), url("../base/fonts/avenir-next/Avenir_Next_W00_600.svg") format("svg");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir Next W00";
+  src: url("../base/fonts/avenir-next/Avenir_Next_W00_Italic_600.eot?#iefix");
+  src: url("../base/fonts/avenir-next/Avenir_Next_W00_Italic_600.eot?#iefix") format("eot"), url("../base/fonts/avenir-next/Avenir_Next_W00_Italic_600.woff2") format("woff2"), url("../base/fonts/avenir-next/Avenir_Next_W00_Italic_600.woff") format("woff"), url("../base/fonts/avenir-next/Avenir_Next_W00_Italic_600.ttf") format("truetype"), url("../base/fonts/avenir-next/Avenir_Next_W00_Italic_600.svg") format("svg");
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: "CalciteWebCoreIcons";
+  src: url("../base/icons/fonts/CalciteWebCoreIcons.ttf?cu4poq") format("truetype"), url("../base/icons/fonts/CalciteWebCoreIcons.woff?cu4poq") format("woff"), url("../base/icons/fonts/CalciteWebCoreIcons.svg?cu4poq#CalciteWebCoreIcons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+[class^=pgEarth-icon-], [class*=" pgEarth-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "CalciteWebCoreIcons" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.pgEarth-icon-close:before {
+  content: "";
+}
+
+.pgEarth-icon-drag-horizontal:before {
+  content: "";
+}
+
+.pgEarth-icon-drag-vertical:before {
+  content: "";
+}
+
+.pgEarth-icon-handle-horizontal:before {
+  content: "";
+}
+
+.pgEarth-icon-handle-vertical:before {
+  content: "";
+}
+
+.pgEarth-icon-check-mark:before {
+  content: "";
+}
+
+.pgEarth-icon-left-triangle-arrow:before {
+  content: "";
+}
+
+.pgEarth-icon-right-triangle-arrow:before {
+  content: "";
+}
+
+.pgEarth-icon-down-arrow:before {
+  content: "";
+}
+
+.pgEarth-icon-up-arrow:before {
+  content: "";
+}
+
+.pgEarth-icon-overview-arrow-bottom-left:before {
+  content: "";
+}
+
+.pgEarth-icon-overview-arrow-bottom-right:before {
+  content: "";
+}
+
+.pgEarth-icon-overview-arrow-top-left:before {
+  content: "";
+}
+
+.pgEarth-icon-overview-arrow-top-right:before {
+  content: "";
+}
+
+.pgEarth-icon-maximize:before {
+  content: "";
+}
+
+.pgEarth-icon-minimize:before {
+  content: "";
+}
+
+.pgEarth-icon-checkbox-unchecked:before {
+  content: "";
+}
+
+.pgEarth-icon-checkbox-checked:before {
+  content: "";
+}
+
+.pgEarth-icon-radio-unchecked:before {
+  content: "";
+}
+
+.pgEarth-icon-radio-checked:before {
+  content: "";
+}
+
+.pgEarth-icon-up-arrow-circled:before {
+  content: "";
+}
+
+.pgEarth-icon-down-arrow-circled:before {
+  content: "";
+}
+
+.pgEarth-icon-left-arrow-circled:before {
+  content: "";
+}
+
+.pgEarth-icon-right-arrow-circled:before {
+  content: "";
+}
+
+.pgEarth-icon-zoom-out-fixed:before {
+  content: "";
+}
+
+.pgEarth-icon-zoom-in-fixed:before {
+  content: "";
+}
+
+.pgEarth-icon-refresh:before {
+  content: "";
+}
+
+.pgEarth-icon-edit:before {
+  content: "";
+}
+
+.pgEarth-icon-authorize:before {
+  content: "";
+}
+
+.pgEarth-icon-map-pin:before {
+  content: "";
+}
+
+.pgEarth-icon-blank-map-pin:before {
+  content: "";
+}
+
+.pgEarth-icon-table:before {
+  content: "";
+}
+
+.pgEarth-icon-plus:before {
+  content: "";
+}
+
+.pgEarth-icon-minus:before {
+  content: "";
+}
+
+.pgEarth-icon-beginning:before {
+  content: "";
+}
+
+.pgEarth-icon-reverse:before {
+  content: "";
+}
+
+.pgEarth-icon-pause:before {
+  content: "";
+}
+
+.pgEarth-icon-play:before {
+  content: "";
+}
+
+.pgEarth-icon-forward:before {
+  content: "";
+}
+
+.pgEarth-icon-end:before {
+  content: "";
+}
+
+.pgEarth-icon-erase:before {
+  content: "";
+}
+
+.pgEarth-icon-up-down-arrows:before {
+  content: "";
+}
+
+.pgEarth-icon-left:before {
+  content: "";
+}
+
+.pgEarth-icon-right:before {
+  content: "";
+}
+
+.pgEarth-icon-announcement:before {
+  content: "";
+}
+
+.pgEarth-icon-notice-round:before {
+  content: "";
+}
+
+.pgEarth-icon-notice-triangle:before {
+  content: "";
+}
+
+.pgEarth-icon-home:before {
+  content: "";
+}
+
+.pgEarth-icon-locate:before {
+  content: "";
+}
+
+.pgEarth-icon-expand:before {
+  content: "";
+}
+
+.pgEarth-icon-collapse:before {
+  content: "";
+}
+
+.pgEarth-icon-layer-list:before {
+  content: "";
+}
+
+.pgEarth-icon-basemap:before {
+  content: "";
+}
+
+.pgEarth-icon-globe:before {
+  content: "";
+}
+
+.pgEarth-icon-applications:before {
+  content: "";
+}
+
+.pgEarth-icon-arrow-up-circled:before {
+  content: "";
+}
+
+.pgEarth-icon-arrow-down-circled:before {
+  content: "";
+}
+
+.pgEarth-icon-arrow-left-circled:before {
+  content: "";
+}
+
+.pgEarth-icon-arrow-right-circled:before {
+  content: "";
+}
+
+.pgEarth-icon-minus-circled:before {
+  content: "";
+}
+
+.pgEarth-icon-plus-circled:before {
+  content: "";
+}
+
+.pgEarth-icon-add-attachment:before {
+  content: "";
+}
+
+.pgEarth-icon-attachment:before {
+  content: "";
+}
+
+.pgEarth-icon-calendar:before {
+  content: "";
+}
+
+.pgEarth-icon-close-circled:before {
+  content: "";
+}
+
+.pgEarth-icon-browser:before {
+  content: "";
+}
+
+.pgEarth-icon-collection:before {
+  content: "";
+}
+
+.pgEarth-icon-comment:before {
+  content: "";
+}
+
+.pgEarth-icon-configure-popup:before {
+  content: "";
+}
+
+.pgEarth-icon-contact:before {
+  content: "";
+}
+
+.pgEarth-icon-dashboard:before {
+  content: "";
+}
+
+.pgEarth-icon-deny:before {
+  content: "";
+}
+
+.pgEarth-icon-description:before {
+  content: "";
+}
+
+.pgEarth-icon-directions:before {
+  content: "";
+}
+
+.pgEarth-icon-directions2:before {
+  content: "";
+}
+
+.pgEarth-icon-documentation:before {
+  content: "";
+}
+
+.pgEarth-icon-duplicate:before {
+  content: "";
+}
+
+.pgEarth-icon-review:before {
+  content: "";
+}
+
+.pgEarth-icon-environment-settings:before {
+  content: "";
+}
+
+.pgEarth-icon-error:before {
+  content: "";
+}
+
+.pgEarth-icon-error2:before {
+  content: "";
+}
+
+.pgEarth-icon-experimental:before {
+  content: "";
+}
+
+.pgEarth-icon-feature-layer:before {
+  content: "";
+}
+
+.pgEarth-icon-filter:before {
+  content: "";
+}
+
+.pgEarth-icon-grant:before {
+  content: "";
+}
+
+.pgEarth-icon-group:before {
+  content: "";
+}
+
+.pgEarth-icon-key:before {
+  content: "";
+}
+
+.pgEarth-icon-labels:before {
+  content: "";
+}
+
+.pgEarth-icon-tag:before {
+  content: "";
+}
+
+.pgEarth-icon-layers:before {
+  content: "";
+}
+
+.pgEarth-icon-left-arrow:before {
+  content: "";
+}
+
+.pgEarth-icon-right-arrow:before {
+  content: "";
+}
+
+.pgEarth-icon-link-external:before {
+  content: "";
+}
+
+.pgEarth-icon-link:before {
+  content: "";
+}
+
+.pgEarth-icon-loading-indicator:before {
+  content: "";
+}
+
+.pgEarth-icon-maps:before {
+  content: "";
+}
+
+.pgEarth-icon-marketplace:before {
+  content: "";
+}
+
+.pgEarth-icon-media:before {
+  content: "";
+}
+
+.pgEarth-icon-media2:before {
+  content: "";
+}
+
+.pgEarth-icon-menu:before {
+  content: "";
+}
+
+.pgEarth-icon-mobile:before {
+  content: "";
+}
+
+.pgEarth-icon-phone:before {
+  content: "";
+}
+
+.pgEarth-icon-navigation:before {
+  content: "";
+}
+
+.pgEarth-icon-pan:before {
+  content: "";
+}
+
+.pgEarth-icon-printer:before {
+  content: "";
+}
+
+.pgEarth-icon-pie-chart:before {
+  content: "";
+}
+
+.pgEarth-icon-chart:before {
+  content: "";
+}
+
+.pgEarth-icon-line-chart:before {
+  content: "";
+}
+
+.pgEarth-icon-question:before {
+  content: "";
+}
+
+.pgEarth-icon-resend-invitation:before {
+  content: "";
+}
+
+.pgEarth-icon-rotate:before {
+  content: "";
+}
+
+.pgEarth-icon-save:before {
+  content: "";
+}
+
+.pgEarth-icon-settings:before {
+  content: "";
+}
+
+.pgEarth-icon-settings2:before {
+  content: "";
+}
+
+.pgEarth-icon-share:before {
+  content: "";
+}
+
+.pgEarth-icon-sign-out:before {
+  content: "";
+}
+
+.pgEarth-icon-support:before {
+  content: "";
+}
+
+.pgEarth-icon-user:before {
+  content: "";
+}
+
+.pgEarth-icon-time-clock:before {
+  content: "";
+}
+
+.pgEarth-icon-trash:before {
+  content: "";
+}
+
+.pgEarth-icon-upload:before {
+  content: "";
+}
+
+.pgEarth-icon-download:before {
+  content: "";
+}
+
+.pgEarth-icon-zoom-in-magnifying-glass:before {
+  content: "";
+}
+
+.pgEarth-icon-search:before {
+  content: "";
+}
+
+.pgEarth-icon-zoom-out-magnifying-glass:before {
+  content: "";
+}
+
+.pgEarth-icon-locked:before {
+  content: "";
+}
+
+.pgEarth-icon-unlocked:before {
+  content: "";
+}
+
+.pgEarth-icon-favorites:before {
+  content: "";
+}
+
+.pgEarth-icon-compass:before {
+  content: "";
+}
+
+.pgEarth-icon-down:before {
+  content: "";
+}
+
+.pgEarth-icon-up:before {
+  content: "";
+}
+
+.pgEarth-icon-chat:before {
+  content: "";
+}
+
+.pgEarth-icon-dock-bottom:before {
+  content: "";
+}
+
+.pgEarth-icon-dock-left:before {
+  content: "";
+}
+
+.pgEarth-icon-dock-right:before {
+  content: "";
+}
+
+.pgEarth-icon-organization:before {
+  content: "";
+}
+
+.pgEarth-icon-north-navigation:before {
+  content: "";
+}
+
+.pgEarth-icon-locate-circled:before {
+  content: "";
+}
+
+.pgEarth-icon-dial:before {
+  content: "";
+}
+
+.pgEarth-icon-polygon:before {
+  content: "";
+}
+
+.pgEarth-icon-polyline:before {
+  content: "";
+}
+
+.pgEarth-icon-visible:before {
+  content: "";
+}
+
+.pgEarth-icon-non-visible:before {
+  content: "";
+}
+
+.pgEarth-icon-link-vertical:before {
+  content: "";
+}
+
+.pgEarth-icon-unlocked-link-vertical:before {
+  content: "";
+}
+
+.pgEarth-icon-link-horizontal:before {
+  content: "";
+}
+
+.pgEarth-icon-unlocked-link-horizontal:before {
+  content: "";
+}
+
+.pgEarth-icon-swap:before {
+  content: "";
+}
+
+.pgEarth-icon-cta-link-external:before {
+  content: "";
+}
+
+.pgEarth-icon-reply:before {
+  content: "";
+}
+
+.pgEarth-icon-public:before {
+  content: "";
+}
+
+.pgEarth-icon-share2:before {
+  content: "";
+}
+
+.pgEarth-icon-launch-link-external:before {
+  content: "";
+}
+
+.pgEarth-icon-rotate-back:before {
+  content: "";
+}
+
+.pgEarth-icon-pan2:before {
+  content: "";
+}
+
+.pgEarth-icon-tracking:before {
+  content: "";
+}
+
+.pgEarth-icon-expand2:before {
+  content: "";
+}
+
+.pgEarth-icon-arrow-down:before {
+  content: "";
+}
+
+.pgEarth-icon-arrow-up:before {
+  content: "";
+}
+
+.pgEarth-icon-hollow-eye:before {
+  content: "";
+}
+
+.pgEarth-icon-play-circled:before {
+  content: "";
+}
+
+.pgEarth-icon-volume-off:before {
+  content: "";
+}
+
+.pgEarth-icon-volume-on:before {
+  content: "";
+}
+
+.pgEarth-view {
+  display: flex;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  /*
+   * CSS2 cursors:
+   * auto, inherit, crosshair, default, help, move, pointer , progress, text, wait,
+   * e-resize, ne-resize, nw-resize, n-resize, se-resize, sw-resize, s-resize, w-resize
+   *
+   * CSS3 cursors:
+   * vertical-text, no-drop, not-allowed,
+   * ew-resize, ns-resize, nesw-resize, nwse-resize, col-resize, row-resize, all-scroll
+   *
+   * CSS3 with limited support:
+   * - cursor: none (not IE, Safari, Opera)
+   * - cursor: context-menu (not Firefox, Chrome)
+   * - cursor: cell (not Safari)
+   * - cursor: alias (not Safari)
+   * - cursor: copy (not Safari)
+   *
+   * Browser specific:
+   * - cursor: -webkit-grab; cursor: -moz-grab;
+   * - cursor: -webkit-grabbing; cursor: -moz-grabbing;
+   * - cursor: -webkit-zoom-in; cursor: -moz-zoom-in;
+   * - cursor: -webkit-zoom-out; cursor: -moz-zoom-out;
+   *
+   * Supported cursors:
+   * default, crosshair, help, move, pointer, progress, grab, grabbing
+   */
+}
+.pgEarth-view .pgEarth-view-root {
+  position: relative;
+  flex: 1 1 100%;
+  border: none;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+.pgEarth-view .pgEarth-view-surface {
+  position: absolute;
+  border: none;
+  padding: 0;
+  margin: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /*
+   * TODO
+   * Layers should probably manage this on their own
+   */
+  direction: ltr;
+}
+.pgEarth-view .pgEarth-view-surface[data-cursor=default] {
+  cursor: default;
+}
+.pgEarth-view .pgEarth-view-surface[data-cursor=copy] {
+  cursor: copy;
+}
+.pgEarth-view .pgEarth-view-surface[data-cursor=crosshair] {
+  cursor: crosshair;
+}
+.pgEarth-view .pgEarth-view-surface[data-cursor=help] {
+  cursor: help;
+}
+.pgEarth-view .pgEarth-view-surface[data-cursor=move] {
+  cursor: move;
+}
+.pgEarth-view .pgEarth-view-surface[data-cursor=pointer] {
+  cursor: pointer;
+}
+.pgEarth-view .pgEarth-view-surface[data-cursor=progress] {
+  cursor: progress;
+}
+.pgEarth-view .pgEarth-view-surface[data-cursor=grab] {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+.pgEarth-view .pgEarth-view-surface[data-cursor=grabbing] {
+  cursor: move;
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+.pgEarth-view .pgEarth-view-surface[data-interacting=true] {
+  cursor: move;
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+.pgEarth-view .pgEarth-display-object,
+.pgEarth-view .pgEarth-bitmap {
+  position: absolute;
+  border: none;
+  margin: 0;
+  padding: 0;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+}
+.pgEarth-view .pgEarth-bitmap {
+  max-width: none;
+  transform-origin: top left;
+}
+
+.pgEarth-ui {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  box-sizing: border-box;
+  pointer-events: none;
+  /* attribution's position is a special case */
+}
+.pgEarth-ui .pgEarth-component {
+  pointer-events: auto;
+}
+.pgEarth-ui .pgEarth-attribution {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.pgEarth-ui-corner {
+  position: absolute;
+  display: flex;
+}
+
+.pgEarth-ui-inner-container {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  bottom: 15px;
+  right: 15px;
+}
+
+.pgEarth-ui-manual-container > .pgEarth-component {
+  position: absolute;
+}
+
+.pgEarth-ui-top-left,
+.pgEarth-ui-top-right {
+  flex-flow: column;
+}
+
+.pgEarth-ui-top-left {
+  align-items: flex-start;
+}
+
+.pgEarth-ui-top-right {
+  align-items: flex-end;
+}
+
+.pgEarth-ui-bottom-left,
+.pgEarth-ui-bottom-right {
+  flex-flow: row;
+  align-items: flex-end;
+}
+
+.pgEarth-ui-bottom-right {
+  flex-flow: row-reverse;
+}
+
+.pgEarth-ui-top-left {
+  top: 0;
+  left: 0;
+}
+
+.pgEarth-ui-top-right {
+  top: 0;
+  right: 0;
+}
+
+.pgEarth-ui-top-right .pgEarth-component,
+.pgEarth-ui-top-left .pgEarth-component {
+  margin-bottom: 10px;
+}
+
+.pgEarth-ui-bottom-left {
+  bottom: 0;
+  left: 0;
+}
+.pgEarth-ui-bottom-left .pgEarth-component {
+  margin-right: 10px;
+}
+
+.pgEarth-ui-bottom-right {
+  bottom: 0;
+  right: 0;
+}
+.pgEarth-ui-bottom-right .pgEarth-component {
+  margin-left: 10px;
+}
+
+html[dir=rtl] .pgEarth-ui-top-left {
+  align-items: flex-end;
+}
+html[dir=rtl] .pgEarth-ui-top-right {
+  align-items: flex-start;
+}
+html[dir=rtl] .pgEarth-ui-bottom-left,
+html[dir=rtl] .pgEarth-ui-bottom-right {
+  flex-direction: row-reverse;
+}
+
+/* ZoomBox */
+.pgEarth-zoom-box__container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.pgEarth-zoom-box__overlay {
+  cursor: crosshair;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pgEarth-zoom-box__overlay-background {
+  fill: rgba(0, 0, 0, 0.1);
+}
+
+.pgEarth-zoom-box__outline {
+  fill: transparent;
+  stroke: dodgerblue;
+  stroke-dasharray: 1, 1;
+  stroke-width: 2px;
+}
+
+.pgEarth-overlay-surface {
+  position: absolute;
+  border: none;
+  padding: 0;
+  margin: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pgEarth-text-overlay-item {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  color: white;
+  font-size: 14px;
+  font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.3em;
+  text-shadow: 0 0 1px black;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.pgEarth-text-overlay-item-anchor-bottom {
+  transform: translate(-50%, -100%);
+}
+
+.pgEarth-text-overlay-item-anchor-bottom-right {
+  transform: translate(-100%, -100%);
+}
+
+.pgEarth-text-overlay-item-anchor-bottom-left {
+  transform: translate(0, -100%);
+}
+
+.pgEarth-text-overlay-item-anchor-top {
+  transform: translate(-50%, 0);
+}
+
+.pgEarth-text-overlay-item-anchor-top-right {
+  transform: translate(-100%, 0);
+}
+
+.pgEarth-text-overlay-item-anchor-top-left {
+  transform: translate(0, 0);
+}
+
+.pgEarth-text-overlay-item-anchor-center {
+  transform: translate(-50%, -50%);
+}
+
+.pgEarth-text-overlay-item-anchor-right {
+  transform: translate(-100%, -50%);
+}
+
+.pgEarth-text-overlay-item-anchor-left {
+  transform: translate(0, -50%);
+}
+
+.pgEarth-line-overlay-item {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   box-sizing
+   ========================================================================== */
+.pgEarth-widget {
+  box-sizing: border-box;
+  color: #323232;
+  font-size: 14px;
+  font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.3em;
+  background-color: #ffffff;
+}
+.pgEarth-widget *,
+.pgEarth-widget *:before,
+.pgEarth-widget *:after {
+  box-sizing: inherit;
+}
+.pgEarth-widget a {
+  text-decoration: none;
+  color: #6e6e6e;
+}
+.pgEarth-widget a :hover {
+  color: #2e2e2e;
+}
+.pgEarth-widget h1, .pgEarth-widget h2, .pgEarth-widget h3, .pgEarth-widget h4, .pgEarth-widget h5, .pgEarth-widget h6 {
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+.pgEarth-widget .pgEarth-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  padding: 0;
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  line-height: 16px;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  overflow: hidden;
+  width: 100%;
+  visibility: hidden;
+  max-height: 0;
+}
+.pgEarth-widget .pgEarth-menu .pgEarth-header {
+  padding: 6px 12px;
+  background-color: #f2f2f2;
+  color: #2e2e2e;
+}
+.pgEarth-widget .pgEarth-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pgEarth-widget .pgEarth-menu li {
+  padding: 0.8em 1em;
+  cursor: pointer;
+  border-top: solid 1px rgba(50, 50, 50, 0.25);
+}
+.pgEarth-widget .pgEarth-menu li:first-child {
+  border: none;
+}
+.pgEarth-widget .pgEarth-menu li:hover,
+.pgEarth-widget .pgEarth-menu li:focus {
+  background-color: #f2f2f2;
+}
+.pgEarth-widget .pgEarth-menu li:active {
+  background-color: #ededed;
+  color: #191919;
+}
+.pgEarth-widget .pgEarth-menu li.pgEarth-active {
+  background-color: #ededed;
+  color: #191919;
+  cursor: default;
+}
+.pgEarth-widget .pgEarth-menu li [class^=pgEarth-icon] {
+  padding-right: 2.8px;
+}
+.pgEarth-widget table {
+  color: #323232;
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+}
+.pgEarth-widget table tr:nth-child(odd) {
+  background-color: rgba(76, 76, 76, 0.1);
+}
+.pgEarth-widget table tr:nth-child(even) {
+  background-color: rgba(76, 76, 76, 0.02);
+}
+.pgEarth-widget table tr a {
+  color: #323232;
+}
+.pgEarth-widget table tr td,
+.pgEarth-widget table tr th {
+  padding: 0.5em 0.7em;
+  word-break: break-word;
+  vertical-align: top;
+  font-size: 12px;
+  font-weight: 400;
+}
+.pgEarth-widget table tr th {
+  width: 50%;
+  text-align: left;
+  border-right: 3px solid rgba(0, 0, 0, 0.05);
+}
+.pgEarth-widget table tr td {
+  width: 50%;
+}
+.pgEarth-widget input {
+  font-family: inherit;
+}
+.pgEarth-widget input::-ms-clear {
+  display: none;
+}
+.pgEarth-widget input::-moz-placeholder {
+  color: rgba(50, 50, 50, 0.4);
+  opacity: 1;
+}
+.pgEarth-widget input:-ms-input-placeholder {
+  color: rgba(50, 50, 50, 0.4);
+}
+.pgEarth-widget input::-webkit-input-placeholder {
+  color: rgba(50, 50, 50, 0.4);
+}
+.pgEarth-widget button,
+.pgEarth-widget [role=button] {
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.pgEarth-select {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  height: 32px;
+  color: #6e6e6e;
+  border: 1px solid rgba(50, 50, 50, 0.25);
+  margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
+  padding: 0 0.5em;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%20width%3D%2732%27%20height%3D%2732%27%3E%3Cstyle%3E.path%7Bfill%3A%236e6e6e%7D%3C/style%3E%3Cpath%20class%3D%27path%27%20d%3D%27M12.3%2013.4h9l-5.7%206.1-5.7-6.1h2.4zm3.3%204.8l3.7-4h-7.4l3.7%204z%27/%3E%3C/svg%3E") no-repeat right center transparent;
+}
+
+.pgEarth-select::-ms-expand {
+  display: none;
+}
+
+button.pgEarth-disabled {
+  opacity: 0.4;
+}
+
+.pgEarth-disabled a,
+.pgEarth-disabled [class*=pgEarth-icon],
+.pgEarth-disabled [role=menu],
+.pgEarth-disabled [role=checkbox] {
+  color: rgba(110, 110, 110, 0.4);
+}
+
+.keynav-mode .pgEarth-widget:focus {
+  outline: 2px solid #90cdf2;
+  outline-offset: 2px;
+  z-index: 1;
+}
+.keynav-mode .pgEarth-widget *:focus {
+  outline: 2px solid #90cdf2;
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   Widget Button
+   ========================================================================== */
+.pgEarth-widget-button {
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #6e6e6e;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 125ms ease-in-out;
+}
+.pgEarth-widget-button:hover {
+  background-color: #f2f2f2;
+  color: #2e2e2e;
+}
+.pgEarth-widget-button:active {
+  background-color: #ededed;
+  color: #191919;
+}
+
+/* ==========================================================================
+   UI Corners
+   ========================================================================== */
+.pgEarth-ui-corner .pgEarth-component {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.pgEarth-ui-corner .pgEarth-widget--panel {
+  width: 300px;
+  min-height: 32px;
+}
+
+.pgEarth-ui-corner .pgEarth-widget--panel {
+  transition: max-height 250ms ease-in-out;
+}
+
+.pgEarth-view-height-greater-than-medium .pgEarth-ui-corner .pgEarth-widget--panel {
+  max-height: 680px;
+}
+
+.pgEarth-view-height-medium .pgEarth-ui-corner .pgEarth-widget--panel {
+  max-height: 540px;
+}
+
+.pgEarth-view-height-small .pgEarth-ui-corner .pgEarth-widget--panel {
+  max-height: 420px;
+}
+
+.pgEarth-view-height-xsmall .pgEarth-ui-corner .pgEarth-widget--panel {
+  max-height: 240px;
+}
+
+.pgEarth-ui-bottom-right .pgEarth-widget .pgEarth-menu,
+.pgEarth-ui-bottom-left .pgEarth-widget .pgEarth-menu {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+/* ==========================================================================
+   RTL
+   ========================================================================== */
+html[dir=rtl] .pgEarth-widget table th {
+  text-align: right;
+  border-right: none;
+  border-left: 3px solid rgba(0, 0, 0, 0.05);
+}
+html[dir=rtl] .pgEarth-widget select {
+  background-position: left 50%;
+}
+html[dir=rtl] .pgEarth-widget .pgEarth-menu ul li [class^=pgEarth-icon] {
+  padding-right: 0;
+  padding-left: 2.8px;
+}
+
+/* ==========================================================================
+   accessibility
+   ========================================================================== */
+.pgEarth-icon-font-fallback-text {
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  position: absolute;
+  height: 1px;
+  width: 1px;
+}
+
+/* ==========================================================================
+   animation
+   ========================================================================== */
+[class^=pgEarth-icon] {
+  animation: none;
+}
+
+@keyframes pgEarth-fade-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes looping-progresss-bar-ani {
+  0% {
+    left: 0%;
+    width: 0%;
+  }
+  20% {
+    left: 0%;
+    width: 20%;
+  }
+  80% {
+    left: 80%;
+    width: 20%;
+  }
+  100% {
+    left: 100%;
+    width: 0%;
+  }
+}
+.pgEarth-rotating {
+  animation: pgEarth-anim-rotate 1250ms infinite linear;
+}
+
+@keyframes pgEarth-anim-rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* ==========================================================================
+   clearfixing
+   ========================================================================== */
+/**
+ * taken from http://nicolasgallagher.com/micro-clearfix-hack/
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.pgEarth-clearfix:before, .pgEarth-clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.pgEarth-clearfix:after {
+  clear: both;
+}
+
+/* ==========================================================================
+   interaction
+   ========================================================================== */
+.pgEarth-interactive {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   visibility
+   ========================================================================== */
+.pgEarth-hidden {
+  display: none !important;
+}
+
+.pgEarth-invisible {
+  visibility: hidden !important;
+}
+
+.pgEarth-offscreen {
+  position: absolute;
+  top: -999em;
+  left: -999em;
+}
+
+.pgEarth-attribution {
+  font-size: 0.75em;
+  line-height: 16px;
+  color: #323232;
+  background-color: rgba(255, 255, 255, 0.65);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.pgEarth-attribution__link {
+  color: currentColor;
+  text-decoration: underline;
+}
+.pgEarth-attribution__link :hover,
+.pgEarth-attribution__link :active,
+.pgEarth-attribution__link :visited,
+.pgEarth-attribution__link :focus {
+  color: currentColor;
+}
+
+.pgEarth-attribution__sources {
+  font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 5px;
+  align-self: flex-start;
+  flex: 1 0;
+}
+
+.pgEarth-attribution__sources[role=button] {
+  font-size: 1em;
+}
+
+.pgEarth-attribution__powered-by {
+  font-weight: 400;
+  padding: 0 5px;
+  text-align: right;
+  white-space: nowrap;
+  align-self: flex-end;
+}
+
+.pgEarth-attribution--open {
+  z-index: 2;
+}
+
+.pgEarth-attribution__sources--open {
+  white-space: normal;
+}
+
+html[dir=rtl] .pgEarth-attribution__powered-by {
+  text-align: left;
+}
+
+.pgEarth-basemap-gallery {
+  color: #323232;
+  background-color: #ffffff;
+  overflow-y: auto;
+  position: relative;
+}
+
+.pgEarth-basemap-gallery__item-container {
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+  transition: opacity 250ms ease-in-out;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pgEarth-basemap-gallery--source-refreshing .pgEarth-basemap-gallery__item-container {
+  opacity: 0.4;
+}
+
+.pgEarth-basemap-gallery__empty-message {
+  padding: 12px 15px;
+  animation: pgEarth-fade-in 500ms ease-in-out;
+}
+
+.pgEarth-basemap-gallery__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 6px 7px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  animation: pgEarth-fade-in 500ms ease-in-out;
+  transition: background-color 250ms ease-in-out;
+}
+
+.pgEarth-basemap-gallery__item:first-child {
+  margin-top: 6px;
+}
+
+.pgEarth-basemap-gallery_loading-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  width: 100%;
+  animation: pgEarth-fade-in 500ms ease-in-out;
+}
+
+.pgEarth-basemap-gallery_loading-indicator:before,
+.pgEarth-basemap-gallery_loading-indicator:after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  top: 0;
+}
+
+.pgEarth-basemap-gallery_loading-indicator:before {
+  background-color: rgba(50, 50, 50, 0.25);
+  width: 100%;
+  z-index: 1;
+  left: 0;
+  right: 0;
+}
+
+.pgEarth-basemap-gallery_loading-indicator:after {
+  background-color: #6e6e6e;
+  width: 20%;
+  z-index: 2;
+  animation: looping-progresss-bar-ani 1500ms linear infinite;
+}
+
+.pgEarth-basemap-gallery__item--loading {
+  cursor: auto;
+  background-color: #f2f2f2;
+  border-color: #ffffff;
+}
+
+.pgEarth-basemap-gallery__item--error {
+  cursor: auto;
+  opacity: 0.4;
+}
+
+.pgEarth-basemap-gallery__item-thumbnail {
+  height: 64px;
+  width: auto;
+  box-shadow: 0 0 0 1px rgba(50, 50, 50, 0.25);
+}
+
+.pgEarth-basemap-gallery__item-title {
+  font-size: 12px;
+  word-break: break-word;
+  color: #6e6e6e;
+  padding: 0 7px;
+}
+
+.pgEarth-basemap-gallery__item--selected,
+.pgEarth-basemap-gallery__item.pgEarth-basemap-gallery__item--selected:hover,
+.pgEarth-basemap-gallery__item.pgEarth-basemap-gallery__item--selected:focus {
+  cursor: auto;
+  border-left-color: #0079c1;
+  background-color: #e2f1fb;
+}
+.pgEarth-basemap-gallery__item--selected .pgEarth-basemap-gallery__item-title,
+.pgEarth-basemap-gallery__item.pgEarth-basemap-gallery__item--selected:hover .pgEarth-basemap-gallery__item-title,
+.pgEarth-basemap-gallery__item.pgEarth-basemap-gallery__item--selected:focus .pgEarth-basemap-gallery__item-title {
+  color: #323232;
+}
+
+.pgEarth-basemap-gallery__item:hover,
+.pgEarth-basemap-gallery__item:focus {
+  outline: none;
+  background-color: #f2f2f2;
+  border-left-color: #f2f2f2;
+}
+.pgEarth-basemap-gallery__item:hover .pgEarth-basemap-gallery__item-title,
+.pgEarth-basemap-gallery__item:focus .pgEarth-basemap-gallery__item-title {
+  color: #6e6e6e;
+}
+
+.pgEarth-basemap-gallery__item.pgEarth-basemap-gallery__item--error:hover,
+.pgEarth-basemap-gallery__item.pgEarth-basemap-gallery__item--error:focus {
+  background-color: #ffffff;
+  border-color: transparent;
+}
+
+.pgEarth-view-width-greater-than-large .pgEarth-basemap-gallery {
+  width: 420px;
+}
+.pgEarth-view-width-greater-than-large .pgEarth-basemap-gallery__item-container {
+  flex-flow: row wrap;
+  align-items: baseline;
+}
+.pgEarth-view-width-greater-than-large .pgEarth-basemap-gallery__item {
+  border: 1px solid rgba(0, 0, 0, 0);
+  flex-flow: column wrap;
+  width: 29.333%;
+  margin: 3px 2%;
+  padding: 12px 0;
+  text-align: center;
+}
+.pgEarth-view-width-greater-than-large .pgEarth-basemap-gallery__item-thumbnail {
+  max-width: 100%;
+  margin-bottom: 6px;
+}
+.pgEarth-view-width-greater-than-large .pgEarth-basemap-gallery__item-title {
+  margin-top: 6px;
+  width: 100%;
+}
+.pgEarth-view-width-greater-than-large .pgEarth-basemap-gallery__item--selected,
+.pgEarth-view-width-greater-than-large .pgEarth-basemap-gallery__item.pgEarth-basemap-gallery__item--selected:hover,
+.pgEarth-view-width-greater-than-large .pgEarth-basemap-gallery__item.pgEarth-basemap-gallery__item--selected:focus {
+  border-color: #0079c1;
+}
+
+html[dir=rtl] .pgEarth-basemap-gallery__item--selected,
+html[dir=rtl] .pgEarth-basemap-gallery__item.pgEarth-basemap-gallery__item--selected:hover,
+html[dir=rtl] .pgEarth-basemap-gallery__item.pgEarth-basemap-gallery__item--selected:focus {
+  border-left-color: transparent;
+  border-right-color: #0079c1;
+}
+
+@keyframes pgEarth-basemap-slide {
+  0% {
+    margin-top: 0;
+    margin-left: 0;
+    opacity: 0;
+  }
+  75% {
+    margin-top: 0;
+    margin-left: 0;
+    opacity: 0;
+  }
+  100% {
+    margin-top: 5px;
+    margin-left: 5px;
+    opacity: 1;
+  }
+}
+.pgEarth-basemap-toggle {
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+  width: 69px;
+  height: 69px;
+  background-color: transparent;
+  box-shadow: none;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.pgEarth-basemap-toggle:hover {
+  background-color: transparent;
+}
+
+.pgEarth-basemap-toggle__container,
+.pgEarth-basemap-toggle__image {
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.pgEarth-basemap-toggle__container {
+  z-index: 2;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.pgEarth-basemap-toggle__image {
+  background-color: #ffffff;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-image: url(../base/images/basemap-toggle-64.svg);
+}
+
+.pgEarth-basemap-toggle__image--secondary {
+  margin-top: 5px;
+  margin-left: 5px;
+  z-index: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  animation: pgEarth-basemap-slide 2000ms ease-in-out;
+}
+
+.pgEarth-basemap-toggle__image-overlay {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  transition: background-color 125ms ease-in-out;
+  background-color: rgba(255, 255, 255, 0);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.pgEarth-basemap-toggle__image-overlay .pgEarth-basemap-toggle:hover {
+  background-color: rgba(46, 46, 46, 0.4);
+}
+
+.pgEarth-basemap-toggle__title {
+  flex: 1 0 100%;
+  height: auto;
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1.3em;
+  padding: 0.5em;
+  background-color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+.pgEarth-basemap-toggle.pgEarth-disabled .pgEarth-basemap-toggle__image-overlay,
+.pgEarth-basemap-toggle.pgEarth-disabled .pgEarth-basemap-toggle__image--secondary {
+  background-color: #ffffff;
+}
+.pgEarth-basemap-toggle.pgEarth-disabled .pgEarth-basemap-toggle__image-overlay:before,
+.pgEarth-basemap-toggle.pgEarth-disabled .pgEarth-basemap-toggle__image--secondary:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background-color: #ffffff;
+  opacity: 0.25;
+}
+.pgEarth-basemap-toggle.pgEarth-disabled .pgEarth-basemap-toggle__image-overlay {
+  background-image: url(../base/images/basemap-toggle-64.svg);
+}
+.pgEarth-basemap-toggle.pgEarth-disabled .pgEarth-basemap-toggle__image--secondary:before {
+  opacity: 1;
+}
+.pgEarth-basemap-toggle.pgEarth-disabled .pgEarth-basemap-toggle__title {
+  display: none;
+}
+
+.pgEarth-widget.pgEarth-basemap-toggle .pgEarth-widget.pgEarth-basemap-toggle,
+.pgEarth-ui-corner .pgEarth-widget.pgEarth-basemap-toggle {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.pgEarth-browseitems {
+  margin: 0 auto;
+  width: 100%;
+  font-family: "Avenir LT W01 35 Light", Arial, Helvetica, sans-serif;
+  height: 100%;
+}
+.pgEarth-browseitems .gallery {
+  min-height: 450px;
+  margin: 0 auto;
+  height: 100%;
+  clear: both;
+}
+.pgEarth-browseitems .gallery .gallery-left {
+  float: left;
+  width: 25%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 90%;
+}
+.pgEarth-browseitems .gallery .gallery-left a {
+  text-decoration: none;
+  color: #6e6e6e;
+  font-size: 15px;
+}
+.pgEarth-browseitems .gallery .gallery-right {
+  float: right;
+  width: 74%;
+  height: 100%;
+  margin-top: 8px;
+}
+.pgEarth-browseitems .gallery .gallery-right p.filter-title {
+  margin-bottom: 0.3em;
+  padding: 0 1.5% 0 1.5%;
+  font-size: 17px;
+}
+.pgEarth-browseitems .gallery .template-info-panel {
+  width: 279px;
+  padding: 15px;
+  background: white;
+  border: solid 1px #e0e0e0;
+  border-right: none;
+  right: -680px;
+  top: 0px;
+  overflow-x: hidden;
+  position: absolute;
+  z-index: 800;
+  box-shadow: -2px 1px 2px rgba(0, 0, 0, 0.25);
+  transition: all 500ms ease-in-out;
+  height: 94.5%;
+}
+.pgEarth-browseitems .pgEarth-loaderthrob {
+  position: absolute;
+  background: #fff url("../base/images/loading-throb.gif") 100% center no-repeat !important;
+  top: 45%;
+  width: 33px;
+  text-align: center;
+  z-index: 100;
+  color: #ccc;
+  height: 39px;
+  left: 58%;
+}
+.pgEarth-browseitems .dgrid {
+  border: none !important;
+  height: auto;
+  min-height: 180px !important;
+}
+.pgEarth-browseitems .dgrid .dgrid-loading {
+  position: absolute;
+  background: #fff url("../base/images/loading-throb.gif") 100% center no-repeat !important;
+  top: 45%;
+  width: 33px;
+  text-align: center;
+  z-index: 100;
+  color: #ccc;
+  height: 39px;
+  left: 58%;
+}
+.pgEarth-browseitems .dgrid .gallery-view h5 {
+  width: 100%;
+  height: 2.125em;
+  line-height: 1em;
+  font-size: 16px;
+  word-wrap: break-word;
+  font-family: "Avenir LT W01 35 Light", Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+.pgEarth-browseitems .dgrid .dgrid-footer {
+  background: none repeat scroll 0 0 #FFF !important;
+  position: relative;
+}
+.pgEarth-browseitems .dgrid .dgrid-status {
+  display: none !important;
+  visibility: hidden;
+}
+.pgEarth-browseitems .dgrid .dgrid-pagination .dgrid-page-link {
+  background: none repeat scroll 0 0 #F2F2F2;
+  border: 1px solid #EDEDED;
+  border-radius: 4px 4px 4px 4px;
+  color: #999999;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 5px;
+  padding: 5px 10px;
+  float: left;
+}
+.pgEarth-browseitems .dgrid .dgrid-pagination .dgrid-page-link:hover {
+  background-color: #007AC2;
+  color: #FFF;
+}
+.pgEarth-browseitems .dgrid .dgrid-pagination .dgrid-page-skip {
+  background: none repeat scroll 0 0 #F2F2F2;
+  border: 1px solid #EDEDED;
+  border-radius: 4px 4px 4px 4px;
+  color: #999999;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 5px;
+  padding: 5px 10px;
+  float: left;
+}
+.pgEarth-browseitems .dgrid .dgrid-pagination .dgrid-page-disabled {
+  background-color: #007AC2;
+  color: #FFF;
+}
+.pgEarth-browseitems .dgrid .dgrid-pagination .dgrid-first {
+  background: none repeat scroll 0 0 #F2F2F2;
+  border: 1px solid #EDEDED;
+  border-radius: 4px 4px 4px 4px;
+  color: #999999;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 5px;
+  padding: 5px 10px;
+  float: left;
+}
+.pgEarth-browseitems .dgrid .dgrid-pagination .dgrid-first:hover {
+  background-color: #007AC2;
+  color: #FFF;
+}
+.pgEarth-browseitems .dgrid .dgrid-pagination .dgrid-previous {
+  background: none repeat scroll 0 0 #F2F2F2;
+  border: 1px solid #EDEDED;
+  border-radius: 4px 4px 4px 4px;
+  color: #999999;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 5px;
+  padding: 5px 10px;
+  float: left;
+}
+.pgEarth-browseitems .dgrid .dgrid-pagination .dgrid-previous:hover {
+  background-color: #007AC2;
+  color: #FFF;
+}
+.pgEarth-browseitems .dgrid .dgrid-pagination .dgrid-next {
+  background: none repeat scroll 0 0 #F2F2F2;
+  border: 1px solid #EDEDED;
+  border-radius: 4px 4px 4px 4px;
+  color: #999999;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 5px;
+  padding: 5px 10px;
+  float: left;
+}
+.pgEarth-browseitems .dgrid .dgrid-pagination .dgrid-next:hover {
+  background-color: #007AC2;
+  color: #FFF;
+}
+.pgEarth-browseitems .dgrid .dgrid-pagination .dgrid-last {
+  background: none repeat scroll 0 0 #F2F2F2;
+  border: 1px solid #EDEDED;
+  border-radius: 4px 4px 4px 4px;
+  color: #999999;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 5px;
+  padding: 5px 10px;
+  float: left;
+}
+.pgEarth-browseitems .dgrid .dgrid-pagination .dgrid-last:hover {
+  background-color: #007AC2;
+  color: #FFF;
+}
+.pgEarth-browseitems .hide {
+  display: none;
+}
+.pgEarth-browseitems .top-bar {
+  clear: both;
+  width: 100%;
+  padding: 0 10px;
+  margin: auto;
+}
+.pgEarth-browseitems #gallery-grid_search {
+  width: 31%;
+  margin-bottom: 10px;
+}
+.pgEarth-browseitems .gallery-left ul {
+  list-style: none;
+  padding: 0 0;
+  margin: 15px 0;
+  width: 100%;
+  border-right: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  border-left: 1px solid #efefef;
+}
+.pgEarth-browseitems .gallery-left li a {
+  padding: 0.5rem 0.2rem 0.5rem 0.7rem;
+  font-size: 15px;
+  margin-right: 0;
+  display: block;
+  line-height: 1.42857143;
+  border-top: 1px solid #efefef;
+  width: 90%;
+  color: #6e6e6e;
+  position: relative;
+}
+.pgEarth-browseitems .gallery-left li a:hover:after {
+  content: "»";
+  opacity: 1;
+  position: absolute;
+  right: 0;
+  top: 0.5rem;
+  padding: 0 0.3875rem;
+  transition: all 150ms linear;
+}
+.pgEarth-browseitems .gallery-left li.active > a {
+  color: #6e6e6e;
+  cursor: default;
+  background-color: #d2e9f9;
+}
+.pgEarth-browseitems .gallery-left li.active > a:focus {
+  color: #6e6e6e;
+  cursor: default;
+  background-color: #d2e9f9;
+}
+.pgEarth-browseitems .dgrid-grid.dgrid {
+  background: none repeat scroll 0 0 #FFF;
+  border: none;
+  width: auto !important;
+  height: auto;
+  max-height: 75%;
+  overflow-y: auto;
+}
+.pgEarth-browseitems .dgrid-grid.dgrid .gallery-view img {
+  border: 1px solid #e0e0e0;
+  padding: 4px;
+  transition: all 0.2s ease-in-out;
+}
+.pgEarth-browseitems .dgrid-grid.dgrid .gallery-view img:hover {
+  border-color: #333;
+}
+.pgEarth-browseitems .dgrid-grid.dgrid .dgrid-row .gallery-view {
+  float: left;
+  width: 29.9%;
+  padding: 1% 1.6%;
+  margin: auto;
+  position: relative;
+}
+.pgEarth-browseitems .dgrid-grid.dgrid .dgrid-row .gallery-view:hover {
+  cursor: pointer;
+  background: #fff;
+  background-color: #fff;
+}
+.pgEarth-browseitems .dgrid-grid.dgrid .dgrid-scroller {
+  position: relative;
+  min-height: 380px;
+}
+.pgEarth-browseitems .dgrid-grid.dgrid .dgrid-content {
+  background: none repeat scroll 0 0 #FFF;
+  border: none;
+  width: auto !important;
+  height: auto;
+  overflow-y: hidden;
+}
+.pgEarth-browseitems .dgrid-grid.dgrid .dgrid-row.dgrid-selected .gallery-view {
+  background: #fff;
+  background-color: #fff;
+}
+.pgEarth-browseitems .dgrid-grid.dgrid .dgrid-row.dgrid-selected .gallery-view:hover {
+  background: #fff;
+  background-color: #fff;
+}
+.pgEarth-browseitems .dgrid-grid.dgrid .dgrid-navigation {
+  float: inherit !important;
+  margin: 0 auto;
+  height: 40px;
+  text-align: center;
+  display: table;
+  width: auto !important;
+}
+.pgEarth-browseitems .template-overlay {
+  position: absolute;
+  z-index: 100;
+  top: 12px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  color: #fff;
+  width: 187px;
+  height: 124px;
+  line-height: 124px;
+  pointer-events: none;
+  font-size: 15px !important;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.pgEarth-browseitems .template-overlay p {
+  font-size: 15px;
+}
+.pgEarth-browseitems .instructions {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 50%;
+  float: left;
+}
+.pgEarth-browseitems .instructions span {
+  font-size: 17px;
+  display: inline-block;
+}
+.pgEarth-browseitems .instructions span.hide.messageLeft {
+  width: 0;
+  padding: 0;
+  display: none;
+}
+.pgEarth-browseitems .instructions span.messageLeft {
+  width: 37%;
+  padding-right: 6.25%;
+  vertical-align: top;
+}
+.pgEarth-browseitems .instructions span.messageRight {
+  width: 100%;
+  vertical-align: top;
+}
+.pgEarth-browseitems .instructions .messageRight {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out, left 0ms linear;
+}
+.pgEarth-browseitems .input-group-btn .btn {
+  margin-top: 0.6em;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  height: 2.25rem;
+}
+.pgEarth-browseitems .dgrid-no-data {
+  position: relative;
+  font-size: 17px;
+  margin: 20px;
+}
+.pgEarth-browseitems .templates.fade .dgrid {
+  opacity: 0.3;
+  transition: opacity 250ms ease-in-out, left 0ms linear 250ms;
+  pointer-events: none;
+}
+.pgEarth-browseitems .templates.fade .filter-title {
+  opacity: 0.3;
+  transition: opacity 250ms ease-in-out, left 0ms linear 250ms;
+  pointer-events: none;
+}
+.pgEarth-browseitems .templates {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out, left 0ms linear;
+}
+.pgEarth-browseitems .soria .dgrid-selected {
+  background: #fff;
+  background-color: #fff;
+}
+.pgEarth-browseitems .template-info-showing {
+  min-height: 150px;
+}
+.pgEarth-browseitems .template-info-showing .template-info {
+  display: block;
+}
+.pgEarth-browseitems .template-info-showing .thumbnail {
+  border: 1px solid #e0e0e0;
+  width: auto;
+  margin: 0 0 10px 0;
+  float: left;
+  padding: 0;
+}
+.pgEarth-browseitems .template-info-showing .thumbnail:hover {
+  border-color: #e0e0e0;
+  cursor: auto;
+}
+.pgEarth-browseitems .template-info-showing .thumbnail > img {
+  margin: 0;
+  width: 277px;
+}
+.pgEarth-browseitems .template-info-showing h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  clear: left;
+  color: #616161;
+  font-weight: normal;
+  max-height: 3em;
+  overflow: hidden;
+  height: auto;
+}
+.pgEarth-browseitems .template-info-showing p {
+  font-size: 1rem !important;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 7.5em;
+  line-height: 1.25em;
+}
+.pgEarth-browseitems .panel-actions {
+  width: 100%;
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  opacity: 0;
+  transition: opacity 250ms ease 500ms;
+  text-align: center;
+}
+.pgEarth-browseitems .quiet-scroll pre::-webkit-scrollbar {
+  width: 4px !important;
+  height: 4px !important;
+  border-left: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+.pgEarth-browseitems .quiet-scroll pre::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 0;
+}
+.pgEarth-browseitems .quiet-scroll pre::-webkit-scrollbar-track {
+  background: none;
+}
+.pgEarth-browseitems .quiet-scroll::-webkit-scrollbar {
+  width: 4px !important;
+  height: 4px !important;
+  border-left: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+.pgEarth-browseitems .quiet-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 0;
+}
+.pgEarth-browseitems .quiet-scroll::-webkit-scrollbar-track {
+  background: none;
+}
+.pgEarth-browseitems .btn-main {
+  width: 90%;
+  margin-bottom: 10px;
+}
+.pgEarth-browseitems .btn-secondary {
+  background-color: transparent;
+  color: #5daddd;
+  width: 44%;
+  border: 1px solid #5daddd;
+  margin: 4px 4px 10px 4px;
+}
+.pgEarth-browseitems .btn-secondary:hover {
+  text-decoration: none;
+  background-color: #5daddd;
+  color: white;
+}
+.pgEarth-browseitems .btn-wide {
+  width: 90%;
+}
+.pgEarth-browseitems .btn-cancel {
+  background: none;
+  border-color: #fff;
+  color: #828282;
+}
+.pgEarth-browseitems .btn-cancel:hover {
+  background: none;
+  border-color: #fff;
+  color: #005e95;
+}
+.pgEarth-browseitems p {
+  margin: 0;
+}
+.pgEarth-browseitems .btn {
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 0.37rem 0.9rem;
+  box-shadow: none;
+  white-space: normal;
+  word-wrap: break-word;
+}
+.pgEarth-browseitems .searchBar {
+  margin-right: 15px;
+  margin-top: 3px;
+  max-width: 37%;
+  width: auto;
+  float: right;
+}
+.pgEarth-browseitems .searchBar .pgEarthSearchBox {
+  padding-left: 1.5em !important;
+  background: url("../base/images/search.svg") no-repeat 0.25em center white !important;
+  display: inline-block;
+  padding: 0 0.31rem;
+  font-size: 0.9375rem;
+  line-height: 1.55rem;
+  color: #595959;
+  border: 1px solid #a9a9a9;
+  transition: border-color 150ms linear;
+  -webkit-appearance: textfield;
+  height: 2.25rem;
+  border-radius: 4px;
+  width: auto;
+  margin: 0 0 0 0 0;
+  float: left;
+  width: auto;
+}
+.pgEarth-browseitems .searchBar .btn {
+  margin-top: 0.6em;
+  height: 38px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.pgEarth-browseitems .pgEarthSearchBox:focus {
+  border: 1px solid #0079C1;
+}
+
+/*-------- Filters  -------------------------*/
+.pgEarth-browseitems.filters .pgEarthHelpIcon {
+  background: url("../base/images/helpIcon.png") no-repeat center;
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0 10px;
+  cursor: pointer;
+  display: inline-block;
+}
+.pgEarth-browseitems.filters .pgEarthHelpIcon.hide {
+  display: none;
+}
+.pgEarth-browseitems.filters .instructions {
+  width: 60%;
+}
+.pgEarth-browseitems.filters .instructions span.messageRight {
+  max-width: 40%;
+  width: auto;
+  vertical-align: top;
+}
+
+.pgEarth-browseitems.nofilters .pgEarth-loaderthrob {
+  left: 48%;
+}
+.pgEarth-browseitems.nofilters .gallery .gallery-left {
+  width: 0;
+  display: none;
+}
+.pgEarth-browseitems.nofilters .gallery .gallery-right {
+  width: 100%;
+  float: left;
+  overflow: hidden;
+}
+.pgEarth-browseitems.nofilters .gallery span.messageRight {
+  width: 100%;
+  vertical-align: top;
+}
+.pgEarth-browseitems.nofilters span.messageLeft {
+  width: 0;
+  padding: 0;
+  display: none;
+}
+.pgEarth-browseitems.nofilters .dgrid-grid.dgrid .dgrid-scroller {
+  margin-bottom: 0px !important;
+}
+
+.pgEarth-browseitems.nofilters.wide .dgrid-grid.dgrid .dgrid-row .gallery-view {
+  width: 21%;
+}
+.pgEarth-browseitems.nofilters.wide .template-overlay {
+  top: 14px;
+  left: 18px;
+}
+
+/*-------- RTL Styles  -------------------------*/
+.html[dir=rtl] .pgEarth-browseitems.filters .pgEarthHelpIcon {
+  margin: 0 10px 0 0;
+}
+.html[dir=rtl] .pgEarth-browseitems .searchBar {
+  margin: 0 0 0 10px;
+  margin-right: inherit;
+  margin-left: 15px;
+}
+.html[dir=rtl] .pgEarth-browseitems .searchBar .pgEarthSearchBox {
+  padding-left: inherit;
+  padding-right: 1.5em;
+  float: right;
+  border-radius: 0 4px 4px 0;
+  background: #fff url("../base/images/search32.png") 98% center no-repeat !important;
+}
+.html[dir=rtl] .pgEarth-browseitems .searchBar .btn {
+  border-radius: 4px 0 0 4px;
+}
+.html[dir=rtl] .pgEarth-browseitems .dgrid .dgrid-pagination .dgrid-page-link {
+  float: right;
+}
+.html[dir=rtl] .pgEarth-browseitems .dgrid .dgrid-pagination .dgrid-page-skip {
+  float: right;
+}
+.html[dir=rtl] .pgEarth-browseitems .dgrid .dgrid-row .gallery-view {
+  float: right;
+}
+.html[dir=rtl] .pgEarth-browseitems .gallery .gallery-left {
+  float: right;
+}
+.html[dir=rtl] .pgEarth-browseitems .gallery .template-info-panel {
+  border-left: none;
+  left: -680px;
+  right: inherit;
+  box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.25);
+  transition: all 500ms ease-in-out;
+}
+.html[dir=rtl] .pgEarth-browseitems .gallery-left li a:hover:after {
+  right: inherit;
+  left: 0;
+}
+.html[dir=rtl] .pgEarth-browseitems .template-overlay {
+  top: 11px;
+  left: 6px;
+}
+.html[dir=rtl] .pgEarth-browseitems .instructions {
+  float: right;
+}
+.html[dir=rtl] .pgEarth-browseitems .searchBar {
+  float: left;
+}
+.html[dir=rtl] .pgEarth-browseitems.showing .gallery .template-info-panel {
+  left: 0;
+  right: inherit;
+}
+
+.pgEarth-browseitems.showing .dgrid-grid.dgrid .gallery-view img:hover {
+  border-color: #e0e0e0;
+}
+.pgEarth-browseitems.showing .instructions .messageRight {
+  opacity: 0.3;
+  transition: opacity 250ms ease-in-out, left 0ms linear 250ms;
+  pointer-events: none;
+}
+.pgEarth-browseitems.showing .templates .dgrid {
+  opacity: 0.3;
+  transition: opacity 250ms ease-in-out, left 0ms linear 250ms;
+  pointer-events: none;
+}
+.pgEarth-browseitems.showing .templates .filter-title {
+  opacity: 0.3;
+  transition: opacity 250ms ease-in-out, left 0ms linear 250ms;
+  pointer-events: none;
+}
+.pgEarth-browseitems.showing .pgEarthHelpIcon {
+  opacity: 0.3;
+  transition: opacity 250ms ease-in-out, left 0ms linear 250ms;
+  pointer-events: none;
+  pointer-events: none;
+  cursor: default;
+}
+.pgEarth-browseitems.showing .gallery .gallery-right {
+  cursor: pointer;
+}
+.pgEarth-browseitems.showing .gallery .template-info-panel {
+  opacity: 1;
+  right: 0px;
+}
+.pgEarth-browseitems.showing .panel-actions {
+  opacity: 1;
+}
+
+/* Medium screens */
+@media all and (max-width: 800px) {
+  .pgEarth-browseitems .dgrid .dgrid-content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+  }
+  .pgEarth-browseitems .dgrid .dgrid-row {
+    flex: 0 1 50%;
+  }
+}
+/* Small screens */
+@media all and (max-width: 500px) {
+  .pgEarth-browseitems .dgrid .dgrid-content {
+    display: flex;
+    flex-flow: column wrap;
+  }
+  .pgEarth-browseitems .dgrid .dgrid-pagination .dgrid-next {
+    flex: 0 1 50%;
+  }
+  .pgEarth-browseitems .dgrid-grid.dgrid .dgrid-navigation {
+    margin: 0;
+    flex-flow: row wrap;
+    display: inline-flex;
+    align-items: flex-end;
+  }
+  .pgEarth-browseitems .dgrid-pagination-links {
+    flex: 0 1 50%;
+  }
+
+  .pgEarthBrowseAnalysisLayers .top-bar {
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: column;
+  }
+  .pgEarthBrowseAnalysisLayers .dgrid .dgrid-pagination .dgrid-previous {
+    flex: 0 1 50%;
+  }
+}
+.pgEarth-color-picker {
+  font-size: 12px;
+  color: #6e6e6e;
+  text-shadow: none;
+  width: 226px;
+}
+
+.pgEarth-color-picker .pgEarth-section {
+  margin: 10px 0 8px;
+}
+
+.pgEarth-color-picker .pgEarth-section:last-child {
+  margin-bottom: 0;
+}
+
+.pgEarth-color-picker.pgEarth-container {
+  display: inline-block;
+  padding: 12px 15px;
+  background-color: #ffffff;
+}
+
+.pgEarth-color-picker .pgEarth-hex-input {
+  display: inline-block;
+  color: #6e6e6e;
+  width: 5.6em;
+  border: 1px solid rgba(50, 50, 50, 0.25);
+  direction: ltr;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.pgEarth-color-picker .pgEarth-input-label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.pgEarth-color-picker .pgEarth-swatch {
+  vertical-align: middle;
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0;
+  border-radius: 0;
+  border-color: transparent;
+  transition: background-color 0.25s ease-in-out, transform 0.25s ease-in-out;
+}
+
+.pgEarth-color-picker .pgEarth-swatch-empty:before {
+  display: inline-block;
+  background-color: #f00;
+  position: absolute;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  transform: rotate(-45deg);
+  transform-origin: top left;
+  content: "";
+  z-index: 1;
+}
+
+.pgEarth-color-picker .pgEarth-swatch-empty {
+  position: relative;
+  overflow: hidden;
+  border: solid 1px rgba(50, 50, 50, 0.25);
+  background-color: #ffffff;
+  transition: border-color 0.25s ease-in-out;
+}
+
+.pgEarth-color-picker .pgEarth-palette-options {
+  padding: 6px 0 0;
+  position: relative;
+}
+
+.pgEarth-color-picker .pgEarth-palette-options .pgEarth-swatch-empty {
+  margin: 0 10px 0;
+}
+
+.pgEarth-color-picker .pgEarth-palette-options .pgEarth-palette-toggle {
+  position: absolute;
+  right: 0;
+  color: #6e6e6e;
+  vertical-align: middle;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  background: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dijitRtl .pgEarth-color-picker .pgEarth-palette-options .pgEarth-palette-toggle {
+  left: 0;
+  right: auto;
+}
+
+.pgEarth-color-picker .pgEarth-label {
+  margin: 0 0 4px;
+}
+
+.pgEarth-color-pickerLabel.pgEarth-disabled {
+  opacity: 0.6;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+}
+
+.pgEarth-color-picker .pgEarth-swatch-preview {
+  margin: 0;
+  vertical-align: middle;
+  display: inline-block;
+  height: 25px;
+  width: 100%;
+}
+
+.pgEarth-color-picker .pgEarth-swatch-preview.pgEarth-container {
+  position: relative;
+  left: 0;
+  right: 0;
+  display: block;
+  text-align: center;
+}
+
+.pgEarth-color-picker .pgEarth-swatch-preview .pgEarth-swatch {
+  position: absolute;
+  cursor: auto;
+  margin: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 25px;
+  width: 100%;
+}
+
+.pgEarth-color-picker .pgEarth-swatch-preview .pgEarth-swatch.pgEarth-swatch-empty {
+  display: none;
+}
+
+.pgEarth-color-picker .pgEarth-swatch-row {
+  font-size: 0;
+  white-space: nowrap;
+  line-height: 0;
+}
+
+.pgEarth-color-picker .pgEarth-palette.pgEarth-recent:empty {
+  background-color: #f2f2f2;
+  box-shadow: 0 0 0 1px rgba(50, 50, 50, 0.25);
+  width: 15px;
+  height: 15px;
+}
+
+.pgEarth-color-picker .pgEarth-swatch.pgEarth-swatch-transparency-background {
+  background-image: url("../base/images/transparent-bg.png");
+}
+
+.pgEarth-color-picker .pgEarth-palette .pgEarth-swatch.pgEarth-selected {
+  border: 1px solid;
+}
+
+.pgEarth-color-picker .pgEarth-swatch.pgEarth-selected {
+  animation: pgEarth-color-picker-highlight-selection 0.2s ease;
+}
+
+.pgEarth-color-picker .pgEarth-transparency-slider::-ms-tooltip {
+  display: none;
+}
+
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range] {
+  -webkit-appearance: none;
+  margin: 0;
+  width: 100%;
+}
+
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  box-shadow: none;
+  background-color: rgba(50, 50, 50, 0.25);
+  border-radius: 0px;
+  border: none;
+  transition: background-color 250ms ease-in-out;
+}
+
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-webkit-slider-thumb {
+  box-shadow: none;
+  border: none;
+  height: 16px;
+  width: 10px;
+  border-radius: 2px;
+  background-color: #6e6e6e;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -6px;
+  transition: background-color 250ms ease-in-out;
+}
+
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range][disabled]::-webkit-slider-runnable-track {
+  background-color: rgba(110, 110, 110, 0.4);
+}
+
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range][disabled]::-webkit-slider-thumb {
+  background-color: rgba(110, 110, 110, 0.4);
+}
+
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range][disabled],
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range][disabled]::-webkit-slider-runnable-track,
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range][disabled]::-webkit-slider-thumb {
+  cursor: default;
+}
+
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range][disabled] + .pgEarth-color-picker-ticks {
+  color: rgba(110, 110, 110, 0.4);
+}
+
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range]:focus::-webkit-slider-runnable-track {
+  background-color: rgba(50, 50, 50, 0.25);
+}
+
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-moz-range-track,
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-ms-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  box-shadow: none;
+  background-color: rgba(50, 50, 50, 0.25);
+  border: none;
+  border-radius: 0px;
+  border: none;
+  color: transparent;
+}
+
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-moz-range-thumb,
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-ms-thumb {
+  box-shadow: none;
+  border: none;
+  height: 16px;
+  width: 10px;
+  border-radius: 2px;
+  background: #6e6e6e;
+  cursor: pointer;
+}
+
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-ms-fill-lower,
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range]::-ms-fill-upper {
+  background: rgba(50, 50, 50, 0.25);
+  border: none;
+  border-radius: 0px;
+  box-shadow: none;
+}
+
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range]:focus::-ms-fill-lower,
+.pgEarth-color-picker .pgEarth-transparency-slider[type=range]:focus::-ms-fill-upper {
+  background: rgba(50, 50, 50, 0.25);
+}
+
+.pgEarth-color-picker .pgEarth-palette.pgEarth-container.pgEarth-alt .pgEarth-palette {
+  left: -100%;
+}
+
+.pgEarth-color-picker .pgEarth-palette.pgEarth-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.pgEarth-color-picker .pgEarth-palette {
+  left: 0;
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  transition: left 0.15s, visibility 0.1s;
+}
+
+.pgEarth-color-picker .pgEarth-container .pgEarth-palette {
+  margin: 6px 0;
+}
+
+.dijitRtl .pgEarth-color-picker .pgEarth-palette {
+  left: auto;
+  right: 0;
+  transition-property: right;
+}
+
+.dijitRtl .pgEarth-color-picker .pgEarth-palette.pgEarth-container.pgEarth-alt .pgEarth-palette {
+  right: -100%;
+  left: 0;
+}
+
+.pgEarth-color-picker .pgEarth-color-picker-ticks {
+  margin-top: 9px;
+  display: flex;
+  justify-content: space-between;
+  transition: color 250ms ease-in-out;
+}
+
+.pgEarth-compass {
+  border-radius: 50%;
+}
+
+.pgEarth-compass--active {
+  background-color: #e2f1fb;
+}
+
+.pgEarth-compass__icon {
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+}
+
+.pgEarth-date-picker {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  border: 1px solid rgba(50, 50, 50, 0.25);
+  background-color: #ffffff;
+}
+
+.pgEarth-date-picker__calendar {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  background-color: #ffffff;
+  top: 36px;
+  left: 0;
+  padding: 9px;
+  z-index: 1;
+}
+
+.pgEarth-date-picker__day-picker,
+.pgEarth-date-picker__month-picker,
+.pgEarth-date-picker__year-picker {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pgEarth-date-picker__day-picker,
+.pgEarth-date-picker__month-picker {
+  margin-bottom: 9px;
+}
+
+.pgEarth-date-picker__date {
+  margin: 0 12px 0 0;
+}
+
+.pgEarth-date-picker__calendar-toggle {
+  border: none;
+  font-size: 14px;
+  width: 100%;
+  margin: 0;
+  padding: 0 0.5em;
+  height: 32px;
+  color: #323232;
+}
+
+.pgEarth-date-picker .pgEarth-date-picker__month-dropdown {
+  border: none;
+  width: auto;
+  font-weight: 600;
+  padding-right: 2.3em;
+}
+
+.pgEarth-date-picker__week-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.pgEarth-date-picker__day-item--header {
+  background: #f2f2f2;
+  font-weight: 600;
+  cursor: auto;
+}
+
+.pgEarth-date-picker__day-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-bottom: 1px solid rgba(50, 50, 50, 0.25);
+  border-right: 1px solid rgba(50, 50, 50, 0.25);
+  cursor: pointer;
+}
+
+.pgEarth-date-picker__day-item--header {
+  border-top: 1px solid rgba(50, 50, 50, 0.25);
+}
+
+.pgEarth-date-picker__day-item:first-child {
+  border-left: 1px solid rgba(50, 50, 50, 0.25);
+}
+
+.pgEarth-date-picker__day-item--nearby-month {
+  color: rgba(110, 110, 110, 0.4);
+}
+
+.pgEarth-date-picker__day-item--today {
+  color: #0079c1;
+}
+
+.pgEarth-date-picker__day-item--active {
+  background: rgba(50, 50, 50, 0.25);
+}
+
+.pgEarth-date-picker__month-picker {
+  font-weight: 600;
+  justify-content: space-between;
+}
+
+.pgEarth-date-picker__year-picker-item {
+  color: #323232;
+  padding: 9px;
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+.pgEarth-date-picker__day-item--selected,
+.pgEarth-date-picker__year-picker-item--selected {
+  color: #ffffff;
+  background-color: #0079c1;
+  cursor: auto;
+}
+
+html[dir=rtl] .pgEarth-date-picker__calendar {
+  left: 0;
+  right: 15px;
+}
+html[dir=rtl] .pgEarth-date-picker__date {
+  margin: 0 0 0 12px;
+}
+
+.pgEarth-directions {
+  width: 300px;
+  max-height: 420px;
+  color: #323232;
+}
+
+.pgEarth-directions__panel-content {
+  padding: 12px 0;
+}
+
+.pgEarth-directions__section {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.pgEarth-directions__section-splitter {
+  width: 100%;
+  margin: 18px 0;
+  border-top: 1px solid rgba(50, 50, 50, 0.25);
+}
+
+.pgEarth-directions__travel-modes-select,
+.pgEarth-directions__departure-time {
+  margin: 0 15px 6px;
+  width: calc(100% - 30px);
+}
+
+.pgEarth-directions__panel-content--loading,
+.pgEarth-directions__panel-content--error {
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pgEarth-directions__panel-content--loading {
+  background: url(../base/images/loading-throb.gif) no-repeat center;
+}
+
+.pgEarth-directions__departure-time-controls {
+  display: flex;
+}
+
+.pgEarth-directions__departure-time-controls .pgEarth-date-picker,
+.pgEarth-directions__departure-time-controls .pgEarth-time-picker {
+  flex: 1 50%;
+  border-top: 0;
+}
+
+.pgEarth-directions__departure-time-controls .pgEarth-widget:first-child {
+  border-right: 0;
+}
+
+.pgEarth-directions__departure-time-controls .pgEarth-time-picker {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.pgEarth-directions__departure-time-controls .pgEarth-time-picker .pgEarth-time-picker__input {
+  width: 100%;
+  padding: 0 7px;
+}
+
+.pgEarth-directions__departure-time-controls .pgEarth-date-picker__calendar-toggle {
+  padding: 0;
+}
+
+.pgEarth-directions__directions-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 128px;
+}
+
+.pgEarth-directions__message {
+  color: #6e6e6e;
+}
+
+.pgEarth-directions__summary {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.pgEarth-directions__summary-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.pgEarth-directions__stops {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pgEarth-directions__stop-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-top: dashed 2px transparent;
+}
+
+.pgEarth-directions__stop-row--dragged {
+  opacity: 0.25;
+}
+
+.pgEarth-directions__stop-row--target {
+  border-top-color: #323232;
+}
+
+.pgEarth-directions__stop-row-ghost {
+  font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  width: 284px;
+  padding: 8px;
+  position: absolute;
+  border: solid 2px rgba(0, 0, 0, 0.15);
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+
+.pgEarth-directions__stop-underline {
+  border-top: 1px solid rgba(50, 50, 50, 0.25);
+}
+
+.pgEarth-directions__stop-handle {
+  padding-left: 7px;
+}
+
+.pgEarth-directions__stop-input:hover .pgEarth-directions__stop-underline {
+  border-color: #323232;
+}
+
+.pgEarth-directions .pgEarth-search__input:focus + .pgEarth-directions__stop-underline {
+  border-color: #0079c1;
+}
+
+.pgEarth-directions__stop-underline--drag-in-process {
+  border-color: transparent;
+}
+
+.pgEarth-directions__stop-input {
+  padding: 0 4px;
+  flex-grow: 0.8;
+}
+
+.pgEarth-directions__stop-input .pgEarth-search .pgEarth-search__input {
+  margin-bottom: 2px;
+  padding: 0;
+  outline-offset: 4px;
+}
+
+.pgEarth-directions__add-stop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  cursor: pointer;
+}
+
+.pgEarth-directions__add-stop .pgEarth-directions__stop-icon {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 0.08;
+}
+
+.pgEarth-directions__add-stop .pgEarth-directions__add-stop-text {
+  width: auto;
+  flex-grow: 0.9;
+  padding: 0 4px;
+}
+
+.pgEarth-directions__remove-stop-icon,
+.pgEarth-directions__stop-row:hover .pgEarth-directions__remove-stop-icon[hidden] {
+  visibility: hidden;
+}
+
+.pgEarth-directions__remove-stop:focus .pgEarth-directions__remove-stop-icon,
+.pgEarth-directions__stop-row:hover .pgEarth-directions__remove-stop-icon {
+  visibility: visible;
+}
+
+.pgEarth-directions__reverse-stops[hidden] {
+  display: inherit;
+  visibility: hidden;
+}
+
+.pgEarth-directions__stop-options {
+  display: flex;
+  flex-grow: 0.1;
+  justify-content: space-between;
+  padding-right: 7px;
+}
+
+.pgEarth-directions__stop-row:first-child {
+  margin-top: 0;
+}
+
+.pgEarth-directions__stop-row:last-child {
+  margin-bottom: 0;
+}
+
+.pgEarth-directions__stop-icon[hidden] {
+  display: inline-block;
+  visibility: hidden;
+}
+
+.pgEarth-directions__stop-icon--interactive {
+  cursor: pointer;
+}
+
+.pgEarth-directions__stop-icon-container {
+  display: inline-block;
+  position: relative;
+}
+
+.pgEarth-directions__stop-icon-container::after {
+  content: "";
+  display: block;
+  border-left: 1px dashed rgba(50, 50, 50, 0.25);
+  position: absolute;
+  height: 28px;
+  top: 14px;
+  left: 6px;
+}
+
+.pgEarth-directions__stop-icon-container--last::after {
+  border: none;
+}
+
+.pgEarth-directions__stop-handle-icon {
+  visibility: hidden;
+}
+
+.pgEarth-directions__costs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  cursor: pointer;
+  padding: 12px 15px;
+}
+
+.pgEarth-directions__costs-details {
+  display: flex;
+  justify-content: space-around;
+  white-space: nowrap;
+  width: 80%;
+  margin-bottom: 6px;
+}
+
+.pgEarth-directions__costs-units {
+  display: flex;
+  justify-content: space-around;
+}
+
+.pgEarth-directions__costs-value,
+.pgEarth-directions__other-costs-total,
+.pgEarth-directions__vertical-splitter {
+  color: #6e6e6e;
+  font-size: 1.5em;
+  line-height: 1.5;
+}
+
+.pgEarth-directions__vertical-splitter {
+  border: 1px solid rgba(50, 50, 50, 0.2);
+}
+
+.pgEarth-directions__horizontal-splitter {
+  border-top: 1px solid rgba(50, 50, 50, 0.25);
+  flex-grow: 0.95;
+}
+
+.pgEarth-directions__maneuvers {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px 0 0 0;
+  margin: 0;
+}
+
+.pgEarth-directions__maneuver {
+  display: flex;
+  padding: 9px 15px 9px 18px;
+  border: none;
+  border-left: 4px solid transparent;
+  cursor: pointer;
+}
+
+.pgEarth-directions__maneuver:hover,
+.pgEarth-directions__maneuver:focus {
+  background-color: whitesmoke;
+}
+
+.pgEarth-directions__maneuver--active {
+  border-color: #0079c1;
+  background-color: whitesmoke;
+}
+
+.pgEarth-directions__maneuver-list {
+  padding: 0;
+  margin: 0;
+}
+
+.pgEarth-directions__maneuver-section-header {
+  display: flex;
+  padding: 0 15px;
+}
+
+.pgEarth-directions__maneuver-section-header [class*=pgEarth-icon] {
+  padding-top: 2px;
+}
+
+.pgEarth-directions__maneuver-section-header-toggle-button {
+  display: flex;
+}
+
+.pgEarth-directions__maneuver-section-title {
+  font-size: 18px;
+  color: #595959;
+  padding: 0 7px 12px;
+}
+
+.pgEarth-directions__maneuver-section-toggle {
+  cursor: pointer;
+}
+
+.pgEarth-directions__maneuver-icon {
+  fill: #323232;
+  margin-right: 4px;
+  width: 24px;
+  height: 24px;
+}
+
+.pgEarth-directions__maneuver-costs {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.pgEarth-directions__cost--intermediate,
+.pgEarth-directions__cost--cumulative {
+  font-size: 12px;
+}
+
+.pgEarth-directions__maneuver-costs-container {
+  width: 100%;
+}
+
+.pgEarth-directions__scroller {
+  overflow-y: auto;
+}
+
+.pgEarth-directions__stop-row--valid .pgEarth-directions__stop-handle:hover {
+  cursor: pointer;
+}
+.pgEarth-directions__stop-row--valid .pgEarth-directions__stop-handle:hover .pgEarth-directions__stop-handle-icon {
+  visibility: visible;
+}
+
+.pgEarth-directions__button {
+  height: 32px;
+  width: 50%;
+  margin: 6px 0;
+  cursor: pointer;
+  border-radius: 0;
+  background-color: transparent;
+  border: 1px solid #0079c1;
+  color: #0079c1;
+}
+
+.pgEarth-directions__button:hover {
+  background-color: #0079c1;
+  color: #ffffff;
+}
+
+.pgEarth-directions__disclaimer {
+  font-size: 12px;
+  color: #595959;
+  padding: 0 15px;
+}
+
+.pgEarth-directions__disclaimer a {
+  color: #0079c1;
+}
+
+.pgEarth-directions .pgEarth-search {
+  box-shadow: none;
+  width: auto;
+}
+.pgEarth-directions .pgEarth-search .pgEarth-widget-button {
+  display: none;
+}
+
+.pgEarth-directions .pgEarth-search .pgEarth-search__container:before {
+  display: none;
+}
+
+.pgEarth-directions .pgEarth-search .pgEarth-search__container:after {
+  top: auto;
+  bottom: -2px;
+}
+
+.pgEarth-expand {
+  overflow: visible;
+}
+
+.pgEarth-expand__container {
+  position: relative;
+  transition: 300ms;
+}
+
+.pgEarth-expand__content {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  z-index: 1;
+  margin: 0 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transition: opacity 250ms ease-in-out, margin 250ms ease-in-out;
+  overflow: hidden;
+}
+
+.pgEarth-ui-top-left .pgEarth-expand__content,
+.pgEarth-ui-bottom-left .pgEarth-expand__content {
+  left: 100%;
+}
+
+.pgEarth-ui-top-right .pgEarth-expand__content,
+.pgEarth-ui-bottom-right .pgEarth-expand__content {
+  right: 100%;
+}
+
+.pgEarth-ui-top-left .pgEarth-expand__content,
+.pgEarth-ui-top-right .pgEarth-expand__content {
+  top: 0;
+}
+
+.pgEarth-ui-bottom-left .pgEarth-expand__content,
+.pgEarth-ui-bottom-right .pgEarth-expand__content {
+  bottom: 0;
+}
+
+.pgEarth-ui-top-left .pgEarth-icon-expand,
+.pgEarth-ui-bottom-left .pgEarth-icon-expand,
+.pgEarth-ui-top-left .pgEarth-icon-collapse,
+.pgEarth-ui-bottom-left .pgEarth-icon-collapse {
+  transform: rotate(180deg);
+}
+
+.pgEarth-expand__content--expanded {
+  opacity: 1;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.pgEarth-expand__content .pgEarth-widget {
+  box-shadow: none;
+}
+
+.pgEarth-expand__icon-number {
+  position: absolute;
+  top: -5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 1em;
+  padding: 0.125em 0.333em;
+  height: 16px;
+  border-radius: 16px;
+  background-color: #6e6e6e;
+  color: #ffffff;
+  transform-origin: 50%;
+  animation: expand-number-intro-ani 1000ms ease-in-out;
+}
+
+.pgEarth-ui-top-left .pgEarth-expand__icon-number,
+.pgEarth-ui-bottom-left .pgEarth-expand__icon-number {
+  right: -6px;
+}
+
+.pgEarth-ui-top-right .pgEarth-expand__icon-number,
+.pgEarth-ui-bottom-right .pgEarth-expand__icon-number {
+  left: -6px;
+}
+
+.pgEarth-ui-bottom-right .pgEarth-expand__icon-number--expanded,
+.pgEarth-ui-top-right .pgEarth-expand__icon-number--expanded,
+.pgEarth-ui-bottom-left .pgEarth-expand__icon-number--expanded,
+.pgEarth-ui-top-left .pgEarth-expand__icon-number--expanded {
+  position: static;
+  top: auto;
+  left: auto;
+  right: auto;
+}
+
+.pgEarth-expand__icon-number--expanded {
+  display: none;
+}
+
+.pgEarth-view-width-xsmall .pgEarth-expand .pgEarth-widget {
+  max-width: 100%;
+  width: 100%;
+}
+.pgEarth-view-width-xsmall .pgEarth-expand__container--expanded {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  height: 100%;
+  background: #fff;
+  z-index: 1;
+  overflow: auto;
+}
+.pgEarth-view-width-xsmall .pgEarth-expand__container--expanded .pgEarth-expand__panel {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.023rem;
+  align-items: center;
+}
+.pgEarth-view-width-xsmall .pgEarth-expand__container--expanded .pgEarth-expand__panel .pgEarth-expand__icon-number--expanded {
+  display: block;
+}
+.pgEarth-view-width-xsmall .pgEarth-ui-top-right .pgEarth-expand__panel,
+.pgEarth-view-width-xsmall .pgEarth-ui-bottom-right .pgEarth-expand__panel {
+  flex-flow: row nowrap;
+}
+.pgEarth-view-width-xsmall .pgEarth-ui-top-right .pgEarth-expand__container--expanded,
+.pgEarth-view-width-xsmall .pgEarth-ui-bottom-right .pgEarth-expand__container--expanded {
+  width: 75%;
+  animation: expand-slide-rtl-ani 300ms forwards;
+}
+.pgEarth-view-width-xsmall .pgEarth-ui-top-left .pgEarth-expand__panel,
+.pgEarth-view-width-xsmall .pgEarth-ui-bottom-left .pgEarth-expand__panel {
+  flex-flow: row-reverse nowrap;
+}
+.pgEarth-view-width-xsmall .pgEarth-ui-top-left .pgEarth-expand__container--expanded,
+.pgEarth-view-width-xsmall .pgEarth-ui-bottom-left .pgEarth-expand__container--expanded {
+  width: 75%;
+  animation: expand-slide-ltr-ani 300ms forwards;
+}
+.pgEarth-view-width-xsmall .pgEarth-expand__mask--expanded {
+  background-color: #000;
+  position: fixed;
+  right: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.pgEarth-view-width-greater-than-xsmall .pgEarth-expand__content {
+  position: absolute;
+}
+.pgEarth-view-width-greater-than-xsmall .pgEarth-expand__mask,
+.pgEarth-view-width-greater-than-xsmall .pgEarth-expand__content-panel {
+  display: none;
+}
+
+@keyframes expand-slide-rtl-ani {
+  from {
+    right: -600px;
+    left: 100%;
+  }
+  to {
+    right: 0;
+    left: 25%;
+  }
+}
+@keyframes expand-slide-ltr-ani {
+  from {
+    left: -600px;
+    right: 100%;
+  }
+  to {
+    left: 0;
+    right: 25%;
+  }
+}
+@keyframes expand-number-intro-ani {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pgEarth-horizontal-slider.dijitSlider.dijitDisabled {
+  opacity: 0.5;
+}
+
+.pgEarth-horizontal-slider.dijitSlider .dijitSliderBumper {
+  background: #999 none;
+}
+
+.pgEarth-horizontal-slider.dijitSlider .dijitSliderBar {
+  border-color: #999;
+}
+
+.pgEarth-horizontal-slider.dijitSlider .dijitSliderProgressBar {
+  background: #ddd none;
+}
+
+.pgEarth-horizontal-slider.dijitSlider .dijitSliderImageHandle,
+.pgEarth-horizontal-slider.dijitSlider .dijitSliderImageHandle.dijitSliderThumbHover {
+  background: url("../base/images/slider-handle.png");
+  border: none;
+  width: 10px;
+  height: 14px;
+}
+
+.dijitRtl .pgEarth-horizontal-slider.dijitSlider .dijitSliderImageHandle {
+  left: auto;
+  right: 50%;
+}
+
+.dijitRtl .pgEarth-horizontal-slider .dijitSliderMoveableH {
+  right: auto;
+  left: 0;
+}
+
+.pgEarth-horizontal-slider .dijitRuleContainer {
+  padding: 6px 0 20px;
+  color: #4d4d4d;
+}
+
+.pgEarth-horizontal-slider .dijitRuleLabel {
+  z-index: 2;
+  font-size: 12px;
+}
+
+.pgEarthSignInDialog.pgEarth-widget table tr :nth-child(even),
+.pgEarthSignInDialog.pgEarth-widget table tr :nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip {
+  font-size: 14px;
+  font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.pgEarthIdentityDialog {
+  /****
+      GENERIC PIECES
+   ****/
+  /****
+      A11Y
+   ****/
+  /* button inner contents - labels, icons etc. */
+  /****
+    3-element borders:  ( dijitLeft + dijitStretch + dijitRight )
+    These were added for rounded corners on dijit.form.*Button but never actually used.
+   ****/
+  /* Buttons */
+  /******
+    TextBox related.
+    Everything that has an <input>
+  *******/
+  /* rules for webkit to deal with fuzzy blue focus border */
+  /* Layout widgets. This is essential CSS to make layout work (it isn't "styling" CSS)
+     make sure that the position:absolute in dijitAlign* overrides other classes */
+  /* ContentPane */
+  /* Dialog */
+  /* images off, high-contrast mode styles */
+  /**** Disabled cursor *****/
+}
+
+.pgEarthIdentityDialog .dijitReset {
+  /* Use this style to null out padding, margin, border in your template elements
+    so that page specific styles don't break them.
+    - Use in all TABLE, TR and TD tags.
+  */
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  line-height: normal;
+  color: inherit;
+}
+
+.pgEarthIdentityDialog .dijitInline {
+  /*  To inline block elements.
+    Similar to InlineBox below, but this has fewer side-effects in Moz.
+    Also, apparently works on a DIV as well as a FIELDSET.
+  */
+  display: inline-block;
+  /* webkit and FF3 */
+  border: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.pgEarthIdentityDialog table.dijitInline {
+  /* To inline tables with a given width set */
+  display: inline-table;
+  box-sizing: content-box;
+  -moz-box-sizing: content-box;
+}
+
+.pgEarthIdentityDialog .dijitVisible {
+  /* To show selected pane in StackContainer etc. */
+  display: block !important;
+  /* override user's display:none setting via style setting or indirectly via class */
+  position: relative;
+  /* to support setting width/height, see #2033 */
+  visibility: visible;
+}
+
+.pgEarthIdentityDialog .dijitInputContainer {
+  /* for positioning of placeHolder */
+  overflow: hidden;
+  float: none !important;
+  /* needed to squeeze the INPUT in */
+  position: relative;
+}
+
+.pgEarthIdentityDialog .dijitValidationTextBox .dijitValidationContainer {
+  float: right;
+  text-align: center;
+}
+
+.pgEarthIdentityDialog .dijitTextBox input.dijitInputField {
+  /* override unreasonable user styling of buttons and icons */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.pgEarthIdentityDialog .dijitValidationTextBox .dijitValidationContainer {
+  display: none;
+}
+
+.pgEarthIdentityDialog .dijitOffScreen {
+  /* these class attributes should supersede any inline positioning style */
+  position: absolute !important;
+  left: -10000px !important;
+  top: -10000px !important;
+}
+
+.pgEarthIdentityDialog .dijitContainer {
+  /* for all layout containers */
+  overflow: hidden;
+  /* need on IE so something can be reduced in size, and so scrollbars aren't temporarily displayed when resizing */
+}
+
+.pgEarthIdentityDialog .dijitButtonNode * {
+  vertical-align: middle;
+}
+
+.pgEarthIdentityDialog .dijitLeft {
+  /* Left part of a 3-element border */
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+
+.pgEarthIdentityDialog .dijitStretch {
+  /* Middle (stretchy) part of a 3-element border */
+  white-space: nowrap;
+  /* MOW: move somewhere else */
+  background-repeat: repeat-x;
+}
+
+.pgEarthIdentityDialog .dijitRight {
+  /* Right part of a 3-element border */
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+.pgEarthIdentityDialog .dijitButton {
+  /* outside of button */
+  margin: 0.2em;
+  vertical-align: middle;
+}
+
+.pgEarthIdentityDialog .dijitButtonContents {
+  display: block;
+  /* to make focus border rectangular */
+}
+
+.pgEarthIdentityDialog td.dijitButtonContents {
+  display: table-cell;
+  /* but don't affect Select, ComboButton */
+}
+
+.pgEarthIdentityDialog .dijitButtonNode img {
+  /* make text and images line up cleanly */
+  vertical-align: middle;
+  /*margin-bottom:.2em;*/
+}
+
+.pgEarthIdentityDialog .dijitButtonNode {
+  /* Node that is acting as a button -- may or may not be a BUTTON element */
+  border: 1px solid gray;
+  margin: 0;
+  line-height: normal;
+  vertical-align: middle;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.pgEarthIdentityDialog .dijitTextBox .dijitButtonNode {
+  border-width: 0;
+}
+
+.pgEarthIdentityDialog .dijitButtonNode,
+.pgEarthIdentityDialog .dijitButtonNode * {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pgEarthIdentityDialog .dijitTextBox {
+  border: solid black 1px;
+  width: 15em;
+  /* need to set default size on outer node since inner nodes say <input style="width:100%"> and <td width=100%>.  user can override */
+  vertical-align: middle;
+}
+
+.pgEarthIdentityDialog .dijitTextBoxReadOnly,
+.pgEarthIdentityDialog .dijitTextBoxDisabled {
+  color: gray;
+}
+
+.pgEarthIdentityDialog .dijitPlaceHolder {
+  /* hint text that appears in a textbox until user starts typing */
+  color: #aaa;
+  font-style: italic;
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  /* so cut/paste context menu shows up when right clicking */
+}
+
+.pgEarthIdentityDialog .dijitTextBox input:focus {
+  outline: none;
+  /* blue fuzzy line looks wrong on combobox or something w/validation icon showing */
+}
+
+.pgEarthIdentityDialog .dijitTextBoxFocused {
+  outline: 5px -webkit-focus-ring-color;
+}
+
+.pgEarthIdentityDialog .dijitTextBox input {
+  float: left;
+  /* needed by IE to remove secret margin */
+}
+
+.pgEarthIdentityDialog .dijitInputInner {
+  /* for when an <input> is embedded inside an inline-block <div> with a size and border */
+  border: 0 !important;
+  background-color: transparent !important;
+  width: 100% !important;
+  /* IE dislikes horizontal tweaking combined with width:100% so punish everyone for consistency */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.pgEarthIdentityDialog .dijitValidationTextBoxError input.dijitValidationInner {
+  /* <input> used to display arrow icon/validation icon, or in arrow character in high contrast mode.
+   * The css below is a trick to hide the character in non-high-contrast mode
+   */
+  text-indent: -2em !important;
+  direction: ltr !important;
+  text-align: left !important;
+  height: auto !important;
+}
+
+.pgEarthIdentityDialog .dijitValidationTextBoxError .dijitValidationContainer {
+  display: inline;
+  cursor: default;
+}
+
+.pgEarthIdentityDialog .dijitLayoutContainer {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.pgEarthIdentityDialog .dijitAlignTop,
+.pgEarthIdentityDialog .dijitAlignBottom,
+.pgEarthIdentityDialog .dijitAlignLeft,
+.pgEarthIdentityDialog .dijitAlignRight {
+  position: absolute;
+  overflow: hidden;
+}
+
+.pgEarthIdentityDialog body .dijitAlignClient {
+  position: absolute;
+}
+
+.pgEarthIdentityDialog .dijitContentPane {
+  display: block;
+  overflow: auto;
+  /* if we don't have this (or overflow:hidden), then Widget.resizeTo() doesn't make sense for ContentPane */
+  -webkit-overflow-scrolling: touch;
+}
+
+.pgEarthIdentityDialog .dijitContentPaneSingleChild {
+  /*
+   * if the ContentPane holds a single layout widget child which is being sized to match the content pane,
+   * then the ContentPane should never get a scrollbar (but it does due to browser bugs, see #9449
+   */
+  overflow: hidden;
+}
+
+.pgEarthIdentityDialog .dijitContentPaneLoading .dijitIconLoading,
+.pgEarthIdentityDialog .dijitContentPaneError .dijitIconError {
+  margin-right: 9px;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip {
+  position: absolute;
+  z-index: 2000;
+  display: block;
+  /* make visible but off screen */
+  left: 0;
+  top: -10000px;
+  overflow: visible;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip .dijitTooltipContainer {
+  border: solid black 2px;
+  background: #b8b5b5;
+  color: black;
+  font-size: small;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip .dijitTooltipFocusNode {
+  padding: 2px 2px 2px 2px;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip .dijitTooltipConnector {
+  position: absolute;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip .dijitTooltipData {
+  display: none;
+}
+
+.pgEarthIdentityDialog.dijitDialog {
+  position: absolute;
+  z-index: 999;
+  overflow: hidden;
+  /* override overflow: auto; from ContentPane to make dragging smoother */
+}
+
+.pgEarthIdentityDialog.dijitDialog .closeText {
+  display: none;
+  /* for the onhover border in high contrast on IE: */
+  position: absolute;
+}
+
+.pgEarthIdentityDialog .dijitDialogTitleBar {
+  cursor: move;
+}
+
+.pgEarthIdentityDialog .dijitDialogFixed .dijitDialogTitleBar {
+  cursor: default;
+}
+
+.pgEarthIdentityDialog .dijitDialogCloseIcon {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pgEarthIdentityDialog .dijitDialogPaneContent {
+  -webkit-overflow-scrolling: touch;
+}
+
+.dijitDialogUnderlayWrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 998;
+  display: none;
+  background: transparent !important;
+}
+
+.pgEarthIdentityDialog .dijitNoIcon {
+  /* applied to <img>/<span> node when there is no icon specified */
+  display: none;
+}
+
+.pgEarthIdentityDialog .dijitToggleButtonIconChar {
+  /* character (instead of icon) to show that ToggleButton is checked */
+  display: none !important;
+}
+
+.pgEarthIdentityDialog .dijitReadOnly *,
+.pgEarthIdentityDialog .dijitDisabled *,
+.pgEarthIdentityDialog .dijitReadOnly,
+.pgEarthIdentityDialog .dijitDisabled {
+  /* a region the user would be able to click on, but it's disabled */
+  cursor: default;
+}
+
+.pgEarthIdentityDialog .dijitButtonNode {
+  touch-action: manipulation;
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  user-select: none;
+  color: #4c4c4c;
+  background-color: #ffffff;
+  transition: all 0.25s ease;
+  border-color: #e0e0e0;
+}
+
+.pgEarthIdentityDialog .dijitButtonNode:hover {
+  color: #4c4c4c;
+  background-color: #e2f1fb;
+}
+
+.pgEarthIdentityDialog .dijitButtonNode:active, .pgEarthIdentityDialog .dijitButtonNode:focus {
+  color: #0079c1;
+  background-color: #aadbfa;
+}
+
+.pgEarthIdentityDialog .dijitButtonNode .dijitIcon {
+  margin-right: 6px;
+}
+
+.pgEarthIdentityDialog .dijitButtonContents {
+  padding: 5px 10px;
+}
+
+.pgEarthIdentityDialog .dijitButtonText {
+  padding: 0;
+  font-size: 12px;
+  line-height: 1.66667;
+  line-height: 20px;
+  text-align: center;
+}
+
+.pgEarthIdentityDialog .dijitDisabled {
+  outline: none;
+}
+
+.pgEarthIdentityDialog .dijitDisabled .dijitButtonNode {
+  cursor: false;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.pgEarthIdentityDialog .dijitDisabled {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=65);
+  opacity: 0.65;
+}
+
+.pgEarthIdentityDialog.dijitDialog {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #959595;
+  border: 1px solid #959595;
+  box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.2), 0 5px 6px -3px rgba(0, 0, 0, 0.1);
+  background-clip: padding-box;
+  outline: 0;
+}
+
+.pgEarthIdentityDialog .dijitDialogTitleBar {
+  padding: 15px;
+  border-bottom: 1px solid #e7e7e7;
+  min-height: 16.66667px;
+}
+
+.pgEarthIdentityDialog .dijitDialogTitle {
+  font-size: 16px;
+  margin: 0;
+  line-height: 1.66667;
+}
+
+.pgEarthIdentityDialog .dijitDialogCloseIcon {
+  float: right;
+  font-family: "CalciteWebCoreIcons";
+  speak: none;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-indent: 0;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1;
+  color: #323232;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+  opacity: 0.2;
+}
+
+.pgEarthIdentityDialog .dijitDialogCloseIcon:before {
+  content: "";
+}
+
+.pgEarthIdentityDialog .dijitDialogCloseIcon:hover, .pgEarthIdentityDialog .dijitDialogCloseIcon:focus {
+  color: #323232;
+  text-decoration: none;
+  cursor: pointer;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+}
+
+.pgEarthIdentityDialog .dijitDialogPaneContent {
+  padding: 15px;
+  position: relative;
+}
+
+.pgEarthIdentityDialog .dijitDialogPaneContent > .dijitDialogPaneActionBar {
+  margin: 15px -15px -15px;
+}
+
+.pgEarthIdentityDialog .dijitDialogPaneContentArea {
+  position: relative;
+  padding: 0;
+}
+
+.pgEarthIdentityDialog .dijitDialogPaneActionBar {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e7e7e7;
+  *zoom: 1;
+}
+
+.pgEarthIdentityDialog .dijitDialogPaneActionBar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.pgEarthIdentityDialog .dijitDialogPaneActionBar .dijitButton + .dijitButton {
+  margin-left: 5px;
+}
+
+.pgEarthIdentityDialog_underlay.dijitDialogUnderlay {
+  background: #323232;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
+  opacity: 0.75;
+}
+
+.pgEarthIdentityDialog .dijitTextBox {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  transition: border-color 0.25s ease-in-out;
+}
+
+.pgEarthIdentityDialog .dijitTextBox .dijitInputField {
+  padding: 5px 10px;
+  color: #4c4c4c;
+  font-size: 12px;
+  line-height: 1.66667;
+}
+
+.pgEarthIdentityDialog .dijitTextBox .dijitInputInner {
+  line-height: 1.66667;
+  height: 20px;
+}
+
+.pgEarthIdentityDialog .dijitTextBox .dijitPlaceHolder {
+  font-style: normal;
+  color: #e0e0e0;
+}
+
+.pgEarthIdentityDialog .dijitTextBoxFocused {
+  border-color: #196fa6;
+  outline: 0;
+}
+
+.pgEarthIdentityDialog .dijitTextBoxFocused .dijitArrowButton {
+  border-color: #196fa6;
+}
+
+.pgEarthIdentityDialog .dijitTextBoxError .dijitInputField {
+  color: #c7461a;
+}
+
+.pgEarthIdentityDialog .dijitTextBoxError, .pgEarthIdentityDialog .dijitTextBoxError.dijitTextBoxFocused,
+.pgEarthIdentityDialog .dijitTextBoxError .dijitArrowButton {
+  border-color: #c7461a;
+}
+
+.pgEarthIdentityDialog .dijitTextBoxError .dijitValidationContainer {
+  width: 26px;
+  padding: 5px;
+  color: #c7461a;
+  font-family: "CalciteWebCoreIcons";
+  speak: none;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-indent: 0;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.pgEarthIdentityDialog .dijitTextBoxError .dijitValidationContainer:before {
+  content: "";
+}
+
+.pgEarthIdentityDialog .dijitTextBoxError .dijitValidationIcon {
+  display: none;
+}
+
+.pgEarthIdentityDialog .dijitTextBoxDisabled {
+  background-color: #f8f8f8;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip,
+.pgEarthIdentityDialog--visible ~ .dijitTooltip,
+.pgEarthIdentityDialog--visible ~ .dijitTooltip * {
+  box-sizing: content-box;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip .dijitTooltipContainer {
+  border: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  max-width: 200px;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #323232;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
+  opacity: 0.85;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip .dijitTooltipContents {
+  padding: 5px 10px;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip .dijitTooltipConnector {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
+  opacity: 0.85;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip.dijitTooltipBelow {
+  margin-top: 3px;
+  padding-top: 5px;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip.dijitTooltipBelow .dijitTooltipConnector {
+  top: 0;
+  left: 15px;
+  border-width: 0 5px 5px;
+  border-bottom-color: #323232;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip.dijitTooltipAbove {
+  margin-top: -3px;
+  padding-bottom: 5px;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip.dijitTooltipAbove .dijitTooltipConnector {
+  bottom: 0;
+  left: 15px;
+  border-width: 5px 5px 0;
+  border-top-color: #323232;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip.dijitTooltipLeft {
+  margin-left: -3px;
+  padding-right: 5px;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip.dijitTooltipLeft .dijitTooltipConnector {
+  top: 50%;
+  right: 0;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #323232;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip.dijitTooltipRight {
+  margin-left: 3px;
+  padding-left: 5px;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip.dijitTooltipRight .dijitTooltipConnector {
+  top: 50%;
+  left: 0;
+  border-width: 5px 5px 5px 0;
+  border-right-color: #323232;
+}
+
+.dijitRtl .pgEarthIdentityDialog .dijitOffScreen {
+  /* align on the right side rather than the left so no horizontal scroll bar shown */
+  left: auto !important;
+  right: -10000px !important;
+}
+
+.dijitRtl .pgEarthIdentityDialog .dijitPlaceHolder {
+  left: auto;
+  right: 0;
+}
+
+.pgEarthIdentityDialog {
+  /* TextBox */
+  /* ContentPane*/
+}
+
+.pgEarthIdentityDialog .dijitTextBoxRtl .dijitValidationContainer {
+  border-right-width: 1px !important;
+  border-left-width: 0 !important;
+}
+
+.pgEarthIdentityDialog .dijitValidationTextBoxRtl .dijitValidationContainer {
+  float: left;
+}
+
+.pgEarthIdentityDialog .dijitRtl .dijitContentPaneLoading .dijitIconLoading,
+.pgEarthIdentityDialog .dijitRtl .dijitContentPaneError .dijitIconError {
+  margin-right: 0;
+  margin-left: 9px;
+}
+
+.pgEarthIdentityDialog--visible ~ .dijitTooltip.dijitTooltipBelow.dijitTooltipABRight .dijitTooltipConnector,
+.pgEarthIdentityDialog--visible ~ .dijitTooltip.dijitTooltipAbove.dijitTooltipABRight .dijitTooltipConnector {
+  left: auto;
+  right: 15px;
+}
+
+.pgEarthIdentityDialog.dijitDialogRtl .dijitDialogCloseIcon {
+  float: left;
+}
+
+.pgEarthIdentityDialog.dijitDialogRtl .dijitDialogPaneActionBar {
+  text-align: left;
+}
+
+.pgEarthIdentityDialog.dijitDialogRtl .dijitDialogPaneActionBar .dijitButton + .dijitButton {
+  margin-left: 0;
+  margin-right: 5px;
+}
+
+.pgEarthIdentityDialog .dijitContentPane {
+  padding: 15px;
+  box-sizing: content-box;
+}
+
+.pgEarth-layer-list {
+  color: #323232;
+  background-color: #f2f2f2;
+  padding: 6px 7px;
+  overflow-y: auto;
+}
+
+.pgEarth-layer-list__list {
+  list-style: none;
+  margin: 0 0 0 15px;
+  padding: 0;
+}
+
+.pgEarth-layer-list__item--has-children .pgEarth-layer-list__list:not([hidden]) {
+  animation: pgEarth-layer-list-reveal 375ms ease-in-out;
+}
+
+.pgEarth-layer-list__list[hidden] {
+  display: none;
+}
+
+.pgEarth-layer-list__list--root {
+  margin: 0;
+}
+
+.pgEarth-layer-list__item {
+  position: relative;
+  overflow: hidden;
+  color: #6e6e6e;
+  list-style: none;
+  margin: 3px 0;
+  padding: 0;
+}
+
+.pgEarth-layer-list__item-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 9px 15px 9px 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(50, 50, 50, 0.25);
+  transition: padding 250ms ease-in-out;
+}
+
+.pgEarth-layer-list__item--invisible-at-scale > .pgEarth-layer-list__item-container {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(50, 50, 50, 0.1);
+}
+
+.pgEarth-layer-list__item--invisible-at-scale .pgEarth-layer-list__item-title {
+  color: rgba(110, 110, 110, 0.4);
+}
+
+.pgEarth-layer-list__item--has-children > .pgEarth-layer-list__item-container {
+  padding-left: 5px;
+}
+
+.pgEarth-layer-list__item--has-children > .pgEarth-layer-list__list {
+  font-size: 12px;
+}
+
+.pgEarth-layer-list__child-toggle {
+  color: #6e6e6e;
+  width: 15px;
+  cursor: pointer;
+}
+
+.pgEarth-layer-list__child-toggle [class*=pgEarth-icon] {
+  line-height: 1.2em;
+}
+
+.pgEarth-layer-list__child-toggle .pgEarth-layer-list__child-toggle-icon--opened,
+.pgEarth-layer-list__child-toggle .pgEarth-layer-list__child-toggle-icon--closed-rtl,
+.pgEarth-layer-list__child-toggle--open .pgEarth-layer-list__child-toggle-icon--closed {
+  display: none;
+}
+
+.pgEarth-layer-list__child-toggle--open .pgEarth-layer-list__child-toggle-icon--opened {
+  display: block;
+}
+
+.pgEarth-layer-list__item-label {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.pgEarth-layer-list__item-label[role=checkbox]:hover,
+.pgEarth-layer-list__item-label[role=radio]:hover {
+  cursor: pointer;
+}
+
+.pgEarth-layer-list__item-title {
+  flex: 1;
+  padding-left: 5px;
+  padding-right: 5px;
+  line-height: 1.3em;
+  word-break: break-all;
+}
+
+.pgEarth-layer-list__item-error-message {
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+  height: 0;
+  margin-top: -1px;
+  padding: 0 15px;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #ab3c16;
+  font-size: 12px;
+  transition: transform 250ms ease-in-out;
+  transform: scale(1, 0);
+  transform-origin: center top;
+}
+
+.pgEarth-layer-list__item-error-message [class^=pgEarth-icon-],
+.pgEarth-layer-list__item-error-message [class*=pgEarth-icon-] {
+  margin-right: 0.3rem;
+}
+
+.pgEarth-layer-list__item--error .pgEarth-layer-list__item-error-message {
+  visibility: visible;
+  height: auto;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(50, 50, 50, 0.25);
+  transform: scale(1, 1);
+}
+
+.pgEarth-layer-list__item-toggle {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: inline-block;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: center;
+}
+
+.pgEarth-layer-list__item-toggle-icon {
+  display: inline-block;
+  font-size: 12px;
+  text-align: center;
+  line-height: 0;
+}
+
+.pgEarth-layer-list__item-label[aria-checked=false] .pgEarth-layer-list__item-toggle-icon {
+  opacity: 0.6;
+}
+
+.pgEarth-layer-list__item:before,
+.pgEarth-layer-list__item:after {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  height: 2px;
+  top: 0;
+  transition: opacity 500ms ease-in-out;
+}
+
+.pgEarth-layer-list__item:before {
+  background-color: rgba(50, 50, 50, 0.25);
+  width: 100%;
+  z-index: 1;
+}
+
+.pgEarth-layer-list__item:after {
+  background-color: #6e6e6e;
+  width: 20%;
+  z-index: 2;
+  animation: looping-progresss-bar-ani 1500ms linear infinite;
+}
+
+.pgEarth-layer-list__item--updating:before,
+.pgEarth-layer-list__item--updating:after {
+  opacity: 1;
+}
+
+.pgEarth-layer-list__item-actions-menu {
+  display: flex;
+}
+
+.pgEarth-layer-list__item-actions-menu-item {
+  display: flex;
+  flex: 1 0 22px;
+  justify-content: center;
+  align-content: center;
+  color: #6e6e6e;
+  height: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  padding-left: 0.125em;
+  padding-right: 0.125em;
+}
+
+.pgEarth-layer-list__item-actions {
+  padding: 0 15px;
+  position: relative;
+  background-color: #ffffff;
+  margin-top: -1px;
+  height: auto;
+  border-bottom: 1px solid rgba(50, 50, 50, 0.25);
+}
+
+.pgEarth-layer-list__item--has-children .pgEarth-layer-list__item-actions {
+  border-bottom: 1px solid rgba(50, 50, 50, 0.1);
+}
+
+.pgEarth-layer-list__item-actions-section {
+  animation: pgEarth-layer-list-reveal 375ms ease-in-out;
+}
+
+.pgEarth-layer-list__item-actions[hidden] {
+  display: none;
+}
+
+.pgEarth-layer-list__item-actions-close {
+  color: #6e6e6e;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1;
+}
+
+.pgEarth-layer-list__item-actions-list {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 12px 15px;
+  list-style: none;
+  border-top: 1px solid rgba(50, 50, 50, 0.25);
+}
+
+.pgEarth-layer-list__item-actions-list:first-child {
+  border-top: 0;
+  padding-top: 6px;
+}
+
+.pgEarth-layer-list__item-action {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  cursor: pointer;
+  font-size: 12px;
+  width: 100%;
+  padding: 3px 0;
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 125ms;
+}
+
+.pgEarth-layer-list__item-actions[hidden] .pgEarth-layer-list__item-action {
+  opacity: 0;
+}
+
+.pgEarth-layer-list__item-action-icon {
+  flex: 0 0 15px;
+  font-size: 14px;
+  margin-top: 0.2em;
+}
+
+.pgEarth-layer-list__item-action-image {
+  flex: 0 0 15px;
+  width: 15px;
+  height: 15px;
+  font-size: 14px;
+  text-align: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.pgEarth-layer-list__item-action-title {
+  margin-left: 5px;
+}
+
+html[dir=rtl] .pgEarth-layer-list .pgEarth-layer-list__item--has-children > .pgEarth-layer-list__item-container {
+  padding-left: 20px;
+  padding-right: 5px;
+}
+html[dir=rtl] .pgEarth-layer-list .pgEarth-layer-list__list {
+  margin: 0 15px 0 0;
+}
+html[dir=rtl] .pgEarth-layer-list .pgEarth-layer-list__list--root {
+  margin: 0;
+}
+html[dir=rtl] .pgEarth-layer-list .pgEarth-layer-list__child-toggle .pgEarth-layer-list__child-toggle-icon--closed {
+  display: none;
+}
+html[dir=rtl] .pgEarth-layer-list .pgEarth-layer-list__child-toggle .pgEarth-layer-list__child-toggle-icon--closed-rtl {
+  display: block;
+}
+html[dir=rtl] .pgEarth-layer-list .pgEarth-layer-list__item-action-title {
+  margin-left: 0;
+  margin-right: 5px;
+}
+html[dir=rtl] .pgEarth-layer-list .pgEarth-layer-list__item:after {
+  animation: looping-progresss-bar-ani 1500ms linear infinite reverse;
+}
+html[dir=rtl] .pgEarth-layer-list .pgEarth-layer-list__item-error-message [class^=pgEarth-icon-],
+html[dir=rtl] .pgEarth-layer-list .pgEarth-layer-list__item-error-message [class*=pgEarth-icon-] {
+  margin-right: 0;
+  margin-left: 0.3rem;
+}
+
+@keyframes pgEarth-layer-list-reveal {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.pgEarth-legend {
+  overflow: hidden;
+  overflow-y: auto;
+  transition: max-height 250ms ease-in-out;
+}
+
+.pgEarth-legend__message {
+  padding: 0.5em 1em;
+}
+
+.pgEarth-legend__service {
+  word-wrap: break-word;
+  border-bottom: 1px solid rgba(50, 50, 50, 0.25);
+  padding: 12px 15px 0 15px;
+}
+
+.pgEarth-legend__service:last-child {
+  border-bottom: none;
+}
+
+.pgEarth-legend__service-label {
+  margin: 0 0 6px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pgEarth-legend__group-layer-child {
+  margin-left: 7px;
+}
+
+.pgEarth-legend__layer-table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.pgEarth-legend__layer-child-table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.pgEarth-legend__layer-body {
+  margin-left: 7px;
+}
+
+.pgEarth-legend__layer-row {
+  display: table-row;
+}
+
+.pgEarth-legend__layer-cell {
+  display: table-cell;
+  min-width: 100px;
+  vertical-align: middle;
+  word-break: break-word;
+  padding: 4px 0;
+}
+
+.pgEarth-legend__layer-cell--symbols {
+  min-width: 10px;
+  text-align: center;
+}
+
+.pgEarth-legend__size-ramp ~ .pgEarth-legend__layer-cell--info {
+  max-width: 80%;
+  width: 80%;
+}
+
+.pgEarth-legend__layer-cell--info {
+  font-size: 12px;
+  padding-left: 7px;
+  padding-right: 7px;
+  max-width: 250px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pgEarth-legend__imagery-layer-image--stretched {
+  margin-bottom: -2px;
+  display: block;
+}
+
+.pgEarth-legend__imagery-layer-cell--stretched {
+  vertical-align: top;
+  line-height: 1;
+  padding: 0;
+}
+
+.pgEarth-legend__imagery-layer-info--stretched {
+  vertical-align: top;
+  padding: 0 2px;
+}
+
+.pgEarth-legend__symbol {
+  display: block;
+  margin: auto;
+}
+
+.pgEarth-legend__layer-caption {
+  display: table-caption;
+  padding: 6px 0;
+}
+
+.pgEarth-legend__ramp-labels {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+.pgEarth-legend__ramps {
+  margin-left: 3px;
+}
+
+.pgEarth-legend__color-ramp {
+  width: 24px;
+}
+
+.pgEarth-legend__opacity-ramp {
+  background-image: url("../base/images/transparent-bg.png");
+}
+
+.pgEarth-legend__ramp-tick {
+  position: absolute;
+  width: 4px;
+  border-top: 1px solid rgba(50, 50, 50, 0.25);
+  line-height: 0;
+  right: 1px;
+  left: auto;
+}
+
+.pgEarth-legend__ramp-label {
+  position: relative;
+  padding: 0 7px;
+  white-space: nowrap;
+  line-height: 1em;
+  font-size: 12px;
+}
+.pgEarth-legend__ramp-label:before {
+  position: absolute;
+  top: 0.25em;
+  left: -7px;
+  display: block;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 3px 4px 3px 0;
+  border-color: transparent rgba(50, 50, 50, 0.8) transparent transparent;
+}
+.pgEarth-legend__ramp-label:first-child {
+  margin-top: -4px;
+}
+.pgEarth-legend__ramp-label:last-child {
+  bottom: -3px;
+}
+
+.pgEarth-legend-layer-caption {
+  display: table-caption;
+  padding: 6px 0;
+}
+
+.pgEarth-ui-corner .pgEarth-legend {
+  padding: 12px 0;
+  min-width: 180px;
+  max-width: 350px;
+}
+
+.pgEarth-ui-corner .pgEarth-legend {
+  transition: max-height 250ms ease-in-out;
+}
+
+.pgEarth-view-height-greater-than-medium .pgEarth-ui-corner .pgEarth-legend {
+  max-height: 680px;
+}
+
+.pgEarth-view-height-medium .pgEarth-ui-corner .pgEarth-legend {
+  max-height: 540px;
+}
+
+.pgEarth-view-height-small .pgEarth-ui-corner .pgEarth-legend {
+  max-height: 420px;
+}
+
+.pgEarth-view-height-xsmall .pgEarth-ui-corner .pgEarth-legend {
+  max-height: 240px;
+}
+
+html[dir=rtl] .pgEarth-legend__ramp-label:before {
+  border-width: 3px 0 3px 4px;
+  border-color: transparent transparent transparent rgba(76, 76, 76, 0.5);
+  left: auto;
+  right: -7px;
+}
+
+.pgEarth-navigation-toggle {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.pgEarth-navigation-toggle:hover, .pgEarth-navigation-toggle:focus {
+  background-color: #f2f2f2;
+}
+.pgEarth-navigation-toggle:hover .pgEarth-navigation-toggle__button, .pgEarth-navigation-toggle:focus .pgEarth-navigation-toggle__button {
+  color: #2e2e2e;
+}
+
+.pgEarth-navigation-toggle--horizontal {
+  flex-flow: row nowrap;
+}
+.pgEarth-navigation-toggle--horizontal .pgEarth-navigation-toggle__button--rotate {
+  border-top: none;
+  border-left: solid 1px rgba(50, 50, 50, 0.25);
+}
+
+.pgEarth-navigation-toggle__button {
+  box-shadow: none;
+  position: relative;
+  background-color: transparent;
+}
+.pgEarth-navigation-toggle__button:before {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  z-index: 0;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  transition: opacity 125ms ease-in-out;
+  opacity: 0;
+  border-width: 0 6px 6px 0;
+  border-color: transparent #2e2e2e transparent transparent;
+}
+.pgEarth-navigation-toggle__button:hover, .pgEarth-navigation-toggle__button:focus {
+  background-color: transparent;
+}
+
+.pgEarth-navigation-toggle__button--rotate {
+  border-top: solid 1px rgba(50, 50, 50, 0.25);
+}
+
+.pgEarth-navigation-toggle__button--pan {
+  margin-bottom: 0;
+}
+
+.pgEarth-navigation-toggle__button--active {
+  color: #2e2e2e;
+}
+.pgEarth-navigation-toggle__button--active:before {
+  opacity: 1;
+}
+
+.pgEarth-navigation-toggle.pgEarth-disabled .pgEarth-navigation-toggle__button {
+  background-color: #ffffff;
+  color: rgba(110, 110, 110, 0.4);
+  cursor: auto;
+}
+.pgEarth-navigation-toggle.pgEarth-disabled .pgEarth-navigation-toggle__button:before {
+  opacity: 0;
+}
+
+html[dir=rtl] .pgEarth-navigation-toggle--horizontal .pgEarth-navigation-toggle__button--rotate {
+  border-left: none;
+  border-right: solid 1px rgba(50, 50, 50, 0.25);
+}
+html[dir=rtl] .pgEarth-navigation-toggle__button:before {
+  border-width: 6px 6px 0 0;
+  border-color: #2e2e2e transparent transparent transparent;
+  right: auto;
+  left: 1px;
+}
+
+@keyframes pgEarth-docking-animation {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes popup-intro-animation-down {
+  0% {
+    transform: translate(0, -5px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+@keyframes popup-intro-animation-up {
+  0% {
+    transform: translate(0, 5px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+.pgEarth-popup {
+  pointer-events: none;
+}
+
+.pgEarth-popup--feature-updated .pgEarth-popup__header-title,
+.pgEarth-popup--feature-updated .pgEarth-popup__content {
+  opacity: 1;
+  animation: pgEarth-fade-in 375ms ease-out;
+}
+
+.pgEarth-popup--shadow {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .8);
+}
+
+.pgEarth-popup__button {
+  padding: 12px 7px;
+  line-height: 1.3em;
+  cursor: pointer;
+  user-select: none;
+  color: #6e6e6e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+}
+
+.pgEarth-popup__button:hover {
+  color: #2e2e2e;
+}
+
+.pgEarth-popup [role=button] [class*=pgEarth-icon],
+.pgEarth-popup__feature-buttons [class*=pgEarth-icon] {
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16px;
+}
+
+.pgEarth-popup__position-container {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+}
+
+.pgEarth-popup--aligned-top-center {
+  transform-origin: 50% 100%;
+}
+
+.pgEarth-popup--aligned-bottom-center {
+  transform-origin: 50% -5%;
+}
+
+.pgEarth-popup--aligned-top-left,
+.pgEarth-popup--aligned-bottom-left {
+  transform-origin: 100% 50%;
+}
+
+.pgEarth-popup--aligned-top-right,
+.pgEarth-popup--aligned-bottom-right {
+  transform-origin: -5% 50%;
+}
+
+.pgEarth-popup--aligned-top-center,
+.pgEarth-popup--aligned-top-left,
+.pgEarth-popup--aligned-top-right {
+  animation: popup-intro-animation-down 200ms ease-in-out;
+}
+
+.pgEarth-popup--aligned-bottom-center,
+.pgEarth-popup--aligned-bottom-left,
+.pgEarth-popup--aligned-bottom-right {
+  animation: popup-intro-animation-up 200ms ease-in-out;
+}
+
+.pgEarth-popup__main-container {
+  outline: none;
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+  width: 340px;
+  max-height: 300px;
+  background-color: #ffffff;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.pgEarth-popup__header {
+  position: relative;
+  font-size: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+  display: flex;
+  flex: 0 0 auto;
+}
+
+.pgEarth-popup__header-buttons {
+  padding: 0 7px;
+  margin: 0 0 0 auto;
+  display: flex;
+}
+
+.pgEarth-popup__header-title,
+h1.pgEarth-popup__header-title {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 15px;
+  margin: 0 auto 0 0;
+  display: block;
+  flex: 1;
+  opacity: 0;
+  word-break: break-word;
+}
+
+.pgEarth-popup__header-title--button {
+  cursor: pointer;
+}
+
+.pgEarth-popup__content {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0 15px 12px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.pgEarth-popup--feature-menu-open .pgEarth-popup__header,
+.pgEarth-popup--feature-menu-open .pgEarth-popup__content {
+  flex: 0 1 0px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.pgEarth-popup__content h1,
+.pgEarth-popup__content h2,
+.pgEarth-popup__content h3,
+.pgEarth-popup__content h4,
+.pgEarth-popup__content h5,
+.pgEarth-popup__content h6 {
+  margin: 0.5em 0 0.5em 0;
+  letter-spacing: 0;
+  font-weight: 600;
+  line-height: 1.3em;
+}
+
+.pgEarth-popup__content p {
+  font-size: 12px;
+  line-height: 1.3em;
+  margin: 0 0 1.2em;
+}
+
+.pgEarth-popup__content a {
+  color: #6e6e6e;
+  text-decoration: underline;
+}
+
+.pgEarth-popup__content a:hover {
+  color: #2e2e2e;
+}
+
+.pgEarth-popup__pagination-page-text {
+  white-space: nowrap;
+}
+
+.pgEarth-popup__feature-buttons,
+.pgEarth-popup__feature-buttons [role=button] {
+  font-weight: 400;
+  font-size: 12px;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+}
+
+.pgEarth-popup__feature-buttons .pgEarth-popup__actions {
+  padding: 0 3px;
+  display: flex;
+  flex: 2;
+  align-items: center;
+}
+
+.pgEarth-popup__feature-buttons .pgEarth-popup__action {
+  max-width: 50%;
+}
+
+[class*=pgEarth-popup--is-docked-top-] .pgEarth-popup__feature-buttons,
+[class*=pgEarth-popup--aligned-bottom-] .pgEarth-popup__feature-buttons {
+  border-bottom: solid 1px rgba(50, 50, 50, 0.25);
+}
+
+[class*=pgEarth-popup--is-docked-bottom-] .pgEarth-popup__content ~ .pgEarth-popup__feature-buttons,
+[class*=pgEarth-popup--aligned-top-] .pgEarth-popup__content ~ .pgEarth-popup__feature-buttons {
+  margin-top: -12px;
+}
+
+.pgEarth-popup__navigation {
+  padding: 0 7px;
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.pgEarth-popup__navigation-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.pgEarth-popup__feature-menu {
+  left: 0;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  width: 100%;
+  background-color: #4c4c4c;
+  color: #ffffff;
+  z-index: 1;
+  max-height: 0;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.33);
+}
+
+.pgEarth-popup__feature-menu:after {
+  right: 15px;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  transform: rotate(45deg);
+  content: "";
+  display: block;
+  background-color: inherit;
+  pointer-events: none;
+}
+
+[class*=pgEarth-popup--is-docked-bottom-].pgEarth-popup--is-docked .pgEarth-popup__feature-menu,
+[class*=pgEarth-popup--aligned-top-] .pgEarth-popup__feature-menu {
+  bottom: 36px;
+  top: auto;
+}
+
+[class*=pgEarth-popup--is-docked-bottom-].pgEarth-popup--is-docked .pgEarth-popup__feature-menu:after,
+[class*=pgEarth-popup--aligned-top-] .pgEarth-popup__feature-menu:after {
+  bottom: -5px;
+  top: auto;
+}
+
+[class*=pgEarth-popup--is-docked-top-].pgEarth-popup--is-docked .pgEarth-popup__feature-menu,
+[class*=pgEarth-popup--aligned-bottom-] .pgEarth-popup__feature-menu {
+  bottom: auto;
+  top: 36px;
+}
+
+[class*=pgEarth-popup--is-docked-top-].pgEarth-popup--is-docked .pgEarth-popup__feature-menu:after,
+[class*=pgEarth-popup--aligned-bottom-] .pgEarth-popup__feature-menu:after {
+  bottom: auto;
+  top: -5px;
+  background-color: inherit;
+}
+
+.pgEarth-popup__feature-menu-list {
+  padding: 0;
+  margin: 0;
+  counter-reset: section;
+}
+
+.pgEarth-popup__feature-menu-item {
+  list-style-type: none;
+  border: solid 1px rgba(50, 50, 50, 0.25);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  transition: background-color 125ms ease-in-out;
+}
+
+.pgEarth-popup__feature-menu-item:hover {
+  cursor: pointer;
+  background-color: #2f2f2f;
+}
+
+.pgEarth-popup__feature-menu-item:focus {
+  outline: none;
+  border: solid 1px rgba(255, 255, 255, 0.5);
+}
+
+.pgEarth-popup__feature-menu-item::before {
+  counter-increment: section;
+  content: counter(section);
+  display: flex;
+  justify-content: center;
+  flex: 0 0 8%;
+  text-align: center;
+}
+
+.pgEarth-popup__feature-menu-item--selected,
+.pgEarth-popup__feature-menu-item--selected:hover {
+  background-color: #2f2f2f;
+  color: #e6e6e6;
+}
+
+.pgEarth-popup__feature-menu-item .pgEarth-icon-check-mark {
+  padding: 0 0.5rem;
+}
+
+.pgEarth-popup__feature-menu-title {
+  display: flex;
+  flex: 1 0 82%;
+  min-height: 1em;
+  margin: 0;
+  padding: 0.8em 4%;
+  border-left: solid 1px rgba(0, 0, 0, 0.25);
+}
+
+.pgEarth-popup__feature-menu-viewport {
+  max-height: 0px;
+  opacity: 0;
+  overflow: auto;
+  position: relative;
+  z-index: 1;
+  transition: max-height 250ms ease-out 62ms;
+}
+
+.pgEarth-popup__feature-menu .pgEarth-popup__feature-menu-header {
+  background-color: transparent;
+  border-bottom: solid 1px rgba(50, 50, 50, 0.25);
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2em;
+  overflow: hidden;
+  position: relative;
+  opacity: 0;
+  transition: opacity 250ms ease-in-out 200ms;
+}
+
+.pgEarth-popup--feature-menu-open .pgEarth-popup__feature-menu {
+  height: auto;
+  opacity: 1;
+  animation: pgEarth-fade-in 125ms ease-out;
+  max-height: none;
+  overflow: visible;
+}
+
+.pgEarth-popup--feature-menu-open .pgEarth-popup__feature-menu-header {
+  padding: 12px 15px;
+  max-height: none;
+  display: block;
+  opacity: 1;
+  margin: 0;
+}
+
+.pgEarth-popup--feature-menu-open .pgEarth-popup__feature-menu-viewport {
+  max-height: 175px;
+  opacity: 1;
+}
+
+.pgEarth-popup__loading-container {
+  margin: 0 7px;
+  text-align: center;
+  user-select: none;
+}
+
+.pgEarth-popup__action-image {
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  flex: 1 0 16px;
+}
+
+.pgEarth-popup__action-text {
+  margin: 0 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pgEarth-popup__pointer {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.pgEarth-popup__pointer-direction {
+  background-color: #ffffff;
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+}
+
+.pgEarth-popup--aligned-top-center .pgEarth-popup__pointer {
+  top: 100%;
+  left: 50%;
+  margin: 0 0 0 -6px;
+}
+
+.pgEarth-popup--aligned-bottom-center .pgEarth-popup__pointer {
+  bottom: 100%;
+  left: 50%;
+  margin: 0 0 0 -6px;
+}
+
+.pgEarth-popup--aligned-top-left .pgEarth-popup__pointer {
+  bottom: 6px;
+  right: 6px;
+  transform: rotate(-45deg);
+}
+
+.pgEarth-popup--aligned-bottom-left .pgEarth-popup__pointer {
+  top: 6px;
+  right: 6px;
+  transform: rotate(45deg);
+}
+
+.pgEarth-popup--aligned-top-right .pgEarth-popup__pointer {
+  bottom: 6px;
+  left: 6px;
+  transform: rotate(45deg);
+}
+
+.pgEarth-popup--aligned-bottom-right .pgEarth-popup__pointer {
+  top: 6px;
+  left: 6px;
+  transform: rotate(-45deg);
+}
+
+.pgEarth-popup--aligned-top-center .pgEarth-popup__pointer-direction,
+.pgEarth-popup--aligned-bottom-center .pgEarth-popup__pointer-direction {
+  transform: scale(0.75, 2) rotate(45deg);
+}
+
+.pgEarth-popup--aligned-top-left .pgEarth-popup__pointer-direction,
+.pgEarth-popup--aligned-bottom-left .pgEarth-popup__pointer-direction,
+.pgEarth-popup--aligned-top-right .pgEarth-popup__pointer-direction,
+.pgEarth-popup--aligned-bottom-right .pgEarth-popup__pointer-direction {
+  top: -6px;
+  left: -6px;
+  transform: scale(1, 3.5) rotate(45deg);
+}
+
+.pgEarth-popup--aligned-top-center .pgEarth-popup__pointer-direction {
+  top: -6px;
+  left: 0;
+}
+
+.pgEarth-popup--aligned-bottom-center .pgEarth-popup__pointer-direction {
+  bottom: -6px;
+  left: 0;
+}
+
+.pgEarth-view-width-xlarge .pgEarth-popup__main-container {
+  width: 460px;
+}
+
+.pgEarth-view-width-large .pgEarth-popup__main-container {
+  width: 400px;
+}
+
+.pgEarth-view-width-less-than-large .pgEarth-popup__action-text {
+  display: none;
+}
+
+.pgEarth-view-width-medium .pgEarth-popup__main-container {
+  width: 340px;
+}
+
+.pgEarth-view-width-less-than-small .pgEarth-popup__main-container {
+  width: 280px;
+}
+
+.pgEarth-view-width-xsmall .pgEarth-popup__button[class*=pgEarth-popup__navigation-],
+.pgEarth-view-width-xsmall .pgEarth-popup__pagination-page-text {
+  display: none;
+}
+
+.pgEarth-view-width-xsmall .pgEarth-popup--is-docked-bottom-center {
+  margin-bottom: 16px;
+}
+
+.pgEarth-view-width-xsmall .pgEarth-popup--is-docked-top-center,
+.pgEarth-view-width-xsmall .pgEarth-popup--is-docked-bottom-center {
+  width: auto;
+  margin: 0;
+}
+
+.pgEarth-view-width-xsmall .pgEarth-popup--is-docked-top-center .pgEarth-popup__main-container,
+.pgEarth-view-width-xsmall .pgEarth-popup--is-docked-bottom-center .pgEarth-popup__main-container {
+  width: 100%;
+  max-height: 35%;
+  position: absolute;
+  bottom: 0;
+  box-shadow: none;
+}
+
+.pgEarth-view-height-xlarge .pgEarth-popup__main-container {
+  max-height: 320px;
+}
+.pgEarth-view-height-xlarge.pgEarth-popup--feature-menu-open .pgEarth-popup__feature-menu-viewport {
+  max-height: 220px;
+}
+
+.pgEarth-view-height-large .pgEarth-popup__main-container {
+  max-height: 280px;
+}
+.pgEarth-view-height-large.pgEarth-popup--feature-menu-open .pgEarth-popup__feature-menu-viewport {
+  max-height: 180px;
+}
+
+.pgEarth-view-height-less-than-medium .pgEarth-popup__main-container {
+  max-height: 200px;
+}
+.pgEarth-view-height-less-than-medium.pgEarth-popup--feature-menu-open .pgEarth-popup__feature-menu-viewport {
+  max-height: 100px;
+}
+
+.pgEarth-popup--is-docked {
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  margin: 15px 15px 30px 15px;
+  animation: pgEarth-docking-animation 250ms ease-out;
+}
+
+.pgEarth-popup--is-docked .pgEarth-popup__header {
+  padding-top: 2px;
+}
+
+.pgEarth-popup--is-docked-top-left,
+.pgEarth-popup--is-docked-top-center,
+.pgEarth-popup--is-docked-top-right {
+  align-items: flex-start;
+}
+
+.pgEarth-popup--is-docked-bottom-left,
+.pgEarth-popup--is-docked-bottom-center,
+.pgEarth-popup--is-docked-bottom-right {
+  align-items: flex-end;
+}
+
+.pgEarth-popup--is-docked-top-left,
+.pgEarth-popup--is-docked-bottom-left {
+  justify-content: flex-start;
+}
+
+.pgEarth-popup--is-docked-top-center,
+.pgEarth-popup--is-docked-bottom-center {
+  justify-content: center;
+}
+
+.pgEarth-popup--is-docked-top-right,
+.pgEarth-popup--is-docked-bottom-right {
+  justify-content: flex-end;
+}
+
+.pgEarth-popup--is-docked-top-left .pgEarth-popup__main-container,
+.pgEarth-popup--is-docked-top-right .pgEarth-popup__main-container,
+.pgEarth-popup--is-docked-bottom-left .pgEarth-popup__main-container,
+.pgEarth-popup--is-docked-bottom-right .pgEarth-popup__main-container {
+  max-height: 80%;
+}
+
+[class*=pgEarth-popup--is-docked-bottom-] .pgEarth-popup__main-container {
+  position: absolute;
+  bottom: 0;
+}
+
+html[dir=rtl] .pgEarth-widget .pgEarth-popup__header-title,
+html[dir=rtl] .pgEarth-popup__header-title {
+  margin: 0 0 0 auto;
+}
+html[dir=rtl] .pgEarth-popup__header-buttons {
+  margin: 0 auto 0 0;
+}
+html[dir=rtl] .pgEarth-popup__feature-menu-title {
+  border-left: none;
+  border-right: solid 1px rgba(0, 0, 0, 0.25);
+}
+html[dir=rtl] .pgEarth-popup__feature-menu:after {
+  right: auto;
+  left: 15px;
+}
+html[dir=rtl] .pgEarth-popup__navigation {
+  margin: 0 auto 0 0;
+}
+html[dir=rtl] .pgEarth-popup__actions {
+  margin: 0 0 0 auto;
+}
+html[dir=rtl] .pgEarth-popup--is-docked .pgEarth-popup__loading-container {
+  order: 0;
+}
+html[dir=rtl] .pgEarth-popup--is-docked-top-left,
+html[dir=rtl] .pgEarth-popup--is-docked-bottom-left {
+  justify-content: flex-end;
+}
+html[dir=rtl] .pgEarth-popup--is-docked-top-right,
+html[dir=rtl] .pgEarth-popup--is-docked-bottom-right {
+  justify-content: flex-start;
+}
+
+.pgEarth-print {
+  position: relative;
+  padding: 12px 15px;
+  overflow-y: auto;
+}
+.pgEarth-print a {
+  text-decoration: none;
+}
+.pgEarth-print section[aria-hidden=true] {
+  display: none;
+}
+.pgEarth-print button,
+.pgEarth-print [role=button] {
+  height: 32px;
+  cursor: pointer;
+  border: none;
+}
+
+.pgEarth-print__form-section-container {
+  margin: 0 0 12px 0;
+}
+
+.pgEarth-print__header-title {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0 0 12px;
+  margin: 0 auto 0 0;
+}
+
+.pgEarth-print__layout-section,
+.pgEarth-print__map-only-section {
+  padding: 12px 0 0;
+  border-top: 1px solid rgba(50, 50, 50, 0.25);
+}
+
+.pgEarth-print__layout-tab-list {
+  position: relative;
+  bottom: -1px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pgEarth-print__layout-tab {
+  display: inline-block;
+  text-align: center;
+  margin: 0;
+  padding: 5px 5px;
+  width: 100%;
+  cursor: pointer;
+  color: #6e6e6e;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.pgEarth-print__layout-tab:hover,
+.pgEarth-print__layout-tab:focus {
+  color: #323232;
+  background-color: #ededed;
+  border-bottom: 1px solid rgba(50, 50, 50, 0.25);
+}
+
+.pgEarth-print__layout-tab[aria-selected=true],
+.pgEarth-print__layout-tab[aria-selected=true]:hover {
+  background-color: #ffffff;
+  color: #323232;
+  border-color: rgba(50, 50, 50, 0.25);
+  border-bottom-color: #ffffff;
+}
+
+.pgEarth-print__panel--error {
+  color: #8c2907;
+}
+
+.pgEarth-print__panel-container {
+  flex: 1 0;
+}
+
+.pgEarth-print__input-text {
+  border: 1px solid rgba(50, 50, 50, 0.25);
+  font-size: 14px;
+  width: 100%;
+  margin: 0;
+  padding: 0 0.5em;
+  height: 32px;
+}
+
+.pgEarth-print__scale-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.pgEarth-print__advanced-options-section {
+  background-color: whitesmoke;
+}
+
+.pgEarth-print__advanced-options-button-container {
+  color: #323232;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+  width: 100%;
+  overflow: visible;
+}
+
+.pgEarth-print__advanced-options-button {
+  width: 100%;
+  background-color: transparent;
+}
+
+.pgEarth-print__advanced-options-button[aria-expanded=true] .pgEarth-print__advanced-options-button-icon--closed,
+.pgEarth-print__advanced-options-button[aria-expanded=false] .pgEarth-print__advanced-options-button-icon--opened,
+.pgEarth-print__advanced-options-button .pgEarth-print__advanced-options-button-icon--closed-rtl {
+  display: none;
+}
+
+.pgEarth-print__advanced-options-button[aria-expanded=false] .pgEarth-print__advanced-options-button-icon--closed,
+.pgEarth-print__advanced-options-button[aria-expanded=true] .pgEarth-print__advanced-options-button-icon--opened {
+  display: block;
+}
+
+.pgEarth-print__advanced-options-button-title {
+  font-size: 12px;
+  margin: 0 0.2em;
+}
+
+.pgEarth-print__advanced-options-container {
+  font-size: 12px;
+  padding: 6px 7px;
+}
+.pgEarth-print__advanced-options-container .pgEarth-print__input-text {
+  height: 32px;
+}
+.pgEarth-print__advanced-options-container .pgEarth-print__form-section-container {
+  margin-bottom: 6px;
+}
+
+.pgEarth-print__author-info-container .pgEarth-print__input-text {
+  margin-bottom: 0.2em;
+}
+
+.pgEarth-print__size-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pgEarth-print__advanced-options-section [class*=pgEarth-icon],
+.pgEarth-print__size-container [class*=pgEarth-icon] {
+  background: transparent;
+  font-size: 16px;
+}
+
+.pgEarth-print__size-container [class*=pgEarth-icon] {
+  align-self: flex-end;
+}
+
+.pgEarth-print__size-container button {
+  color: #6e6e6e;
+}
+
+.pgEarth-print__width-container,
+.pgEarth-print__height-container {
+  flex: 0 0 43%;
+}
+
+.pgEarth-print__swap-button {
+  flex: 0 0 5%;
+}
+
+.pgEarth-print__export-title {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.pgEarth-print__export-button {
+  width: 100%;
+  background-color: #0079c1;
+  color: #ffffff;
+  border: none;
+  margin: 20px 0;
+}
+
+.pgEarth-print__export-button:hover {
+  background-color: #005e95;
+  color: #ffffff;
+}
+
+.pgEarth-print__export-button.pgEarth-disabled {
+  pointer-events: none;
+}
+
+.pgEarth-print__export-panel-container {
+  font-size: 12px;
+  border-top: 1px solid #ddd;
+  padding: 12px 0;
+}
+
+.pgEarth-print__export-panel-container [class*=pgEarth-icon] {
+  margin-right: 0.5em;
+  margin-top: 0.15em;
+}
+
+.pgEarth-print__exported-file-link-title {
+  word-break: break-all;
+}
+
+.pgEarth-print__exported-file-link-title.pgEarth-disabled {
+  color: rgba(110, 110, 110, 0.4);
+}
+
+.pgEarth-print__exported-file-link {
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.3em;
+  margin-bottom: 6px;
+}
+
+.pgEarth-print__exported-file--error {
+  color: #8c2907;
+  cursor: pointer;
+}
+
+.pgEarth-print .pgEarth-print__exported-file--error:hover {
+  color: #8c2907;
+}
+
+.pgEarth-print__exported-file .pgEarth-disabled {
+  pointer-events: none;
+}
+
+html[dir=rtl] .pgEarth-print__export-panel-container [class*=pgEarth-icon] {
+  margin-right: 0;
+  margin-left: 0.5em;
+}
+html[dir=rtl] .pgEarth-print__advanced-options-button[aria-expanded=false] .pgEarth-print__advanced-options-button-icon--closed {
+  display: none;
+}
+html[dir=rtl] .pgEarth-print__advanced-options-button[aria-expanded=false] .pgEarth-print__advanced-options-button-icon--closed-rtl {
+  display: block;
+}
+
+.pgEarth-direct-line-measurement-3d {
+  pointer-events: none;
+}
+
+.pgEarth-direct-line-measurement-3d__container {
+  position: relative;
+  padding: 12px 15px;
+  overflow-y: auto;
+}
+.pgEarth-direct-line-measurement-3d__container a {
+  text-decoration: none;
+}
+.pgEarth-direct-line-measurement-3d__container button,
+.pgEarth-direct-line-measurement-3d__container [role=button] {
+  height: 32px;
+  cursor: pointer;
+  border: none;
+}
+
+.pgEarth-direct-line-measurement-3d__header {
+  position: relative;
+  font-size: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+  display: flex;
+  flex: 0 0 auto;
+}
+
+.pgEarth-direct-line-measurement-3d__header-title,
+h1.pgEarth-direct-line-measurement-3d__header-title {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 0;
+  margin: 0;
+  display: block;
+  flex: 1;
+  word-break: break-word;
+  text-align: left;
+}
+
+.pgEarth-direct-line-measurement-3d__header-buttons {
+  padding: 0;
+  margin: 0 0 0 auto;
+  display: flex;
+}
+.pgEarth-direct-line-measurement-3d__header-buttons button,
+.pgEarth-direct-line-measurement-3d__header-buttons [role=button] {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border: none;
+  padding: 8px;
+}
+
+.pgEarth-direct-line-measurement-3d__hint {
+  padding-bottom: 12px;
+}
+
+.pgEarth-direct-line-measurement-3d__panel--error {
+  color: #8c2907;
+}
+
+.pgEarth-direct-line-measurement-3d__measurement-item {
+  display: flex;
+  align-items: baseline;
+}
+
+.pgEarth-direct-line-measurement-3d__measurement-item--disabled {
+  display: flex;
+  color: rgba(50, 50, 50, 0.4);
+}
+
+.pgEarth-direct-line-measurement-3d__measurement-item-title {
+  flex: 1;
+  line-height: 24px;
+}
+
+.pgEarth-direct-line-measurement-3d__measurement-item-value {
+  flex: 1;
+  line-height: 24px;
+}
+
+.pgEarth-direct-line-measurement-3d__units {
+  display: flex;
+  padding-bottom: 12px;
+  align-items: baseline;
+}
+
+.pgEarth-direct-line-measurement-3d__units-label {
+  flex: 1;
+  line-height: 24px;
+}
+
+.pgEarth-direct-line-measurement-3d__units-select-wrapper {
+  flex: 1;
+}
+
+.pgEarth-direct-line-measurement-3d__units-select {
+  width: 100%;
+  padding-right: 2.7em;
+}
+
+.pgEarth-button.pgEarth-direct-line-measurement-3d__clear-button {
+  color: #0079c1;
+  border: 1px solid #0079c1;
+  background-color: #ffffff;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.pgEarth-button.pgEarth-direct-line-measurement-3d__clear-button:hover {
+  color: #ffffff;
+  background-color: #0079c1;
+}
+
+.pgEarth-popup-renderer__media,
+.pgEarth-popup-renderer__attachments,
+.pgEarth-popup-renderer__media-container {
+  display: flex;
+}
+
+.pgEarth-popup-renderer__loading-container {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  padding: 12px 0;
+}
+
+.pgEarth-icon-loading-indicator {
+  display: inline-block;
+}
+
+.pgEarth-popup-renderer {
+  width: 100%;
+}
+
+.pgEarth-popup-renderer h1 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.pgEarth-popup-renderer h2 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pgEarth-popup-renderer img {
+  max-width: 100%;
+}
+
+.pgEarth-popup-renderer figcaption {
+  font-size: 10px;
+  font-style: italic;
+  padding: 0;
+  margin: 0.2em 0 0;
+  display: block;
+}
+
+.pgEarth-popup-renderer ul {
+  margin-bottom: 1rem;
+  padding: 0 0 0 1rem;
+}
+
+.pgEarth-popup-renderer li {
+  font-size: 12px;
+  margin: 0.3em 0;
+}
+
+.pgEarth-popup-renderer__content-element {
+  padding: 0 7px 24px;
+}
+
+.pgEarth-popup-renderer__content-element:last-child {
+  padding-bottom: 0;
+}
+
+.pgEarth-popup-renderer__field-data--date {
+  text-transform: capitalize;
+}
+
+.pgEarth-popup-renderer__attachments-title {
+  margin: 0 auto 0 0;
+  font-weight: 600;
+}
+
+.pgEarth-popup-renderer__attachments {
+  flex-flow: column wrap;
+  align-items: flex-start;
+}
+
+ul.pgEarth-popup-renderer__attachments-items {
+  padding: 0 0 0 0;
+  margin: 6px 0;
+}
+
+li.pgEarth-popup-renderer__attachments-item {
+  list-style-type: none;
+  line-height: 1.2em;
+  display: table;
+}
+
+a.pgEarth-popup-renderer__attachments-item-link {
+  text-decoration: none;
+  font-size: 12px;
+  color: #6e6e6e;
+  max-width: 100%;
+  word-break: break-all;
+  display: table-row;
+}
+
+a.pgEarth-popup-renderer__attachments-item-link:hover {
+  color: #2e2e2e;
+}
+
+.pgEarth-popup-renderer__attachments-item-icon,
+.pgEarth-popup-renderer__attachments-item-title {
+  display: table-cell;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  vertical-align: middle;
+}
+
+.pgEarth-popup-renderer__attachments-item-icon {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.pgEarth-popup-renderer__media {
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.pgEarth-popup-renderer__media-summary {
+  flex-flow: row nowrap;
+  align-items: center;
+  display: none;
+  margin: 0 7px 0 auto;
+  padding: 0;
+}
+
+.pgEarth-popup-renderer__media-count {
+  padding: 0 0.2rem;
+}
+
+.pgEarth-popup-renderer__media-image-summary {
+  list-style-type: none;
+  display: inline-block;
+  vertical-align: text-bottom;
+  padding: 0 0 0 0.7rem;
+}
+
+.pgEarth-popup-renderer__media-item-title {
+  font-size: 14px;
+  padding: 0.3rem 0 0;
+}
+
+.pgEarth-popup-renderer__media-item-caption {
+  font-size: 12px;
+  padding: 0.1rem 0 0;
+}
+
+.pgEarth-popup-renderer__media-container {
+  flex-flow: row nowrap;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  min-height: 150px;
+  margin-top: 6px;
+}
+
+.pgEarth-popup-renderer__media-container .pgEarth-popup-renderer__button {
+  justify-content: center;
+  align-items: center;
+  flex: 0 1 15%;
+  font-size: 20px;
+  color: #6e6e6e;
+  display: none;
+}
+
+.pgEarth-popup-renderer__media-container .pgEarth-popup-renderer__button:hover {
+  cursor: pointer;
+  color: #2e2e2e;
+}
+
+.pgEarth-popup-renderer__media-item {
+  max-width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.pgEarth-popup-renderer__media-chart {
+  width: 250px;
+  height: 250px;
+}
+
+.pgEarth-popup-renderer__media-previous-icon--rtl,
+.pgEarth-popup-renderer__media-next-icon--rtl {
+  display: none;
+}
+
+.pgEarth-popup-renderer--media-pagination-visible .pgEarth-popup-renderer__media-container .pgEarth-popup-renderer__button {
+  display: flex;
+}
+
+.pgEarth-popup-renderer--media-pagination-visible .pgEarth-popup-renderer__media-item-container {
+  flex: 0 0 70%;
+}
+
+.pgEarth-popup-renderer--media-pagination-visible .pgEarth-popup-renderer__media-summary {
+  display: flex;
+}
+
+.pgEarth-popup-renderer--media-pagination-visible .pgEarth-popup-renderer__media-chart {
+  width: 225px;
+  height: 225px;
+}
+
+.pgEarth-view-width-xlarge .pgEarth-popup-renderer .pgEarth-popup-renderer__media-item img {
+  max-width: 380px;
+}
+.pgEarth-view-width-xlarge .pgEarth-popup-renderer .pgEarth-popup-renderer--media-pagination-visible .pgEarth-popup-renderer__media-item img {
+  max-width: 320px;
+}
+
+.pgEarth-view-width-large .pgEarth-popup-renderer .pgEarth-popup-renderer__media-item img {
+  max-width: 280px;
+}
+.pgEarth-view-width-large .pgEarth-popup-renderer .pgEarth-popup-renderer--media-pagination-visible .pgEarth-popup-renderer__media-item img {
+  max-width: 220px;
+}
+
+.pgEarth-view-width-medium .pgEarth-popup-renderer .pgEarth-popup-renderer__media-item img {
+  max-width: 240px;
+}
+.pgEarth-view-width-medium .pgEarth-popup-renderer .pgEarth-popup-renderer--media-pagination-visible .pgEarth-popup-renderer__media-item img {
+  max-width: 180px;
+}
+
+.pgEarth-view-width-small .pgEarth-popup-renderer .pgEarth-popup-renderer__media-item img {
+  max-width: 225px;
+}
+.pgEarth-view-width-small .pgEarth-popup-renderer .pgEarth-popup-renderer--media-pagination-visible .pgEarth-popup-renderer__media-item img {
+  max-width: 165px;
+}
+
+.pgEarth-view-width-xsmall .pgEarth-popup-renderer .pgEarth-popup-renderer__media-item img {
+  max-width: 180px;
+}
+.pgEarth-view-width-xsmall .pgEarth-popup-renderer .pgEarth-popup-renderer--media-pagination-visible .pgEarth-popup-renderer__media-item img {
+  max-width: 120px;
+}
+
+.pgEarth-view-width-xsmall .pgEarth-docked .pgEarth-popup-renderer .pgEarth-popup-renderer__media-item img {
+  max-width: 300px;
+}
+.pgEarth-view-width-xsmall .pgEarth-docked .pgEarth-popup-renderer .pgEarth-popup-renderer--media-pagination-visible .pgEarth-popup-renderer__media-item img {
+  max-width: 240px;
+}
+
+html[dir=rtl] .pgEarth-popup-renderer__attachments-title {
+  margin: 0 0 0 auto;
+}
+html[dir=rtl] .pgEarth-popup-renderer__attachments-item-icon {
+  padding: 0 0 0 0.5em;
+}
+html[dir=rtl] .pgEarth-popup-renderer__media-summary {
+  margin: 0 auto 0 0;
+}
+html[dir=rtl] .pgEarth-popup-renderer__media-image-summary {
+  margin: 0 0.5em 0 0;
+}
+html[dir=rtl] .pgEarth-popup-renderer__media-previous-icon--rtl,
+html[dir=rtl] .pgEarth-popup-renderer__media-next-icon--rtl {
+  display: inline-block;
+}
+html[dir=rtl] .pgEarth-popup-renderer__media-previous-icon,
+html[dir=rtl] .pgEarth-popup-renderer__media-next-icon {
+  display: none;
+}
+
+.pgEarth-raster-symbology {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.pgEarth-raster-symbology-editor--hidden {
+  display: none;
+}
+
+.pgEarth-raster-symbology-editor--block {
+  display: block;
+}
+
+.pgEarth-raster-symbology-editor__percent-clip-row {
+  display: table-row;
+}
+
+.pgEarth-raster-symbology-editor__std-deviation-row {
+  display: table-row;
+}
+
+.pgEarth-raster-symbology-editor__stretch-dra-row {
+  display: table-row;
+}
+
+.pgEarth-raster-symbology-editor__stretch-color-ramp-row {
+  display: table-row;
+}
+
+.pgEarth-raster-symbology-editor__table {
+  width: 100%;
+}
+
+.pgEarth-raster-symbology-editor__filtering-select {
+  width: 100% !important;
+}
+
+.field-pgEarthRasterSymbologyEditorUniqueValueSymbol {
+  width: 20%;
+}
+
+.field-pgEarthRasterSymbologyEditorUniqueValueValue {
+  width: 80%;
+}
+
+.pgEarth-raster-symbology-editor__thumbnail-image, .pgEarth-raster-symbology-editor__symbology-type-icon--discrete, .pgEarth-raster-symbology-editor__symbology-type-icon--unique-value, .pgEarth-raster-symbology-editor__symbology-type-icon--stretch, .pgEarth-raster-symbology-editor__symbology-type-icon--rgb {
+  width: 32px;
+  height: 32px;
+}
+
+.pgEarth-raster-symbology-editor__stretch-type-icon--min-max {
+  background-image: url(../base/images/raster-symbology-editor-stretch-type-min-max.png);
+}
+
+.pgEarth-raster-symbology-editor__stretch-type-icon--none {
+  background-image: url(../base/images/raster-symbology-editor-stretch-type-none.png);
+}
+
+.pgEarth-raster-symbology-editor__stretch-type-icon--standard-deviation {
+  background-image: url(../base/images/raster-symbology-editor-stretch-type-standard-deviation.png);
+}
+
+.pgEarth-raster-symbology-editor__stretch-type-icon--percent-clip {
+  background-image: url(../base/images/raster-symbology-editor-stretch-type-percent-clip.png);
+}
+
+.pgEarth-raster-symbology-editor__band-combination-icon--natural-color {
+  background-image: url(../base/images/raster-symbology-editor-band-combination-natural-color.png);
+}
+
+.pgEarth-raster-symbology-editor__band-combination-icon--land-water {
+  background-image: url(../base/images/raster-symbology-editor-band-combination-land-water.png);
+}
+
+.pgEarth-raster-symbology-editor__band-combination-icon--landuse {
+  background-image: url(../base/images/raster-symbology-editor-band-combination-landuse.png);
+}
+
+.pgEarth-raster-symbology-editor__band-combination-icon--bathymetric {
+  background-image: url(../base/images/raster-symbology-editor-band-combination-bathymetric.png);
+}
+
+.pgEarth-raster-symbology-editor__band-combination-icon--vegetation {
+  background-image: url(../base/images/raster-symbology-editor-band-combination-vegetation.png);
+}
+
+.pgEarth-raster-symbology-editor__band-combination-icon--color-infrared {
+  background-image: url(../base/images/raster-symbology-editor-band-combination-color-infrared.png);
+}
+
+.pgEarth-raster-symbology-editor__symbology-type-icon--rgb {
+  background-image: url(../base/images/raster-symbology-editor-symbology-type-rgb.png);
+}
+
+.pgEarth-raster-symbology-editor__symbology-type-icon--stretch {
+  background-image: url(../base/images/raster-symbology-editor-symbology-type-stretch.png);
+}
+
+.pgEarth-raster-symbology-editor__symbology-type-icon--unique-value {
+  background-image: url(../base/images/raster-symbology-editor-symbology-type-unique-value.png);
+}
+
+.pgEarth-raster-symbology-editor__symbology-type-icon--discrete {
+  background-image: url(../base/images/raster-symbology-editor-symbology-type-discrete.png);
+}
+
+.pgEarth-raster-symbology-editor__menu-item-td {
+  border: none !important;
+  background: none !important;
+}
+
+.pgEarth-raster-symbology-editor__dgrid-symbol-cell {
+  width: 15px;
+  height: 15px;
+  border: 1px solid #000;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pgEarth-raster-symbology-editor__menu-item-text {
+  white-space: pre-wrap;
+  width: 40ex;
+}
+
+.pgEarth-raster-symbology-editor__checkbox {
+  display: inline-block;
+}
+
+.pgEarth-renderer-slider {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  font-weight: normal;
+  text-align: left;
+  background-color: #fff;
+}
+
+.pgEarth-renderer-slider .pgEarth-slider-node {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 4px;
+  white-space: nowrap;
+  margin: 0 0 0 80px;
+}
+
+.pgEarth-renderer-slider .pgEarth-slider-area {
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid #888;
+  width: 2px;
+  height: 200px;
+}
+
+.pgEarth-renderer-slider .pgEarth-slider-area-right {
+  width: 140px;
+  height: 200px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.pgEarth-slider-ramp-surface {
+  border: 1px solid #888;
+}
+
+.pgEarth-renderer-slider .pgEarth-slider-area-right *:focus {
+  outline: none;
+}
+
+.pgEarth-renderer-slider .pgEarth-slider-area-right .pgEarth-histogram-bar:hover {
+  cursor: pointer;
+  fill: #888;
+}
+
+.pgEarth-renderer-slider .pgEarth-ramp {
+  border: 1px solid #888;
+}
+
+.pgEarth-renderer-slider .pgEarth-moveable {
+  position: absolute;
+  left: 0;
+}
+
+.pgEarth-renderer-slider .pgEarth-handle-container {
+  position: absolute;
+  height: 20px;
+  width: 18px;
+}
+
+.pgEarth-renderer-slider .pgEarth-handle {
+  position: absolute;
+  background-color: #000;
+  border: 1px solid #ccc;
+  border-right: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 10px;
+  height: 14px;
+  top: 3px;
+  background-image: url("../base/images/handles.png");
+  background-position: -15px -8px;
+  z-index: 4;
+  box-shadow: 0px 1px 3px #000;
+}
+
+.pgEarth-renderer-slider .pgEarth-handle-span {
+  background-color: #000;
+  border: 1px solid #ccc;
+  box-shadow: 2px 0 3px #000;
+  height: 12px;
+  width: 12px;
+  transform: scale(0.707) rotate(45deg);
+  position: absolute;
+  z-index: 3;
+  top: 3px;
+  left: 3px;
+}
+
+.pgEarth-renderer-slider .pgEarth-handle:hover,
+.pgEarth-handle-span:hover + .pgEarth-handle {
+  background-position: -30px -8px;
+  background-color: #fff;
+}
+
+.pgEarth-renderer-slider .pgEarth-handle-span:hover {
+  cursor: pointer;
+}
+
+.pgEarth-renderer-slider .pgEarth-handle-label {
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  text-align: right;
+}
+
+.pgEarth-renderer-slider .pgEarth-handle-label-span:hover {
+  background-color: #e5f2fe;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.pgEarth-renderer-slider .pgEarth-moveable .dijitNumberTextBox,
+.pgEarth-renderer-slider .pgEarth-moveable .dijitValidationTextBox {
+  text-align: start;
+  position: relative;
+  width: 100px;
+  top: -3px;
+  left: 117px;
+  z-index: 99;
+}
+
+.pgEarth-renderer-slider .pgEarth-moveable .dijitValidationTextBox {
+  width: 140px;
+  left: 157px;
+}
+
+.pgEarth-renderer-slider .pgEarth-handler-tick {
+  border-top: 1px solid #FFF;
+  border-bottom: 1px solid #000;
+  box-sizing: border-box;
+  height: 1px;
+  left: 10px;
+  position: absolute;
+  top: 9px;
+  width: 32px;
+  z-index: 2;
+}
+
+.pgEarth-renderer-slider .pgEarth-handler-tick-top {
+  border-top: 1px solid #FFF;
+  border-bottom: 1px solid #000;
+}
+
+.pgEarth-renderer-slider .pgEarth-handler-tick-bottom {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #FFF;
+}
+
+.pgEarth-renderer-slider .pgEarth-top-label-node {
+  margin-bottom: 4px;
+}
+
+.pgEarth-renderer-slider .pgEarth-top-label-node,
+.pgEarth-renderer-slider .pgEarth-bottom-label-node {
+  height: 22px;
+  margin: auto;
+  text-align: center;
+  line-height: 20px;
+}
+
+.pgEarth-renderer-slider .pgEarth-top-label-node,
+.pgEarth-renderer-slider .pgEarth-bottom-label-node,
+.pgEarth-renderer-slider .pgEarth-handle-label {
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #444;
+}
+
+.pgEarth-renderer-slider .pgEarth-handler-tick-size {
+  border-top: none !important;
+  border-bottom: 1px solid #000 !important;
+  width: 32px !important;
+}
+
+.pgEarth-renderer-slider .pgEarth-heatmap-tick {
+  width: 34px !important;
+}
+
+.pgEarth-renderer-slider .pgEarth-top-label-node span,
+.pgEarth-renderer-slider .pgEarth-bottom-label-node span {
+  height: 20px;
+}
+
+.pgEarth-renderer-slider .pgEarth-top-label-node-hover:hover,
+.pgEarth-renderer-slider .pgEarth-bottom-label-node-hover:hover {
+  background-color: #e5f2fe;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* RTL Fixes */
+.dj_rtl .pgEarth-renderer-slider .pgEarth-slider-node {
+  margin: 0 80px 0 0;
+}
+
+.dj_rtl .pgEarth-renderer-slider .pgEarth-slider-area-right {
+  text-align: right;
+}
+
+.dj_rtl .pgEarth-renderer-slider .pgEarth-slider-node .pgEarth-handle-label {
+  direction: ltr;
+  unicode-bidi: embed;
+  left: 0;
+  position: absolute;
+  right: auto;
+  text-align: left;
+  top: 3px;
+  padding-left: 3px;
+}
+
+.dj_rtl .pgEarth-renderer-slider .pgEarth-moveable .dijitNumberTextBox {
+  left: -112px;
+  text-align: right;
+}
+
+.dj_rtl .pgEarth-renderer-slider .pgEarth-moveable .dijitValidationTextBox {
+  left: -152px;
+  text-align: right;
+}
+
+.dj_rtl .pgEarth-renderer-slider .pgEarth-handler-tick {
+  left: -42px;
+}
+
+.dj_rtl .pgEarth-renderer-slider .pgEarth-top-label-node,
+.dj_rtl .pgEarth-renderer-slider .pgEarth-bottom-label-node {
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+.dj_rtl .pgEarth-renderer-slider .pgEarth-handle {
+  border: 1px solid #ccc;
+  border-left: none;
+  box-shadow: 0px 1px 3px #000;
+  background-position: -16px -8px;
+}
+
+.dj_rtl .pgEarth-renderer-slider .pgEarth-handle-span {
+  box-shadow: 2px 0 3px #000;
+  left: 1px;
+}
+
+.pgEarth-scale-bar.pgEarth-widget {
+  background: transparent;
+  box-shadow: none;
+}
+
+.pgEarth-scale-bar__bar-container {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  transition: width 250ms ease-in-out;
+}
+
+.pgEarth-scale-bar__bar-container--ruler {
+  flex-direction: column;
+}
+
+.pgEarth-scale-bar__bar-container--line:last-child {
+  align-items: flex-start;
+}
+
+.pgEarth-scale-bar__ruler {
+  display: flex;
+  flex-wrap: wrap;
+  height: 6px;
+  background-color: #ffffff;
+  margin: 0 2ch 0 0.5ch;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.pgEarth-scale-bar__ruler-block {
+  height: 50%;
+  width: 25%;
+  background-color: #6e6e6e;
+}
+
+.pgEarth-scale-bar__ruler-block:nth-child(-n+2) {
+  margin-right: 25%;
+}
+
+.pgEarth-scale-bar__ruler-block:nth-child(n+3) {
+  margin-left: 25%;
+}
+
+.pgEarth-scale-bar__line {
+  position: relative;
+  height: 3px;
+  background-color: #6e6e6e;
+  bottom: 0;
+  left: 0;
+  right: 2ch;
+}
+
+.pgEarth-scale-bar__line--bottom {
+  top: -3px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.pgEarth-scale-bar__line--top:before,
+.pgEarth-scale-bar__line--top:after,
+.pgEarth-scale-bar__line--bottom:before,
+.pgEarth-scale-bar__line--bottom:after {
+  content: "";
+  display: block;
+  width: 3px;
+  height: 9px;
+  background-color: #6e6e6e;
+  position: absolute;
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.pgEarth-scale-bar__line--top:before {
+  bottom: 0;
+  left: 0;
+}
+
+.pgEarth-scale-bar__line--top:after {
+  bottom: 0;
+  right: 0;
+}
+
+.pgEarth-scale-bar__line--bottom:before {
+  top: 0;
+  left: 0;
+}
+
+.pgEarth-scale-bar__line--bottom:after {
+  height: 7px;
+  top: 2px;
+  right: 0;
+}
+
+.pgEarth-scale-bar__label-container {
+  position: relative;
+}
+
+.pgEarth-scale-bar__label-container--line {
+  position: relative;
+  left: -2ch;
+}
+
+.pgEarth-scale-bar__label-container--ruler {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.pgEarth-scale-bar__label {
+  font-size: 12px;
+  text-shadow: 0 0 1px #ffffff, 0 0 1px #ffffff, 0 0 1px #ffffff;
+  color: #323232;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 0.5em 0 0.7em 0;
+}
+
+html[dir=rtl] .pgEarth-scale-bar__ruler {
+  margin: 0 0.5ch 0 2ch;
+}
+html[dir=rtl] .pgEarth-scale-bar__label-container--line {
+  left: auto;
+  right: -2ch;
+}
+
+.pgEarth-search {
+  width: 240px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+.pgEarth-search .pgEarth-widget-button {
+  box-shadow: none;
+}
+.pgEarth-search .pgEarth-search__container,
+.pgEarth-search .pgEarth-search__input-container,
+.pgEarth-search .pgEarth-search__form {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.pgEarth-search .pgEarth-search__container {
+  position: relative;
+  align-items: stretch;
+  flex: 1 0 100%;
+}
+.pgEarth-search .pgEarth-search__container .pgEarth-search__input,
+.pgEarth-search .pgEarth-search__container .pgEarth-widget-button {
+  z-index: 0;
+  background-color: transparent;
+}
+.pgEarth-search .pgEarth-search__container .pgEarth-search__input:focus,
+.pgEarth-search .pgEarth-search__container .pgEarth-widget-button:focus {
+  z-index: 1;
+}
+.pgEarth-search .pgEarth-search__container:before,
+.pgEarth-search .pgEarth-search__container:after {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  height: 2px;
+  top: 0;
+}
+.pgEarth-search .pgEarth-search__container:before {
+  background-color: rgba(50, 50, 50, 0.25);
+  width: 100%;
+  z-index: 1;
+}
+.pgEarth-search .pgEarth-search__container:after {
+  background-color: #6e6e6e;
+  width: 20%;
+  z-index: 2;
+  animation: looping-progresss-bar-ani 1500ms linear infinite;
+}
+.pgEarth-search .pgEarth-search__input-container {
+  align-items: stretch;
+  flex: 2 0;
+}
+.pgEarth-search .pgEarth-search__form {
+  padding: 0;
+  margin: 0;
+  align-items: stretch;
+  flex: 1 0;
+}
+.pgEarth-search .pgEarth-search__input {
+  font-family: inherit;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0 0.5em;
+  font-size: 14px;
+  background-color: inherit;
+  color: inherit;
+  border: none;
+}
+.pgEarth-search .pgEarth-search__input::-ms-clear {
+  display: none;
+}
+.pgEarth-search .pgEarth-search__input::-moz-placeholder {
+  color: rgba(50, 50, 50, 0.4);
+  opacity: 1;
+}
+.pgEarth-search .pgEarth-search__input:-ms-input-placeholder {
+  color: rgba(50, 50, 50, 0.4);
+}
+.pgEarth-search .pgEarth-search__input::-webkit-input-placeholder {
+  color: rgba(50, 50, 50, 0.4);
+}
+.pgEarth-search .pgEarth-search__submit-button,
+.pgEarth-search .pgEarth-search__sources-button {
+  cursor: pointer;
+  align-self: flex-end;
+}
+.pgEarth-search .pgEarth-search__submit-button {
+  border-left: solid 1px rgba(50, 50, 50, 0.25);
+}
+.pgEarth-search .pgEarth-search__sources-button {
+  border-right: solid 1px rgba(50, 50, 50, 0.25);
+}
+.pgEarth-search .pgEarth-search__sources-button--up {
+  display: none;
+}
+.pgEarth-search .pgEarth-search__clear-button {
+  align-self: flex-end;
+  display: flex;
+}
+.pgEarth-search .pgEarth-search__source-name {
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  position: absolute;
+  height: 1px;
+  width: 1px;
+}
+.pgEarth-search .pgEarth-search--loading:before,
+.pgEarth-search .pgEarth-search--loading:after {
+  opacity: 1;
+}
+.pgEarth-search .pgEarth-search__suggestions-menu [class^=pgEarth-icon] {
+  vertical-align: middle;
+}
+.pgEarth-search .pgEarth-search__suggestions-menu .pgEarth-header,
+.pgEarth-search .pgEarth-search__suggestions-menu ul {
+  border-top: solid 1px rgba(50, 50, 50, 0.25);
+}
+.pgEarth-search .pgEarth-search__suggestions-menu .pgEarth-header:first-child,
+.pgEarth-search .pgEarth-search__suggestions-menu ul:first-child {
+  border: none;
+}
+.pgEarth-search .pgEarth-search--show-suggestions .pgEarth-search__suggestions-menu,
+.pgEarth-search .pgEarth-search--sources .pgEarth-search__sources-menu {
+  overflow: auto;
+  visibility: visible;
+  max-height: 300px;
+  animation: pgEarth-fade-in 250ms ease-out;
+}
+.pgEarth-search .pgEarth-search__source--active {
+  background-color: #ededed;
+  color: #191919;
+}
+.pgEarth-search .pgEarth-search--warning .pgEarth-search__warning-menu {
+  transition: opacity 125ms ease-in-out;
+  visibility: visible;
+  opacity: 1;
+  max-height: inherit;
+}
+.pgEarth-search .pgEarth-search__sources-button {
+  display: flex;
+}
+.pgEarth-search .pgEarth-search--multiple-sources .pgEarth-search__input {
+  border-left: 0;
+}
+.pgEarth-search .pgEarth-search__warning-menu {
+  z-index: 1;
+  font-size: 14px;
+  opacity: 0;
+}
+.pgEarth-search .pgEarth-search__warning-body {
+  padding: 0.8em 1em;
+}
+.pgEarth-search .pgEarth-search__warning-header {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.pgEarth-search .pgEarth-icon-notice-triangle {
+  font-size: 16px;
+  line-height: 16px;
+  margin: 0 5px 0 0;
+  vertical-align: text-bottom;
+}
+
+.pgEarth-search__input {
+  text-overflow: ellipsis;
+}
+
+.pgEarth-ui-bottom-left .pgEarth-search__sources-button--up,
+.pgEarth-ui-bottom-right .pgEarth-search__sources-button--up {
+  display: flex;
+}
+.pgEarth-ui-bottom-left .pgEarth-search__sources-button--down,
+.pgEarth-ui-bottom-right .pgEarth-search__sources-button--down {
+  display: none;
+}
+
+html[dir=rtl] .pgEarth-search .pgEarth-search__submit-button {
+  border-left: none;
+  border-right: solid 1px rgba(50, 50, 50, 0.25);
+}
+html[dir=rtl] .pgEarth-search .pgEarth-search__sources-button {
+  border-right: none;
+  border-left: solid 1px rgba(50, 50, 50, 0.25);
+}
+html[dir=rtl] .pgEarth-search .pgEarth-search__container:after {
+  animation: looping-progresss-bar-ani 1500ms linear infinite reverse;
+}
+
+.pgEarth-search-result-renderer .pgEarth-search-result-renderer__more-results-header {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.pgEarth-search-result-renderer .pgEarth-search-result-renderer__more-results-item {
+  margin-bottom: 10px;
+}
+.pgEarth-search-result-renderer .pgEarth-search-result-renderer__more-results-list {
+  display: none;
+}
+.pgEarth-search-result-renderer .pgEarth-search-result-renderer__more-results-list ul {
+  list-style: none;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+.pgEarth-search-result-renderer .pgEarth-search-result-renderer__more-results-list li {
+  padding: 2px 0;
+}
+.pgEarth-search-result-renderer .pgEarth-search-result-renderer__more-results--show-more-results .pgEarth-search-result-renderer__more-results-list {
+  display: block;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+
+@keyframes pgEarth-spinner--start-animation {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes pgEarth-spinner--finish-animation {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+@keyframes pgEarth-spinner--rotate-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.pgEarth-spinner {
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+  overflow: visible;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: -999em;
+  top: -999em;
+  z-index: 2;
+  pointer-events: none;
+  display: none;
+  opacity: 0;
+  transform-origin: 0 0;
+}
+
+.pgEarth-spinner::before {
+  position: absolute;
+  margin: -50% 0 0 -50%;
+  width: 100%;
+  height: 100%;
+  background: url("../base/images/Loading_Indicator_double_32.svg") no-repeat center;
+  display: block;
+  content: "";
+  animation: pgEarth-spinner--rotate-animation 750ms linear infinite;
+}
+
+.pgEarth-spinner--start {
+  display: block;
+  animation: pgEarth-spinner--start-animation 250ms cubic-bezier(0.17, 0.67, 0.36, 0.99) forwards;
+}
+
+.pgEarth-spinner--finish {
+  display: block;
+  opacity: 1;
+  animation: pgEarth-spinner--finish-animation 125ms ease-in forwards;
+  animation-delay: 75ms;
+}
+
+.pgEarth-tags .select2-container-multi .select2-choices {
+  list-style-type: none;
+}
+
+.pgEarth-tags .select2-container-multi .select2-choices .select2-search-choice {
+  padding: 3px 18px 3px 3px;
+  margin: 3px 5px 3px 5px;
+  position: relative;
+  line-height: 13px;
+  color: #333;
+  cursor: default;
+  border: 1px solid #7FBBDF;
+  display: inline-block;
+  border-radius: 3px;
+  box-shadow: 0 0 2px #ffffff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  -webkit-touch-callout: none;
+  user-select: none;
+  background-color: #D1E9F9;
+  filter: none;
+  background-image: none;
+}
+
+.pgEarth-tags .select2-container-multi .select2-search-choice-close {
+  left: 3px;
+}
+
+.pgEarth-tags .select2-search-choice-close {
+  background-image: url("../base/images/ago_sprite.png") !important;
+  background-position: -48px -81px;
+  width: 13px;
+  height: 13px;
+  display: block;
+  position: absolute;
+  left: auto;
+  right: 3px;
+  top: 3px;
+  font-size: 1px;
+  outline: none;
+}
+
+.pgEarth-tags .select2-search-choice-close:hover,
+.pgEarth-tags .select2-search-choice-close:focus {
+  background-position: -32px -81px;
+}
+
+.pgEarth-tags .select2-container .dgrid-row.ui-state-default {
+  padding: 3px 3px 4px 3px;
+  cursor: pointer;
+  outline: none !important;
+}
+
+.pgEarth-tags .select2-container .dgrid-row.ui-state-default.dgrid-row-odd {
+  background: #eee;
+}
+
+.pgEarth-tags .select2-container .dgrid-row.ui-state-default.dgrid-hover,
+.pgEarth-tags .select2-container .dgrid-row.ui-state-default.dgrid-row-odd.dgrid-hover,
+.pgEarth-tags .dgrid-focus,
+.pgEarth-tags .select2-container-multi .select2-choices .select2-search-choice-focus {
+  background: #E1F0FB !important;
+}
+
+.pgEarth-tags .select2-container .dgrid-no-data {
+  color: #969696;
+  font-size: 1.3em;
+  padding: 1em;
+  text-align: center;
+}
+
+.pgEarth-tags .select2-container .dgrid-scroller {
+  outline: none !important;
+}
+
+.pgEarth-tags .select2-container-multi .select2-choices .select2-search-choice {
+  padding: 3px 20px 3px 3px;
+  float: left;
+}
+
+.dj_rtl .pgEarth-tags .select2-container-multi .select2-choices .select2-search-choice {
+  padding: 3px 5px 3px 18px;
+  float: right;
+}
+
+.dj_rtl .pgEarth-tags .select2-container-multi .select2-search-choice-close {
+  right: auto;
+  left: 3px;
+}
+
+.pgEarth-tags .dijitReset .dijitInputInner, .pgEarth-tags .dijitInputField {
+  /*line-height: 23px;*/
+  /*padding: 0 0 2px;*/
+  margin-left: 0.3em;
+}
+
+.dj_rtl .pgEarth-tags .dijitReset .dijitInputInner,
+.dj_rtl .pgEarth-tags .dijitInputField {
+  margin-left: 0;
+  margin-right: 0.3em;
+}
+
+.pgEarth-tags .dijitInputInner {
+  background-color: white !important;
+}
+
+div.pgEarth-tags {
+  outline: none;
+}
+
+/* autocomplete */
+/* match character highlighting */
+.pgEarth-tags .highlight-match {
+  color: red;
+}
+
+/* No data in dGrid */
+.pgEarth-tags .dgrid-no-data, .pgEarth-tags .dgrid-loading {
+  color: #aaa;
+  font-size: 2em;
+  padding: 1em;
+  text-align: center;
+}
+
+/* Hide dgrid field column header */
+.pgEarth-tags th.field-tag {
+  display: none;
+}
+
+/* Input Textbox where user enters characters */
+/* Selected row */
+.pgEarth-tags .dgrid-selected {
+  background: #999;
+}
+
+/* We want to remove the border around any cells, otherwise, does not look like a dropdown list */
+.pgEarth-tags .dgrid-cell {
+  border: none !important;
+}
+
+.pgEarth-tags .dgrid-focus {
+  background-color: #CCCCCC;
+}
+
+.pgEarth-tags .dijitInputInner {
+  background-color: white !important;
+}
+
+.pgEarth-tags .dgrid-scroller {
+  margin-top: 0 !important;
+}
+
+/* Style applied to dijit used for testing sample data */
+.pgEarth-tags .dijitButton {
+  position: absolute !important;
+  top: 120px !important;
+}
+
+/* RTL */
+.pgEarth-tags .rtl {
+  padding-right: 1em;
+}
+
+.pgEarth-tags .grid-height-limiter {
+  height: 6em;
+}
+
+.pgEarth-tags .select2-container {
+  margin: 0;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.pgEarth-tags .select2-container,
+.pgEarth-tags .select2-search,
+.pgEarth-tags .select2-search input {
+  /*
+    Force border-box so that % widths fit the parent
+    container without overlap because of margin/padding.
+    More Info : http://www.quirksmode.org/css/box.html
+  */
+  box-sizing: border-box;
+  /* css3 */
+}
+
+.pgEarth-tags .select2-container .select2-choice {
+  display: block;
+  height: 26px;
+  padding: 0 0 0 8px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #aaa !important;
+  white-space: nowrap;
+  line-height: 26px;
+  color: #444;
+  text-decoration: none;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  -webkit-touch-callout: none;
+  user-select: none;
+  background-color: #fff;
+  background-image: -ms-linear-gradient(to top, #ffffff 0%, #eeeeee 50%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#eeeeee", GradientType=0);
+  background-image: linear-gradient(to top, #ffffff 0%, #eeeeee 50%);
+}
+
+.pgEarth-tags .select2-container .select2-choice span {
+  margin-right: 26px;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pgEarth-tags .select2-search {
+  display: inline-block;
+  width: 100%;
+  min-height: 26px;
+  margin: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+  position: relative;
+  z-index: 10000;
+  white-space: nowrap;
+}
+
+.pgEarth-tags .select2-search input {
+  width: 100%;
+  height: auto !important;
+  min-height: 26px;
+  padding: 4px 20px 4px 5px;
+  margin: 0;
+  outline: 0;
+  font-family: sans-serif;
+  font-size: 1em;
+  border: 1px solid #aaa;
+  border-radius: 0;
+  box-shadow: none;
+  background: #fff url("../base/images/select.png") no-repeat 100% -22px;
+  background: url("../base/images/select.png") no-repeat 100% -22px, -ms-linear-gradient(to top, #ffffff 85%, #eeeeee 99%);
+  background: url("../base/images/select.png") no-repeat 100% -22px, linear-gradient(to top, #ffffff 85%, #eeeeee 99%);
+}
+
+/* multiselect */
+.pgEarth-tags .select2-container-multi .select2-choices {
+  height: auto !important;
+  height: 1%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  border: 1px solid #aaa;
+  cursor: text;
+  overflow: hidden;
+}
+
+.pgEarth-tags .select2-container-multi .select2-choices {
+  min-height: 26px;
+}
+
+.pgEarth-tags .select2-container-multi.select2-container-active .select2-choices {
+  border: 1px solid #5897fb;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.pgEarth-tags .select2-container-multi .select2-choices li {
+  float: left;
+  list-style: none;
+}
+
+.pgEarth-tags .select2-container-multi .select2-choices .select2-search-field {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.pgEarth-tags .select2-container-multi .select2-choices .select2-search-field input {
+  padding: 5px;
+  margin: 1px 0;
+  font-family: sans-serif;
+  font-size: 100%;
+  color: #666;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent !important;
+}
+
+.pgEarth-tags .select2-default {
+  color: #999 !important;
+}
+
+.pgEarth-tags .select2-container-multi .select2-choices .select2-search-choice {
+  padding: 3px 5px 3px 18px;
+  margin: 3px 0 3px 5px;
+  position: relative;
+  line-height: 13px;
+  color: #333;
+  cursor: default;
+  border-radius: 3px;
+  box-shadow: 0 0 2px #ffffff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+.pgEarth-tags .select2-container-multi .select2-choices .select2-search-choice span {
+  cursor: default;
+}
+
+.pgEarth-tags .select2-container-multi .select2-choices .select2-search-choice-focus {
+  background: #d4d4d4;
+}
+
+.pgEarth-tags .select2-search-choice-close {
+  display: block;
+  width: 12px;
+  height: 13px;
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  font-size: 1px;
+  outline: none;
+}
+
+.pgEarth-tags .dijitReset .dijitInputInner,
+.pgEarth-tags .dijitInputField {
+  line-height: 23px;
+  padding: 2px 0 0 !important;
+  outline: none;
+}
+
+.pgEarth-tags .ie-style .dijitReset .dijitInputInner,
+.pgEarth-tags .ie-style .dijitInputField {
+  line-height: 21px !important;
+  padding: 2px 0 2px !important;
+}
+
+.pgEarth-tags .dijitPlaceHolder {
+  left: 0 !important;
+}
+
+.dj_rtl .pgEarth-tags .dijitPlaceHolder {
+  left: auto;
+  right: 0 !important;
+}
+
+.pgEarth-tags .input-text-box {
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+  border: none !important;
+  margin-left: 10px;
+}
+
+.pgEarth-tags .drop-down-list {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  box-shadow: 2px 2px 20px #888888;
+  background-color: white;
+}
+
+.pgEarth-tags .select2-container-multi .select2-choices .select2-search-choice {
+  padding: 3px 20px 3px 3px;
+  float: left;
+}
+
+.dj_rtl .pgEarth-tags .select2-container-multi .select2-choices .select2-search-choice {
+  padding: 3px 3px 3px 20px;
+  float: right;
+}
+
+.pgEarth-tags .select2-container-multi .select2-search-choice-close {
+  right: 3px;
+  left: auto;
+}
+
+.dj_rtl .pgEarth-tags .select2-container-multi .select2-search-choice-close {
+  left: 3px;
+  right: auto;
+}
+
+/* layout */
+.pgEarth-tags .container_2 {
+  width: 92%;
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
+.pgEarth-tags .grid_1,
+.pgEarth-tags .grid_2 {
+  display: inline;
+  float: left;
+  position: relative;
+  margin: 0;
+}
+
+.dj_rtl .pgEarth-tags .grid_1,
+.dj_rtl .pgEarth-tags .grid_2 {
+  float: right;
+}
+
+.pgEarth-tags .alpha {
+  margin-left: 0;
+}
+
+.pgEarth-tags .omega {
+  margin-right: 0;
+}
+
+.pgEarth-tags .container_2 .grid_1 {
+  width: 48%;
+}
+
+.pgEarth-tags .container_2 .grid_2 {
+  width: 98%;
+}
+
+.pgEarth-tags .container_2 .prefix_1 {
+  padding-left: 50%;
+}
+
+.pgEarth-tags .container_2 .suffix_1 {
+  padding-right: 50%;
+}
+
+.pgEarth-tags .container_2 .push_1 {
+  left: 50%;
+}
+
+.pgEarth-tags .container_2 .pull_1 {
+  left: -50%;
+}
+
+/* http://sonspring.com/journal/clearing-floats */
+.pgEarth-tags .clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* http://perishablepress.com/press/2008/02/05/lessons-learned-concerning-the-clearfix-css-hack */
+.pgEarth-tags .clearfix:after {
+  clear: both;
+  content: " ";
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.pgEarth-tags .clearfix {
+  display: inline-block;
+}
+
+.pgEarth-tags .clearfix {
+  height: 1%;
+}
+
+.pgEarth-tags .clearfix {
+  display: block;
+}
+
+.pgEarth-time-picker {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #323232;
+  border: 1px solid rgba(50, 50, 50, 0.25);
+  padding: 0 0.5em;
+}
+
+.pgEarth-time-picker__input {
+  border: none;
+  height: 32px;
+}
+
+.pgEarth-time-picker .pgEarth-time-picker__input {
+  font-size: 14px;
+}
+
+.pgEarth-zoom {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.pgEarth-zoom.pgEarth-zoom--horizontal {
+  flex-flow: row-reverse nowrap;
+}
+.pgEarth-zoom.pgEarth-zoom--horizontal .pgEarth-widget-button:last-child {
+  border-top: none;
+}
+.pgEarth-zoom.pgEarth-zoom--horizontal .pgEarth-widget-button:first-child {
+  border-left: solid 1px rgba(50, 50, 50, 0.25);
+}
+.pgEarth-zoom .pgEarth-widget-button {
+  box-shadow: none;
+}
+.pgEarth-zoom .pgEarth-widget-button:first-child {
+  margin-bottom: 0;
+}
+.pgEarth-zoom .pgEarth-widget-button:last-child {
+  border-top: solid 1px rgba(50, 50, 50, 0.25);
+}
+
+html[dir=rtl] .pgEarth-zoom.pgEarth-zoom--horizontal .pgEarth-widget-button:first-child {
+  border-top: none;
+}
+html[dir=rtl] .pgEarth-zoom.pgEarth-zoom--horizontal .pgEarth-widget-button:last-child {
+  border-left: solid 1px rgba(50, 50, 50, 0.25);
+}
+
+.pgEarth-zoom {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.pgEarth-zoom.pgEarth-zoom--horizontal {
+  flex-flow: row-reverse nowrap;
+}
+.pgEarth-zoom.pgEarth-zoom--horizontal .pgEarth-widget-button:last-child {
+  border-top: none;
+}
+.pgEarth-zoom.pgEarth-zoom--horizontal .pgEarth-widget-button:first-child {
+  border-left: solid 1px rgba(50, 50, 50, 0.25);
+}
+.pgEarth-zoom .pgEarth-widget-button {
+  box-shadow: none;
+}
+.pgEarth-zoom .pgEarth-widget-button:first-child {
+  margin-bottom: 0;
+}
+.pgEarth-zoom .pgEarth-widget-button:last-child {
+  border-top: solid 1px rgba(50, 50, 50, 0.25);
+}
+
+html[dir=rtl] .pgEarth-zoom.pgEarth-zoom--horizontal .pgEarth-widget-button:first-child {
+  border-top: none;
+}
+html[dir=rtl] .pgEarth-zoom.pgEarth-zoom--horizontal .pgEarth-widget-button:last-child {
+  border-left: solid 1px rgba(50, 50, 50, 0.25);
+}
+
+/* ==========================================================================
+   box-sizing
+   ========================================================================== */
+.pgEarth-widget {
+  box-sizing: border-box;
+  color: #323232;
+  font-size: 14px;
+  font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.3em;
+  background-color: #ffffff;
+}
+.pgEarth-widget *,
+.pgEarth-widget *:before,
+.pgEarth-widget *:after {
+  box-sizing: inherit;
+}
+.pgEarth-widget a {
+  text-decoration: none;
+  color: #6e6e6e;
+}
+.pgEarth-widget a :hover {
+  color: #2e2e2e;
+}
+.pgEarth-widget h1, .pgEarth-widget h2, .pgEarth-widget h3, .pgEarth-widget h4, .pgEarth-widget h5, .pgEarth-widget h6 {
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+.pgEarth-widget .pgEarth-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  padding: 0;
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  line-height: 16px;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  overflow: hidden;
+  width: 100%;
+  visibility: hidden;
+  max-height: 0;
+}
+.pgEarth-widget .pgEarth-menu .pgEarth-header {
+  padding: 6px 12px;
+  background-color: #f2f2f2;
+  color: #2e2e2e;
+}
+.pgEarth-widget .pgEarth-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pgEarth-widget .pgEarth-menu li {
+  padding: 0.8em 1em;
+  cursor: pointer;
+  border-top: solid 1px rgba(50, 50, 50, 0.25);
+}
+.pgEarth-widget .pgEarth-menu li:first-child {
+  border: none;
+}
+.pgEarth-widget .pgEarth-menu li:hover,
+.pgEarth-widget .pgEarth-menu li:focus {
+  background-color: #f2f2f2;
+}
+.pgEarth-widget .pgEarth-menu li:active {
+  background-color: #ededed;
+  color: #191919;
+}
+.pgEarth-widget .pgEarth-menu li.pgEarth-active {
+  background-color: #ededed;
+  color: #191919;
+  cursor: default;
+}
+.pgEarth-widget .pgEarth-menu li [class^=pgEarth-icon] {
+  padding-right: 2.8px;
+}
+.pgEarth-widget table {
+  color: #323232;
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+}
+.pgEarth-widget table tr:nth-child(odd) {
+  background-color: rgba(76, 76, 76, 0.1);
+}
+.pgEarth-widget table tr:nth-child(even) {
+  background-color: rgba(76, 76, 76, 0.02);
+}
+.pgEarth-widget table tr a {
+  color: #323232;
+}
+.pgEarth-widget table tr td,
+.pgEarth-widget table tr th {
+  padding: 0.5em 0.7em;
+  word-break: break-word;
+  vertical-align: top;
+  font-size: 12px;
+  font-weight: 400;
+}
+.pgEarth-widget table tr th {
+  width: 50%;
+  text-align: left;
+  border-right: 3px solid rgba(0, 0, 0, 0.05);
+}
+.pgEarth-widget table tr td {
+  width: 50%;
+}
+.pgEarth-widget input {
+  font-family: inherit;
+}
+.pgEarth-widget input::-ms-clear {
+  display: none;
+}
+.pgEarth-widget input::-moz-placeholder {
+  color: rgba(50, 50, 50, 0.4);
+  opacity: 1;
+}
+.pgEarth-widget input:-ms-input-placeholder {
+  color: rgba(50, 50, 50, 0.4);
+}
+.pgEarth-widget input::-webkit-input-placeholder {
+  color: rgba(50, 50, 50, 0.4);
+}
+.pgEarth-widget button,
+.pgEarth-widget [role=button] {
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.pgEarth-select {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  height: 32px;
+  color: #6e6e6e;
+  border: 1px solid rgba(50, 50, 50, 0.25);
+  margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
+  padding: 0 0.5em;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%20width%3D%2732%27%20height%3D%2732%27%3E%3Cstyle%3E.path%7Bfill%3A%236e6e6e%7D%3C/style%3E%3Cpath%20class%3D%27path%27%20d%3D%27M12.3%2013.4h9l-5.7%206.1-5.7-6.1h2.4zm3.3%204.8l3.7-4h-7.4l3.7%204z%27/%3E%3C/svg%3E") no-repeat right center transparent;
+}
+
+.pgEarth-select::-ms-expand {
+  display: none;
+}
+
+button.pgEarth-disabled {
+  opacity: 0.4;
+}
+
+.pgEarth-disabled a,
+.pgEarth-disabled [class*=pgEarth-icon],
+.pgEarth-disabled [role=menu],
+.pgEarth-disabled [role=checkbox] {
+  color: rgba(110, 110, 110, 0.4);
+}
+
+.keynav-mode .pgEarth-widget:focus {
+  outline: 2px solid #90cdf2;
+  outline-offset: 2px;
+  z-index: 1;
+}
+.keynav-mode .pgEarth-widget *:focus {
+  outline: 2px solid #90cdf2;
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   Widget Button
+   ========================================================================== */
+.pgEarth-widget-button {
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #6e6e6e;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 125ms ease-in-out;
+}
+.pgEarth-widget-button:hover {
+  background-color: #f2f2f2;
+  color: #2e2e2e;
+}
+.pgEarth-widget-button:active {
+  background-color: #ededed;
+  color: #191919;
+}
+
+/* ==========================================================================
+   UI Corners
+   ========================================================================== */
+.pgEarth-ui-corner .pgEarth-component {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.pgEarth-ui-corner .pgEarth-widget--panel {
+  width: 300px;
+  min-height: 32px;
+}
+
+.pgEarth-ui-corner .pgEarth-widget--panel {
+  transition: max-height 250ms ease-in-out;
+}
+
+.pgEarth-view-height-greater-than-medium .pgEarth-ui-corner .pgEarth-widget--panel {
+  max-height: 680px;
+}
+
+.pgEarth-view-height-medium .pgEarth-ui-corner .pgEarth-widget--panel {
+  max-height: 540px;
+}
+
+.pgEarth-view-height-small .pgEarth-ui-corner .pgEarth-widget--panel {
+  max-height: 420px;
+}
+
+.pgEarth-view-height-xsmall .pgEarth-ui-corner .pgEarth-widget--panel {
+  max-height: 240px;
+}
+
+.pgEarth-ui-bottom-right .pgEarth-widget .pgEarth-menu,
+.pgEarth-ui-bottom-left .pgEarth-widget .pgEarth-menu {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+/* ==========================================================================
+   RTL
+   ========================================================================== */
+html[dir=rtl] .pgEarth-widget table th {
+  text-align: right;
+  border-right: none;
+  border-left: 3px solid rgba(0, 0, 0, 0.05);
+}
+html[dir=rtl] .pgEarth-widget select {
+  background-position: left 50%;
+}
+html[dir=rtl] .pgEarth-widget .pgEarth-menu ul li [class^=pgEarth-icon] {
+  padding-right: 0;
+  padding-left: 2.8px;
+}
+
+/* ==========================================================================
+   accessibility
+   ========================================================================== */
+.pgEarth-icon-font-fallback-text {
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  position: absolute;
+  height: 1px;
+  width: 1px;
+}
+
+/* ==========================================================================
+   animation
+   ========================================================================== */
+[class^=pgEarth-icon] {
+  animation: none;
+}
+
+@keyframes pgEarth-fade-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes looping-progresss-bar-ani {
+  0% {
+    left: 0%;
+    width: 0%;
+  }
+  20% {
+    left: 0%;
+    width: 20%;
+  }
+  80% {
+    left: 80%;
+    width: 20%;
+  }
+  100% {
+    left: 100%;
+    width: 0%;
+  }
+}
+.pgEarth-rotating {
+  animation: pgEarth-anim-rotate 1250ms infinite linear;
+}
+
+@keyframes pgEarth-anim-rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* ==========================================================================
+   clearfixing
+   ========================================================================== */
+/**
+ * taken from http://nicolasgallagher.com/micro-clearfix-hack/
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.pgEarth-clearfix:before, .pgEarth-clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.pgEarth-clearfix:after {
+  clear: both;
+}
+
+/* ==========================================================================
+   interaction
+   ========================================================================== */
+.pgEarth-interactive {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   visibility
+   ========================================================================== */
+.pgEarth-hidden {
+  display: none !important;
+}
+
+.pgEarth-invisible {
+  visibility: hidden !important;
+}
+
+.pgEarth-offscreen {
+  position: absolute;
+  top: -999em;
+  left: -999em;
+}

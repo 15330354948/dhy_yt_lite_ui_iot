@@ -1,0 +1,1 @@
+define(["./defaultValue","./DeveloperError"],function(e,t){"use strict";function n(){return!0}return function(r,o){function i(){throw new t(o)}for(var u in o=e(o,"This object was destroyed, i.e., destroy() was called."),r)"function"==typeof r[u]&&(r[u]=i);r.isDestroyed=n}});

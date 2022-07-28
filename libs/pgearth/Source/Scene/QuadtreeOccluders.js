@@ -1,0 +1,1 @@
+define(["../Core/Cartesian3","../Core/defineProperties","../Core/EllipsoidalOccluder"],function(e,i,o){"use strict";function t(i){this._ellipsoid=new o(i.ellipsoid,e.ZERO)}return i(t.prototype,{ellipsoid:{get:function(){return this._ellipsoid}}}),t});

@@ -1,0 +1,68 @@
+span.pgEarth-sceneModePicker-wrapper {
+    display: inline-block;
+    position: relative;
+    margin: 0 3px;
+}
+
+.pgEarth-sceneModePicker-visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.25s linear;
+}
+
+.pgEarth-sceneModePicker-hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.25s, opacity 0.25s linear;
+}
+
+.pgEarth-sceneModePicker-wrapper .pgEarth-sceneModePicker-none {
+    display: none;
+}
+
+.pgEarth-sceneModePicker-slide-svg {
+    transition: left 2s;
+    top: 0;
+    left: 0;
+}
+
+.pgEarth-sceneModePicker-wrapper .pgEarth-sceneModePicker-dropDown-icon {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 3px 0;
+}
+
+.pgEarth-sceneModePicker-wrapper .pgEarth-sceneModePicker-button3D,
+.pgEarth-sceneModePicker-wrapper .pgEarth-sceneModePicker-buttonColumbusView,
+.pgEarth-sceneModePicker-wrapper .pgEarth-sceneModePicker-button2D {
+    margin: 0 0 3px 0;
+}
+
+.pgEarth-sceneModePicker-wrapper .pgEarth-sceneModePicker-button3D .pgEarth-sceneModePicker-icon2D {
+    left: 100%;
+}
+
+.pgEarth-sceneModePicker-wrapper .pgEarth-sceneModePicker-button3D .pgEarth-sceneModePicker-iconColumbusView {
+    left: 200%;
+}
+
+.pgEarth-sceneModePicker-wrapper .pgEarth-sceneModePicker-buttonColumbusView .pgEarth-sceneModePicker-icon3D {
+    left: -200%;
+}
+
+.pgEarth-sceneModePicker-wrapper .pgEarth-sceneModePicker-buttonColumbusView .pgEarth-sceneModePicker-icon2D {
+    left: -100%;
+}
+
+.pgEarth-sceneModePicker-wrapper .pgEarth-sceneModePicker-button2D .pgEarth-sceneModePicker-icon3D {
+    left: -100%;
+}
+
+.pgEarth-sceneModePicker-wrapper .pgEarth-sceneModePicker-button2D .pgEarth-sceneModePicker-iconColumbusView {
+    left: 100%;
+}
+
+.pgEarth-sceneModePicker-wrapper .pgEarth-sceneModePicker-selected {
+    border-color: #2e2;
+    box-shadow: 0 0 8px #fff, 0 0 8px #fff;
+}

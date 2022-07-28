@@ -1,0 +1,34 @@
+{
+  "name": "patterns-color",
+  "version": "0.1.2",
+  "description": "Authoritative Color Variables for libras websites",
+  "private": true,
+  "homepage": "https://github.com/libras/patterns-color",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/libras/patterns-color.git"
+  },
+  "author": {
+    "name": "libras"
+  },
+  "contributors": [
+    {
+      "name": "Cassidy Bishop",
+      "email": "CBishop@libras.com"
+    },
+    {
+      "name": "Kyle Heineman",
+      "email": "kheinemann@libras.com"
+    }
+  ],
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/libras/patterns-color/issues"
+  },
+  "devDependencies": {
+    "gh-release": "~1.1.3"
+  },
+  "scripts": {
+    "release": "gh-release"
+  }
+}

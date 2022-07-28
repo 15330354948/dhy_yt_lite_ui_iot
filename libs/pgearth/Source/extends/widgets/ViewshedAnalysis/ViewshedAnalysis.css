@@ -1,0 +1,300 @@
+.PowerGis-PGViewshed {
+    border-radius: 5px;
+    transition: width ease-in-out .25s;
+    background: rgba(48, 51, 54, .8);
+    border: 1px solid #444;
+    color: #edffff;
+    display: inline-block;
+    position: relative;
+    padding: 4px 12px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.PowerGis-PGViewshedContainer {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 10px
+}
+
+.PowerGis-PGViewshed-button {
+    text-align: center;
+    font-size: 11pt
+}
+
+.PowerGis-PGViewshed-visible {
+    width: 185px;
+    height: auto
+}
+
+.PowerGis-PGViewshed-hidden {
+    width: 75px;
+    height: 17px !important;
+    overflow: hidden
+}
+
+.PowerGis-PGViewshed-visible .PowerGis-PGViewshed-button {
+    padding-bottom: 3px
+}
+
+.PowerGis-PGViewshed input:enabled, .PowerGis-PGViewshed-button {
+    cursor: pointer
+}
+
+.PowerGis-PGViewshed-dropDown {
+    margin: 5px 0;
+    font-family: sans-serif;
+    font-size: 10pt;
+    width: 185px
+}
+
+.PowerGis-PGViewshed-pickButton {
+    background-color: rgba(0, 0, 0, .3);
+    border: 1px solid #444;
+    color: #edffff;
+    border-radius: 5px;
+    padding: 3px 7px;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 5px auto
+}
+
+.PowerGis-PGViewshed-pickButton:focus {
+    outline: 0
+}
+
+.PowerGis-PGViewshed-pickButton:active, .PowerGis-PGViewshed-pickButton:hover, .PowerGis-PGViewshed-pickButtonHighlight {
+    border-color: #fff;
+    box-shadow: 0 0 8px #fff
+}
+
+.PowerGis-PGViewshed-center {
+    text-align: center
+}
+
+.PowerGis-PGViewshed-Analysis {
+    font-weight: 700;
+    margin-bottom: 5px;
+    margin-top: 5px
+}
+
+.PowerGis-PGViewshed-toggleSwitch {
+    padding: 3px;
+    cursor: pointer
+}
+
+.PowerGis-PGViewshed-section input[type=search] {
+    text-align: left;
+    background-color: #222;
+    outline: 0;
+    border: 1px solid #444;
+    color: #edffff;
+    width: 142px;
+    border-radius: 3px;
+    padding: 1px;
+    margin-left: 10px;
+    cursor: auto
+}
+
+.PowerGis-PGViewshed-section input[type=number] .PowerGis-PGViewshed-section input[type=range] {
+    float: left
+}
+
+.PowerGis-PGViewshed-section input[type=number]::-webkit-inner-spin-button, .PowerGis-PGViewshed-section input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0
+}
+
+.PowerGis-PGViewshed-section input[type=range] {
+    margin-left: 5px;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    background: #ddd;
+    height: 3px
+}
+
+.PowerGis-PGViewshed-section {
+    transition: max-height .25s
+}
+
+.PowerGis-PGViewshed-section input[type=number] {
+    text-align: left;
+    background-color: #222;
+    outline: 0;
+    border: 1px solid #444;
+    color: #edffff;
+    width: 35px;
+    border-radius: 3px;
+    padding: 1px;
+    margin-left: 10px;
+    cursor: auto
+}
+
+.PowerGis-PGViewshed-section input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #000;
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer
+}
+
+.PowerGis-PGViewshed-section input[type=range]::-moz-range-thumb {
+    border: 1px solid #000;
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer
+}
+
+.PowerGis-PGViewshed-show {
+    max-height: 500px
+}
+
+.PowerGis-PGViewshed-hide {
+    max-height: 0;
+    padding: 0 !important;
+    overflow: hidden
+}
+
+.PowerGis-PGViewshed-tree {
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 3px;
+    margin-bottom: 5px;
+    overflow: auto;
+    overflow-x: hidden;
+    height: 120px;
+    width: auto
+}
+
+.PowerGis-PGViewshed-tree input[type=text] {
+    width: 100%;
+    margin-left: -13px
+}
+
+.PowerGis-PGViewshed-Ul {
+    margin: 0
+}
+
+.PowerGis-PGViewshed-LI {
+    margin: 5px 5px 2px -40px;
+    list-style-type: none;
+    width: 180px;
+    height: 20px;
+    text-align: left;
+    padding-left: 10px;
+    border-bottom: 1px solid #fff;
+    cursor: pointer;
+}
+
+.PowerGis-PGViewshed-sectionHeader {
+    font-weight: 700;
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 5px;
+    margin-top: 5px
+}
+
+.PowerGis-PGViewshed-jumpButton {
+    background-color: rgba(0, 0, 0, .3);
+    border: 1px solid #444;
+    color: #edffff;
+    border-radius: 5px;
+    padding: 3px 7px;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 5px auto 0 15px
+}
+
+.PowerGis-PGViewshed-jumpButton enable:focus {
+    outline: 0
+}
+
+.PowerGis-PGViewshed-jumpButton enable:active .PowerGis-PGViewshed-jumpButtonHighlight, .PowerGis-PGViewshed-jumpButton:hover {
+    border-color: #fff;
+    box-shadow: 0 0 8px #fff
+}
+
+.PowerGis-PGViewshed-deleteButton {
+    background-color: rgba(0, 0, 0, .3);
+    border: 1px solid #444;
+    color: #edffff;
+    border-radius: 5px;
+    padding: 3px 7px;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 0 auto 0 20px
+}
+
+.PowerGis-PGViewshed-deleteButton:focus {
+    outline: 0
+}
+
+.PowerGis-PGViewshed-deleteButton:active, .PowerGis-PGViewshed-deleteButton:hover {
+    border-color: #fff;
+    box-shadow: 0 0 8px #fff
+}
+
+.PowerGis-PGViewshed-buttonVisble {
+    margin-bottom: 10px;
+    margin-top: 10px
+}
+
+.PowerGis-PGViewshed-buttonVisble input[type=color], .PowerGis-PGViewshed-buttonVisble input[type=color]:enabled {
+    padding: 0;
+    border: 0;
+    border-radius: 3px;
+    margin: 0 0 0 23px;
+    width: 35px
+}
+
+.PowerGis-PGViewshed-buttonHidden {
+    margin-bottom: 10px;
+    margin-top: 10px
+}
+
+.PowerGis-PGViewshed-buttonHidden input[type=color] {
+    padding: 0;
+    border: 0;
+    margin: 0 0 0 10px;
+    width: 35px;
+    border-radius: 3px
+}
+
+.PowerGis-PGViewshed-position {
+    margin-bottom: 5px;
+    margin-top: 5px
+}
+
+.PowerGis-PGViewshed-position input[type=number] {
+    text-align: left;
+    background-color: #222;
+    outline: 0;
+    color: #edffff;
+    width: 140px;
+    border-radius: 3px;
+    padding: 1px;
+    margin-left: 10px;
+    cursor: auto;
+    border: 1px solid #444
+}
+
+input[type=range]:focus {
+    outline: 0
+}
+
+/*!*border-radius: 5px;*!*/
